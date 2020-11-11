@@ -15,8 +15,12 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('file', 50);
         });
+
+        DB::table('photos')->insert([
+            ['id' =>  1, 'file' => 'no_image.png']
+        ]);
     }
 
     /**

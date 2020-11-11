@@ -15,8 +15,17 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name', 15);
+            $table->integer('points');
         });
+
+        DB::table('categories')->insert([
+            ['id' =>  1, 'name' => 'Maraton', 'points' => 100],
+            ['id' =>  2, 'name' => 'Półmaraton', 'points' => 70],
+            ['id' =>  3, 'name' => '10 km', 'points' => 50],
+            ['id' =>  4, 'name' => '5 km', 'points' => 30],
+            ['id' =>  5, 'name' => 'parkrun', 'points' => 15]
+        ]);
     }
 
     /**

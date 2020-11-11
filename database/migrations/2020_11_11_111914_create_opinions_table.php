@@ -15,6 +15,13 @@ class CreateOpinionsTable extends Migration
     {
         Schema::create('opinions', function (Blueprint $table) {
             $table->id();
+            $table->integer('event_id')->unsigned()->index();
+            $table->string('author', 30);
+            $table->integer('atmosphere_rating');
+            $table->integer('road_rating');
+            $table->integer('organization_rating');
+            $table->integer('overall_rating');
+            $table->text('body');
             $table->timestamps();
         });
     }

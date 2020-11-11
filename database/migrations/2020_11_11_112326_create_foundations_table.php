@@ -15,7 +15,7 @@ class CreateFoundationsTable extends Migration
     {
         Schema::create('foundations', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name', 60);
         });
     }
 
