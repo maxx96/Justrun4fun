@@ -2,6 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\AdminCategoriesController;
+use App\Http\Controllers\AdminEventsController;
+use App\Http\Controllers\AdminUsersController;
+use App\Http\Controllers\EventOpinionsController;
+use App\Http\Controllers\FoundationController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +21,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', function () {
+    return view('/welcome');
+})->name('welcome');
+
+Route::get('/wydarzenia', [PagesController::class, 'events']);
+Route::get('/wydarzenia/{id}', [AdminEventsController::class, 'event']);
+Route::get('/eventRegistration/{id}', [UserController::class, 'eventRegistration']);
+Route::get('/rankingRegistration/{id}', [UserController::class, 'rankingRegistration']);
+Route::get('/ranking', [PagesController::class, 'ranking']);
+Route::get('/wyszukaj', [PagesController::class, 'filterSearch']);
+Route::get('/', [PagesController::class, 'index']);
+Route::resource('admin/opinie', EventOpinionsController::class);
+Route::patch('admin/opinie/verification/{id}', [EventOpinionsController::class, 'updateVerification']);
+
+Route::group(['middleware'=>'admin'], function(){
+    Route::get('/admin', function(){
+      return view('admin/index');
+    });
+    Route::resources([
+      'admin/uzytkownicy' => AdminUsersController::class,
+      'admin/wydarzenia' => AdminEventsController::class,
+      'admin/kategorie' => AdminCategoriesController::class
+    ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/regulamin', function(){
+  return view('footer/regulamin');
+});
+
+Route::get('/polityka-prywatnosci', function(){
+  return view('footer/polityka-prywatnosci');
+});
