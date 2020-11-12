@@ -24,7 +24,7 @@
                   <a class="dropdown-item" href="../public/admin/uzytkownicy">Lista użytkowników</a>
                   <a class="dropdown-item" href="../public/admin/uzytkownicy/create">Dodaj nowego</a>
             </li>
-                  <a class="dropdown-item" href=" ../public/admin/wydarzenia">Lista wydarzeń</a>
+                  <a class="dropdown-item" href="../public/admin/wydarzenia">Lista wydarzeń</a>
                   <a class="dropdown-item" href="../public/admin/wydarzenia/create">Dodaj nowe</a>
             </li>
             <li class="nav-item">

@@ -12,7 +12,6 @@ use App\Models\EventUser;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
-
 class AdminEventsController extends Controller
 {
     /**
@@ -101,7 +100,6 @@ class AdminEventsController extends Controller
         return redirect('admin/wydarzenia');
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
@@ -111,26 +109,32 @@ class AdminEventsController extends Controller
     public function destroy($id)
     {
         $event = Event::findOrFail($id);
-        unlink(public_path() . $event->photo->file);
+        $image = $event->photo->file;
+        $path = str_replace('\\','/', public_path() . '/' . $image);
+        if(file_exists($path)) {
+            unlink($path);
+            $photo = Photo::findOrFail($event->photo_id);
+            $photo->delete();
+        }
         $event->delete();
-        return redirect('admin/wydarzenia');
+        return redirect('admin/wydarzenia')->with('success','Wydarzenie usunięte');
     }
 
-        // Wyświetlanie wydarzenia
-        public function event($slug)
-        {
-            $event = Event::where('slug', '=', $slug)->first();
-            $opinions = $event->opinions()->get();
-            $user = null;
-            $isParticipate = false;
-            $isGiveOpinion = false;
-            if (Auth::check()) {
-                $user = Auth::user();
-                $participate = EventUser::where('event_id', '=', $event->id)->where('user_id', '=', $user->id)->first();
-                $isParticipate = !($participate === null);
-                $giveOpinion = Opinion::where('event_id', '=', $event->id)->where('author', '=', $user->name)->first();
-                $isGiveOpinion = !($giveOpinion === null);
-            }
-            return view('wydarzenia', compact('event', 'opinions', 'user'))->with('isParticipate', $isParticipate)->with('isGiveOpinion', $isGiveOpinion);
+    // Wyświetlanie wydarzenia
+    public function event($slug)
+    {
+        $event = Event::where('slug', '=', $slug)->first();
+        $opinions = $event->opinions()->get();
+        $user = null;
+        $isParticipate = false;
+        $isGiveOpinion = false;
+        if (Auth::check()) {
+            $user = Auth::user();
+            $participate = EventUser::where('event_id', '=', $event->id)->where('user_id', '=', $user->id)->first();
+            $isParticipate = !($participate === null);
+            $giveOpinion = Opinion::where('event_id', '=', $event->id)->where('author', '=', $user->name)->first();
+            $isGiveOpinion = !($giveOpinion === null);
         }
+        return view('wydarzenia', compact('event', 'opinions', 'user'))->with('isParticipate', $isParticipate)->with('isGiveOpinion', $isGiveOpinion);
+    }
 }

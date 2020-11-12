@@ -51,8 +51,8 @@
             {!! Form::close() !!}
           @endif
         </td>
-        <td><a class="btn btn-secondary" href="/admin/opinie/{{$event->id}}" role="button">Opinie</a></td>
-        <td><a class="btn btn-info" href="/admin/wydarzenia/{{$event->id}}/edit" role="button">Zarządzaj</a></td>
+        <td><a class="btn btn-secondary" href="../admin/opinie/{{$event->id}}" role="button">Opinie</a></td>
+        <td><a class="btn btn-info" href="../admin/wydarzenia/{{$event->id}}/edit" role="button">Zarządzaj</a></td>
       </tr>
     </tbody>
         @endforeach
