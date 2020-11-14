@@ -55,7 +55,7 @@
         @foreach($events as $event)
       <div class="col-lg-4">
         <div class="recommended-events">
-        <a href="/wydarzenia/{{$event->slug}}" >
+        <a href="{{ url('wydarzenia', [$event->slug]) }}" >
         <img src="{{$event->photo->file}}">
           <div class="recommended-events-description">
             <h5>{{$event->title}}</h5>

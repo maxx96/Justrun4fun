@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 
 <h2>Utwórz użytkownika</h2>

@@ -27,7 +27,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', function () {
 
 Route::get('/wydarzenia', [PagesController::class, 'events']);
 Route::get('/wydarzenia/{id}', [AdminEventsController::class, 'event']);
-Route::get('/eventRegistration/{id}', [UserController::class, 'eventRegistration']);
+Route::get('/eventRegistration/{id}', [UserController::class, 'eventRegistration'])->name('eventRegistration');
 Route::get('/rankingRegistration/{id}', [UserController::class, 'rankingRegistration']);
 Route::get('/ranking', [PagesController::class, 'ranking']);
 Route::get('/wyszukaj', [PagesController::class, 'filterSearch']);

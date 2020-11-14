@@ -1,6 +1,9 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
+    <x-slot name="header">
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Wydarzenia') }}
+        </h2>
+    </x-slot>
 
 <div class="container-fluid">
 
@@ -57,11 +60,11 @@
 
         <div class="row">
           <div class="col-md-6">
-            <img class="card-img-top" src="{{$event->photo->file}}"></img>
+            <img class="card-img-top" src="{{ asset($event->photo->file) }}"></img>
           </div>
           <div class="col-md-6">
             @if(Auth::check() && ($user->is_active==1) && ($event->is_active==1))
-              <a href="/eventRegistration/{{$event->id}}">
+              <a href="{{ route('eventRegistration', [$event->id]) }}">
                 <div class="row">
                   @if($isParticipate)
                     <div class="btn btn-primary w-100 btn-danger">
@@ -151,4 +154,4 @@
 
 </div>
 
-@stop
+</x-app-layout>
