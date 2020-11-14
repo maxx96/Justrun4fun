@@ -59,11 +59,26 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function role()
+    {
+        return $this->belongsTo('App\Models\Role');
+    }
+
+    public function photo()
+    {
+        return $this->belongsTo('App\Models\Photo');
+    }
+
     public function isAdmin()
     {
         if ($this->role_id == 1) {
             return true;
         }
         return false;
+    }
+
+    public function events()
+    {
+        return $this->belongsToMany(Event::class, 'event_users');
     }
 }

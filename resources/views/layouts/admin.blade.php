@@ -18,17 +18,17 @@
 
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="../public/admin">Panel główny</a>
+              <a class="nav-link" href="{{ url('admin/') }}">Panel główny</a>
             </li>
             <li class="nav-item dropdown">
-                  <a class="dropdown-item" href="../public/admin/uzytkownicy">Lista użytkowników</a>
-                  <a class="dropdown-item" href="../public/admin/uzytkownicy/create">Dodaj nowego</a>
+                  <a class="dropdown-item" href="{{ url('admin/uzytkownicy/') }}">Lista użytkowników</a>
+                  <a class="dropdown-item" href="{{ url('admin/uzytkownicy/create') }}">Dodaj nowego</a>
             </li>
-                  <a class="dropdown-item" href="../public/admin/wydarzenia">Lista wydarzeń</a>
-                  <a class="dropdown-item" href="../public/admin/wydarzenia/create">Dodaj nowe</a>
+                  <a class="dropdown-item" href="{{ url('admin/wydarzenia') }}">Lista wydarzeń</a>
+                  <a class="dropdown-item" href="{{ url('admin/wydarzenia/create') }}">Dodaj nowe</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url('../public/admin/kategorie')}}">Kategorie</a>
+              <a class="nav-link" href="{{ url('admin/kategorie') }}">Kategorie</a>
             </li>
           </ul>
 
