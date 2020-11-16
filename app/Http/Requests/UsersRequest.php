@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Carbon\Carbon;
 
 class UsersRequest extends FormRequest
 {
@@ -13,15 +14,10 @@ class UsersRequest extends FormRequest
 
     public function rules()
     {
-      $rules = [
-          'name' => 'required',
-          'email' => 'required',
-      ];
-
-      if ($this->method() == 'POST'){
-         $rules['password'] = 'required';
-      }
-
-      return $rules;
+      $before_date = Carbon::today()->toDateString();
+        return [
+            'email' => 'required',
+            'date_of_birth'=>'date|before:' . $before_date,
+        ];
     }
 }

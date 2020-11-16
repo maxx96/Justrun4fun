@@ -1,11 +1,6 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <section class="container-fluid">
+@section('content')
 
 <section class="profil">
 
@@ -18,20 +13,10 @@
     </ol>
   </nav>
 
-  @if($user->is_active==0 && !isset($user->total_points))
+  @if($user->is_active==0)
     <div class="alert alert-warning" role="alert">
-    Nie dołączyłeś jeszcze do rankingu użytkowników! Zrób to teraz!<br>
-    <u>UWAGA!</u> Aby dołączyć do rankingu, najpierw uzupełnij w pełni swój profil wiarygodnymi danymi. Będą one potrzebne do weryfikacji zawodów.
-      <a href="{{ url('rankingRegistration', [$user->id]) }}">
-        <div class="btn w-100 register-btn-danger">
-          <b>Dołącz do rankingu</b>
-        </div>
-      </a>
-    </div>
-  @elseif(!($user->firstname && $user->surname && $user->date_of_birth && $user->sex && $user->city && $user->country))
-    <div class="alert alert-warning" role="alert">
-    <u>UWAGA!</u> Nie jesteś brany pod uwagę w rankingu, ponieważ posiadasz niepełne dane na swoim profilu. Uzupełnij je!<br>
-    W przeciwnym wypadku administrator nie zweryfikuje zawodów, w których brałeś udział.
+      <u>UWAGA!</u> Nie jesteś brany pod uwagę w rankingu, ponieważ posiadasz niepełne dane na swoim profilu. Uzupełnij je!<br>
+      W przeciwnym wypadku administrator nie zweryfikuje zawodów, w których brałeś udział.
     </div>
   @endif
 
@@ -104,20 +89,10 @@
             </td>
           </tr>
           <tr>
-            <th>Kraj:</th>
+            <th>Fundacja:</th>
             <td>
-              @if(isset($user->country))
-                {{$user->country}}
-              @else
-                brak
-              @endif
-            </td>
-          </tr>
-          <tr>
-            <th>Klub sportowy:</th>
-            <td>
-              @if(isset($user->club))
-                {{$user->club}}
+              @if(isset($user->foundation->name))
+                {{$user->foundation->name}}
               @else
                 brak
               @endif
@@ -206,4 +181,4 @@
 
 </div>
 
-</x-app-layout>
+@stop

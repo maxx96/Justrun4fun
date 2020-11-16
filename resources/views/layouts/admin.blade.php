@@ -18,6 +18,7 @@
 
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
+              <a class="nav-link" href="{{ url('/') }}">Strona główna</a>
               <a class="nav-link" href="{{ url('admin/') }}">Panel główny</a>
             </li>
             <li class="nav-item dropdown">

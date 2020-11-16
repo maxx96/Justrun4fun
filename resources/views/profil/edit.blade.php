@@ -20,9 +20,7 @@
           <div class="row">
             <div class="form-group col-md-12">
               {!! Form::model($user, ['method'=>'PATCH', 'action'=> ['App\Http\Controllers\UserController@update', $user->id], 'files'=>true]) !!}
-                {!! Form::label('password', 'Zmień hasło:') !!}
-                {!! Form::password('password', ['class'=>'form-control']) !!}
-            </div>
+               </div>
           </div>
         </div>
 
@@ -31,10 +29,6 @@
               @include('includes/error-form')
             </div>
             <div class="row">
-              <div class="form-group col-md-6">
-                {!! Form::label('name', 'Nazwa użytkownika:*') !!}
-                {!! Form::text('name', null, ['class'=>'form-control']) !!}
-              </div>
               <div class="form-group col-md-6">
                 {!! Form::label('email', 'E-mail:*') !!}
                 {!! Form::email('email', null, ['class'=>'form-control']) !!}
@@ -55,11 +49,18 @@
                 {!! Form::label('city', 'Miasto:*') !!}
                 {!! Form::text('city', null, ['class'=>'form-control']) !!}
               </div>
-              <div class="form-group col-md-6">
-                {!! Form::label('country', 'Kraj:*') !!}
-                {!! Form::text('country', null, ['class'=>'form-control']) !!}
-              </div>
             </div>
+            
+            <div class="form-group col-md-6">
+                {!! Form::label('date_of_birth', 'Data urodzenia:*') !!}
+                {!! Form::date('date_of_birth', $user->date_of_birth, ['class'=>'form-control']) !!}
+              </div>
+
+            <div class="form-group col-md-6">
+              {{ Form::label('foundation_id', 'Fundacja:') }}*
+              {{ Form::select('foundation_id', [''=>'Wybierz fundację'] + $foundations, null, ['class'=>'form-control']) }}
+            </div>
+
             <div class="row">
               <div class="form-group col-md-6">
                 {!! Form::label('sex', 'Płeć:*') !!}<br>
@@ -69,16 +70,6 @@
               <div class="form-group col-md-6">
                 {!! Form::label('photo_id', 'Zdjęcie profilowe:') !!}
                 {!! Form::file('photo_id', null, ['class'=>'form-control'])!!}
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-6">
-                {!! Form::label('date_of_birth', 'Data urodzenia:*') !!}
-                {!! Form::date('date_of_birth', $user->date_of_birth, ['class'=>'form-control']) !!}
-              </div>
-              <div class="form-group col-md-6">
-                {!! Form::label('club', 'Klub:') !!}
-                {!! Form::text('club', null, ['class'=>'form-control']) !!}
               </div>
             </div>
             <div class="row">

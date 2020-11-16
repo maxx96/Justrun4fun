@@ -11,6 +11,7 @@ use App\Models\Photo;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\Category;
+use App\Models\Foundation;
 use DB;
 
 class UserController extends Controller
@@ -26,8 +27,9 @@ class UserController extends Controller
       $user = User::findOrFail($id);
       $data = DB::table('event_users')->join('users', 'event_users.user_id', '=', 'users.id')
       	->join('events', 'event_users.event_id', '=', 'events.id')
-      	->join('categories', 'events.category_id', '=', 'categories.id')
-      	->select('events.event_date', 'events.title', 'events.is_active', 'events.slug', 'events.place', 'users.email', 'categories.points', 'event_users.verification')
+        ->join('categories', 'events.category_id', '=', 'categories.id')
+        ->join('foundations', 'users.foundation_id', '=', 'foundations.id')
+      	->select('events.event_date', 'events.title', 'events.is_active', 'events.slug', 'events.place', 'foundations.name', 'categories.points', 'event_users.verification')
         ->where('users.id', '=', $id)
         ->orderBy('events.event_date', 'asc')
       	->get();
@@ -75,7 +77,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('profil/edit', compact('user'));
+        $foundations = Foundation::pluck('name', 'id')->all();
+        return view('profil/edit', compact('user', 'foundations'));
     }
 
     /**
@@ -85,26 +88,24 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UsersRequest $request, User $user)
+    public function update(UsersRequest $request, $id)
     {
         $user = Auth::user();
       $input = $request->all();
-      if (trim($request->password) == '') {
-          $input = $request->except('password');
-      } else {
-          $input['password'] = bcrypt($request->password);
-      }
-      if ($file = $request->file('photo_id')) {
+            if ($file = $request->file('photo_id')) {
         $name = time() . $file->getClientOriginalName();
         $file->move('images', $name);
         $photo = Photo::create(['file'=>$name]);
         $input['photo_id'] = $photo->id;
       }
-      if(empty($request->firstname && $request->surname && $request->date_of_birth && $request->sex && $request->city && $request->country)){
+      if(empty($request->firstname && $request->surname && $request->sex && $request->city && $request->date_of_birth)){
         $user->is_active = 0;
-        $user->save();
       }
-      User::findOrFail($id)->update($input);
+      else{
+        $user->is_active = 1;
+      }
+      $user->update($input);
+      $user->save();
       return redirect('profil');
     }
 
@@ -143,18 +144,5 @@ class UserController extends Controller
           $participate->delete();
       }
       return redirect()->back()->with('isParticipate', $isParticipate);
-    }
-
-    public function rankingRegistration($id)
-    {
-      $user_id = Auth::id();
-      $user = User::findOrFail($id);
-      if($user->firstname && $user->surname && $user->date_of_birth && $user->sex && $user->city && $user->country)
-      {
-        $user->is_active = 1;
-        $user->total_points = 0;
-        $user->save();
-      }
-      return redirect()->back();
     }
 }
