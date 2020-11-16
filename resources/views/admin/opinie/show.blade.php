@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h2><a href="/wydarzenia/{{$event->slug}}">Opinie - {{$event->title}}</a></h2>
+<h2><a href="{{ url('wydarzenia', [$event->slug]) }}">Opinie - {{$event->title}}</a></h2>
 <hr>
 
 @if(count($data) > 0)

@@ -13,8 +13,8 @@
 
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">Strona główna</a></li>
-          <li class="breadcrumb-item"><a href="/wydarzenia">Wydarzenia</a></li>
+          <li class="breadcrumb-item"><a href="{{ url('/') }}">Strona główna</a></li>
+          <li class="breadcrumb-item"><a href="{{ url('wydarzenia') }}">Wydarzenia</a></li>
           <li class="breadcrumb-item active" aria-current="page">{{$event->title}}</li>
         </ol>
       </nav>

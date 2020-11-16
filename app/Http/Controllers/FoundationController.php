@@ -14,7 +14,8 @@ class FoundationController extends Controller
      */
     public function index()
     {
-        //
+        $foundations = Foundation::all();
+        return view('admin/fundacje/index', compact('foundations'));
     }
 
     /**
@@ -35,7 +36,8 @@ class FoundationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Foundation::create($request->all());
+        return redirect('/admin/fundacje');
     }
 
     /**
@@ -55,9 +57,10 @@ class FoundationController extends Controller
      * @param  \App\Models\Foundation  $foundation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Foundation $foundation)
+    public function edit($id)
     {
-        //
+        $foundation = Foundation::findOrFail($id);
+        return view('admin/fundacje/edit', compact('foundation'));
     }
 
     /**
@@ -67,9 +70,11 @@ class FoundationController extends Controller
      * @param  \App\Models\Foundation  $foundation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Foundation $foundation)
+    public function update(Request $request, $id)
     {
-        //
+        $foundation = Foundation::findOrFail($id);
+        $foundation->update($request->all());
+        return redirect('/admin/fundacje');
     }
 
     /**
@@ -78,8 +83,9 @@ class FoundationController extends Controller
      * @param  \App\Models\Foundation  $foundation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Foundation $foundation)
+    public function destroy($id)
     {
-        //
+        Foundation::findOrFail($id)->delete();
+        return redirect('admin/fundacje');
     }
 }

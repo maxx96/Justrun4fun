@@ -24,7 +24,7 @@
       <tr>
         <td>{{$event->id}}</td>
         <td><img height="75" width="100%" src="{{ asset($event->photo->file) }}" alt=""></td>
-        <td><a href="/wydarzenia/{{$event->slug}}">{{$event->title}}</a></td>
+        <td><a href="{{ url('wydarzenia', [$event->slug]) }}">{{$event->title}}</a></td>
         <td>{{ number_format($event->opinions()->avg('atmosphere_rating'), 1) }} / 10.0
         </td>
         <td>{{ number_format($event->opinions()->avg('road_rating'), 1) }} / 10.0

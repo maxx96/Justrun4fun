@@ -42,4 +42,13 @@
   </div>
 </div>
 
+<div class="admin-index">
+  <h5>Zarządzaj fundacjami</h5>
+  <div class="row separator">
+    <div class="col-md-12">
+      <a class="btn btn-secondary btn-block" href="{{ url('admin/fundacje') }}" role="button">Przejdź do listy fundacji</a>
+    </div>
+  </div>
+</div>
+
 @stop

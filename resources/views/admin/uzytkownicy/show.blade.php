@@ -8,7 +8,7 @@
 <div class="row">
   <div class="col-lg-2">
     <img src="{{$user->photo ? $user->photo->file : '/images/no_image.png'}}" alt="" class="img-responsive img-rounded" width=100%><br><br>
-    <a class="btn btn-primary btn-lg btn-block" href="{{ url('profil/edit', [$user->id]) }}" role="button">Edytuj profil</a><br><br>
+    <a class="btn btn-primary btn-lg btn-block" href="../uzytkownicy/{{$user->id}}/edit" role="button">Edytuj profil</a><br><br>
   </div>
   <div class="col-lg-5 col-md-12">
     <table class="table table-striped profile-data">
@@ -121,7 +121,7 @@
       <div class="row">
           @foreach($data as $row)
             @if ($row->is_active==1)
-              <a href="/wydarzenia/{{$row->slug}}" class="list-group-item list-group-item-action">
+              <a href="{{ url('wydarzenia', [$row->slug]) }}" class="list-group-item list-group-item-action">
                 <div class="row">
                   <div class="col-md-3">
                     {{ $row->event_date }}
@@ -140,9 +140,9 @@
 
             @if ($row->is_active==0)
               @if ($row->verification=="Zaakceptowane")
-                <a href="/wydarzenia/{{$row->slug}}" class="list-group-item list-group-item-action list-group-item-success">
+                <a href="{{ url('wydarzenia', [$row->slug]) }}" class="list-group-item list-group-item-action list-group-item-success">
               @else
-                <a href="/wydarzenia/{{$row->slug}}" class="list-group-item list-group-item-action list-group-item-warning">
+                <a href="{{ url('wydarzenia', [$row->slug]) }}" class="list-group-item list-group-item-action list-group-item-warning">
               @endif
               <div class="row">
                 <div class="col-md-3">

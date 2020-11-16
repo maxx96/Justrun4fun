@@ -21,12 +21,13 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/welcome', function () {
-    return view('/welcome');
-})->name('welcome');
+Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
+    return view('/'); 
+  })->name('index'); 
 
 Route::get('/wydarzenia', [PagesController::class, 'events']);
 Route::get('/wydarzenia/{id}', [AdminEventsController::class, 'event']);
+Route::resource('/profil', UserController::class);
 Route::get('/eventRegistration/{id}', [UserController::class, 'eventRegistration'])->name('eventRegistration');
 Route::get('/rankingRegistration/{id}', [UserController::class, 'rankingRegistration']);
 Route::get('/ranking', [PagesController::class, 'ranking']);
@@ -42,7 +43,8 @@ Route::group(['middleware'=>'admin'], function(){
     Route::resources([
       'admin/uzytkownicy' => AdminUsersController::class,
       'admin/wydarzenia' => AdminEventsController::class,
-      'admin/kategorie' => AdminCategoriesController::class
+      'admin/kategorie' => AdminCategoriesController::class,
+      'admin/fundacje' => FoundationController::class
     ]);
 });
 

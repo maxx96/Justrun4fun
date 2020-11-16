@@ -27,7 +27,7 @@ class UserController extends Controller
       $data = DB::table('event_users')->join('users', 'event_users.user_id', '=', 'users.id')
       	->join('events', 'event_users.event_id', '=', 'events.id')
       	->join('categories', 'events.category_id', '=', 'categories.id')
-      	->select('events.event_date', 'events.title', 'events.is_active', 'events.slug', 'events.place', 'users.name', 'categories.points', 'event_users.verification')
+      	->select('events.event_date', 'events.title', 'events.is_active', 'events.slug', 'events.place', 'users.email', 'categories.points', 'event_users.verification')
         ->where('users.id', '=', $id)
         ->orderBy('events.event_date', 'asc')
       	->get();
@@ -72,7 +72,7 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
         $user = User::findOrFail($id);
         return view('profil/edit', compact('user'));

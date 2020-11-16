@@ -30,6 +30,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url('admin/kategorie') }}">Kategorie</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('admin/fundacje') }}">Fundacje</a>
+            </li>
           </ul>
 
           <ul class="navbar-nav">

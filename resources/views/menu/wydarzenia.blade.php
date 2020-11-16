@@ -1,6 +1,9 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
+    <x-slot name="header">
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Wydarzenia') }}
+        </h2>
+    </x-slot>
 
 <div class="container-fluid">
 
@@ -10,7 +13,7 @@
 
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/">Strona główna</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('/') }}">Strona główna</a></li>
         <li class="breadcrumb-item active" aria-current="page">Wydarzenia</li>
       </ol>
     </nav>
@@ -20,7 +23,7 @@
 
     <div class="card text-white bg-light mb-3">
       <div class="card-body p-2 px-4">
-        <form class="ml-auto" method="get" action="/wyszukaj">
+        <form class="ml-auto" method="get" action="{{ url('wyszukaj') }}">
           <div class="form-row">
 
             <!-- Nazwa wydarzenia -->
@@ -87,7 +90,7 @@
         @endif
         <div class="col-md-4">
           <div class="recommended-events">
-          <a href="/wydarzenia/{{$event->slug}}" >
+          <a href="{{ url('wydarzenia', [$event->slug]) }}" >
           <img src="{{$event->photo->file}}">
             <div class="recommended-events-description">
               <h5>{{$event->title}}</h5>
@@ -127,4 +130,4 @@
 
 </div>
 
-@stop
+</x-app-layout>
