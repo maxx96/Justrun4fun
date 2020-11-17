@@ -21,7 +21,6 @@ class EventsCreateRequest extends FormRequest
             'event_date'=>'required|date|after:' . $after_date,
             'category_id'=>'required',
             'photo_id'=>'required',
-            'body'=>'required'
         ];
     }
 }

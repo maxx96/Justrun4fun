@@ -31,6 +31,11 @@
       <div class="col-lg-5 col-md-12">
         <table class="table table-striped profile-data">
             <tr>
+              <th>Zebrałeś już:</th>
+              <td>{{$collection}} zł</td>
+            </tr>
+            <tr>
+            <tr>
               <th>E-mail:</th>
               <td>{{$user->email}}</td>
             </tr>
@@ -129,7 +134,7 @@
           <div class="row">
               @foreach($data as $row)
                 @if ($row->is_active==1)
-                  <a href="/wydarzenia/{{$row->slug}}" class="list-group-item list-group-item-action">
+                  <a href="{{ url('wydarzenia', [$row->slug]) }}" class="list-group-item list-group-item-action">
                     <div class="row">
                       <div class="col-md-3">
                         {{ $row->event_date }}
@@ -148,9 +153,9 @@
 
                 @if ($row->is_active==0)
                   @if ($row->verification=="Zaakceptowane")
-                    <a href="/wydarzenia/{{$row->slug}}" class="list-group-item list-group-item-action list-group-item-success">
+                    <a href="{{ url('wydarzenia', [$row->slug]) }}" class="list-group-item list-group-item-action list-group-item-success">
                   @else
-                    <a href="/wydarzenia/{{$row->slug}}" class="list-group-item list-group-item-action list-group-item-warning">
+                    <a href="{{ url('wydarzenia', [$row->slug]) }}" class="list-group-item list-group-item-action list-group-item-warning">
                   @endif
                   <div class="row">
                     <div class="col-md-3">

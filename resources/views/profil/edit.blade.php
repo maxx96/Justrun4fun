@@ -56,11 +56,6 @@
                 {!! Form::date('date_of_birth', $user->date_of_birth, ['class'=>'form-control']) !!}
               </div>
 
-            <div class="form-group col-md-6">
-              {{ Form::label('foundation_id', 'Fundacja:') }}*
-              {{ Form::select('foundation_id', [''=>'Wybierz fundację'] + $foundations, null, ['class'=>'form-control']) }}
-            </div>
-
             <div class="row">
               <div class="form-group col-md-6">
                 {!! Form::label('sex', 'Płeć:*') !!}<br>
@@ -92,6 +87,21 @@
         </div>
       </div>
 
+      @if(isset($user->foundations_id))
+      <div class="row">
+            <div class="form-group col-md-12">
+              {!! Form::model($user, ['method'=>'PATCH', 'action'=> ['App\Http\Controllers\UserController@updateFoundation', $user->id], 'files'=>true]) !!}
+               </div>
+          </div>
+          <div class="form-group col-md-6">
+              {{ Form::label('foundation_id', 'Fundacja:') }}*
+              {{ Form::select('foundation_id', [''=>'Wybierz fundację'] + $foundations, null, ['class'=>'form-control']) }}
+            </div>
+            <div class="form-group col-md-6" onclick="return confirm('Czy zatwierdzić zmiany?')">
+                {!! Form::submit('Zapisz zmiany', ['class'=>'btn btn-success col-md-12']) !!}
+              </div>
+        </div>
+        @endif
     </div>
 
   </section>

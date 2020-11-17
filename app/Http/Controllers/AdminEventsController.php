@@ -132,7 +132,7 @@ class AdminEventsController extends Controller
             $user = Auth::user();
             $participate = EventUser::where('event_id', '=', $event->id)->where('user_id', '=', $user->id)->first();
             $isParticipate = !($participate === null);
-            $giveOpinion = Opinion::where('event_id', '=', $event->id)->where('author', '=', $user->name)->first();
+            $giveOpinion = Opinion::where('event_id', '=', $event->id)->where('author', '=', $user->email)->first();
             $isGiveOpinion = !($giveOpinion === null);
         }
         return view('wydarzenia', compact('event', 'opinions', 'user'))->with('isParticipate', $isParticipate)->with('isGiveOpinion', $isGiveOpinion);

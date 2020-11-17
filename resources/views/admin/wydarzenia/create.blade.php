@@ -39,10 +39,6 @@
     {{ Form::label('fanpage', 'Link do Facebooka:') }}
     {{ Form::text('fanpage', '', ['class'=>'form-control']) }}
   </div>
-  <div class="form-group">
-    {{ Form::label('body', 'Opis wydarzenia:') }}*
-    {{ Form::textarea('body', '', ['id'=>'article-ckeditor', 'class'=>'form-control']) }}
-  </div>
   <div class="row">
     <div class="col-md-12">
       *pola wymagane<br><br>

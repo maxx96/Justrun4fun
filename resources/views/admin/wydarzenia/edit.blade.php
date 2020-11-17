@@ -50,10 +50,6 @@
       {!! Form::label('fanpage', 'Link do Facebooka:') !!}
       {!! Form::text('fanpage', $event->fanpage, ['class'=>'form-control'])!!}
     </div>
-    <div class="form-group">
-      {!! Form::label('body', 'Opis wydarzenia:') !!}
-      {!! Form::textarea('body', $event->body, ['id'=>'article-ckeditor', 'class'=>'form-control'])!!}
-    </div>
     <div class="row">
       <div class="form-group col-md-6" onclick="return confirm('Czy zatwierdzić zmiany?')">
         {!! Form::submit('Zapisz zmiany', ['class'=>'btn btn-primary col-md-12']) !!}

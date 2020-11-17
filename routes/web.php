@@ -35,6 +35,7 @@ Route::get('/wyszukaj', [PagesController::class, 'filterSearch']);
 Route::get('/', [PagesController::class, 'index']);
 Route::resource('admin/opinie', EventOpinionsController::class);
 Route::patch('admin/opinie/verification/{id}', [EventOpinionsController::class, 'updateVerification']);
+Route::patch('/updateFoundation/{id}', [UserController::class, 'updateFoundation']);
 
 Route::group(['middleware'=>'admin'], function(){
     Route::get('/admin', function(){

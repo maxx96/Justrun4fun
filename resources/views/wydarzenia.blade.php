@@ -31,7 +31,7 @@
         <!-- Formularz dodawania opinii -->
               <h4>Brałeś udział? Wyraź opinię</h4>
 
-              {!! Form::open(['method'=>'POST', 'action'=> 'EventOpinionsController@store']) !!}
+              {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\EventOpinionsController@store']) !!}
               <input type="hidden" name="event_id" value="{{$event->id}}">
               <label for="atmosphere_rating">Atmosfera</label>
               <input type="range" class="custom-range" min="0" max="10" name="atmosphere_rating">
