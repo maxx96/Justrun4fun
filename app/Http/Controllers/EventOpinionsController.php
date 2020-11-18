@@ -108,10 +108,14 @@ class EventOpinionsController extends Controller
         if ($event_user->verification == "Zaakceptowane") {
           $user->total_points = $user->total_points + $category->points;
         }
+        elseif (($event_user->verification == "Odrzucone") && ($user->total_points <= 0)) {
+            $user->total_points = 0;
+        }
         elseif ($event_user->verification == "Odrzucone") {
           $user->total_points = $user->total_points - $category->points;
         }
         $user->update($request->all());
+        $user->save();
         return redirect()->back();
     }
 

@@ -18,6 +18,6 @@
     </head>
     <body class="font-sans antialiased">
 
-            @yield('content');
+            @yield('content')
     </body>
 </html>

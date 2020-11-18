@@ -35,21 +35,24 @@
                   <td class="place">
                     @if($i==1)
                       <div>
-                        <img src="{{asset('images/podium/1_place.png')}}" alt="" height="40px">
+                        1
                       </div>
                       @elseif($i==2)
                       <div>
-                        <img src="{{asset('images/podium/2_place.png')}}" alt="" height="40px">
+                        2
                       </div>
                       @elseif($i==3)
                       <div>
-                        <img src="{{asset('images/podium/3_place.png')}}" alt="" height="40px">
+                        3
                       </div>
                       @else
                         {{ $i }}
                     @endif
                   </td>
-                  <td>{{$user->name}}</td>
+                    @php ($front_email = substr($user->email, 0, 3))
+                    @php ($end_email = substr($user->email, strpos($user->email, "@"))) 
+                    @php ($user->email = $front_email . "..." . $end_email)
+                  <td>{{$user->email}}</td>
                   <td>{{$user->total_points}}</td>
                 </tr>
                 @php ($i++)

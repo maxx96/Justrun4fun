@@ -31,8 +31,16 @@
       <div class="col-lg-5 col-md-12">
         <table class="table table-striped profile-data">
             <tr>
+            @if(!isset($user->foundation->name))
+              <th>Jeszcze nie wybrałeś żadnej fundacji</th>
+            @elseif($collection <= 0)
+            <th>Twoja fundacja to {{$user->foundation->name}}</th>
+            <th>Jeszcze nic nie zebrałeś</th>
+            @else
+            <th>Twoja fundacja to {{$user->foundation->name}}</th>
               <th>Zebrałeś już:</th>
               <td>{{$collection}} zł</td>
+            @endif
             </tr>
             <tr>
             <tr>
@@ -88,16 +96,6 @@
             <td>
               @if(isset($user->city))
                 {{$user->city}}
-              @else
-                brak
-              @endif
-            </td>
-          </tr>
-          <tr>
-            <th>Fundacja:</th>
-            <td>
-              @if(isset($user->foundation->name))
-                {{$user->foundation->name}}
               @else
                 brak
               @endif

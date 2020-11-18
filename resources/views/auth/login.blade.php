@@ -1,7 +1,6 @@
-   <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.app')
+
+@section('content')
 
         <x-jet-validation-errors class="mb-4" />
 
@@ -37,10 +36,14 @@
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
+                
+                @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                        @endif
 
                 <x-jet-button class="ml-4">
                     {{ __('Login') }}
                 </x-jet-button>
             </div>
         </form>
-    </x-jet-authentication-card>
+@stop

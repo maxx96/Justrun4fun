@@ -7,6 +7,10 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Application description
+
+The main functionality of the application is viewing running events, signing up for them and their evaluation by users. In addition, event evaluation statistics and expressed opinions are forwarded to the organizers of the competition in order to show the view of the running environment on the event. The completed application works from the web browser level. The PHP Laravel v8.14.0 framework was used to program it.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

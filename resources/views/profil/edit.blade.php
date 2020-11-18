@@ -87,7 +87,7 @@
         </div>
       </div>
 
-      @if(isset($user->foundations_id))
+      @if(empty($user->foundation_id))
       <div class="row">
             <div class="form-group col-md-12">
               {!! Form::model($user, ['method'=>'PATCH', 'action'=> ['App\Http\Controllers\UserController@updateFoundation', $user->id], 'files'=>true]) !!}
