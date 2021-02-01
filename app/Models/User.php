@@ -62,6 +62,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Role');
     }
 
+    public function age_categories()
+    {
+        return $this->belongsTo('App\Models\AgeCategory');
+    }
+
     public function foundation()
     {
         return $this->belongsTo('App\Models\Foundation');

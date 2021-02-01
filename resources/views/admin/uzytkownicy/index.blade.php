@@ -31,8 +31,6 @@
       <td>{{$user->email}}</td>
       <td>{{$user->role->name}}</td>
       <td>{{$user->is_active == 1 ? 'Aktywny' : 'Nieaktywny'}}</td>
-      <td>{{$user->created_at->diffForHumans()}}</td>
-      <td>{{$user->updated_at->diffForHumans()}}</td>
       <td><a class="btn btn-success" href="{{ url('admin/uzytkownicy', [$user->id]) }}" role="button">Profil</a></td>
     </tr>
   </tbody>

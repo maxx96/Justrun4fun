@@ -25,17 +25,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('/'); 
   })->name('index'); 
 
-Route::get('/wydarzenia', [PagesController::class, 'events']);
-Route::get('/wydarzenia/{id}', [AdminEventsController::class, 'event']);
+Route::get('/wydarzenia', [PagesController::class, 'events'])->name('wydarzenia');
+Route::get('/wydarzenia/{id}', [AdminEventsController::class, 'event'])->name('wydarzenie');
 Route::resource('/profil', UserController::class);
 Route::get('/eventRegistration/{id}', [UserController::class, 'eventRegistration'])->name('eventRegistration');
-Route::get('/rankingRegistration/{id}', [UserController::class, 'rankingRegistration']);
-Route::get('/ranking', [PagesController::class, 'ranking']);
-Route::get('/wyszukaj', [PagesController::class, 'filterSearch']);
-Route::get('/', [PagesController::class, 'index']);
+Route::get('/rankingRegistration/{id}', [UserController::class, 'rankingRegistration'])->name('rankingRegistration');;
+Route::get('/ranking', [PagesController::class, 'ranking'])->name('ranking');
+Route::get('/', [PagesController::class, 'index'])->name('index');
 Route::resource('admin/opinie', EventOpinionsController::class);
-Route::patch('admin/opinie/verification/{id}', [EventOpinionsController::class, 'updateVerification']);
-Route::patch('/updateFoundation/{id}', [UserController::class, 'updateFoundation']);
+Route::patch('admin/opinie/verification/{id}', [EventOpinionsController::class, 'updateVerification'])->name('updateVerification');;
+Route::patch('/updateFoundation/{id}', [UserController::class, 'updateFoundation'])->name('updateFoundation');;
 
 Route::group(['middleware'=>'admin'], function(){
     Route::get('/admin', function(){
@@ -50,9 +49,9 @@ Route::group(['middleware'=>'admin'], function(){
 });
 
 Route::get('/regulamin', function(){
-  return view('footer/regulamin');
-});
+  return view('regulamin');
+})->name('regulation');
 
 Route::get('/polityka-prywatnosci', function(){
-  return view('footer/polityka-prywatnosci');
-});
+  return view('polityka-prywatnosci');
+})->name('privacyPolicy');

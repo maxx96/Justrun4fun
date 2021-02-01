@@ -8,6 +8,8 @@ use App\Models\Photo;
 use App\Models\User;
 use App\Models\EventUser;
 use App\Models\Role;
+use App\Models\AgeCategory;
+use App\Models\Foundation;
 use Illuminate\Support\Facades\Auth;
 
 class AdminUsersController extends Controller
@@ -31,7 +33,9 @@ class AdminUsersController extends Controller
     public function create()
     {
         $roles = Role::pluck('name', 'id')->all();
-        return view('admin/uzytkownicy/create', compact('roles'));
+        $age_categories = AgeCategory::pluck('name', 'id')->all();
+        $foundations = Foundation::pluck('name', 'id')->all();
+        return view('admin/uzytkownicy/create', compact('roles','age_categories','foundations'));
     }
 
     /**

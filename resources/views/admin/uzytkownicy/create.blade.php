@@ -1,36 +1,153 @@
-@extends('layouts.admin')
-
-@section('content')
-
-<h2>Utwórz użytkownika</h2>
-<hr>
-
-{!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\AdminUsersController@store','files'=>true]) !!}
-  <div class="form-group">
-    {!! Form::label('email', 'E-mail:') !!}
-    {!! Form::email('email', null, ['class'=>'form-control'])!!}
+<!DOCTYPE html><!--  This site was created in Webflow. http://www.webflow.com  -->
+<!--  Last Published: Sat Jan 30 2021 15:56:29 GMT+0000 (Coordinated Universal Time)  -->
+<html data-wf-page="6013f8e24c8fde32dc34da4c" data-wf-site="600c61116aae5f5691a390c2">
+<head>
+  <meta charset="utf-8">
+  <title>dodawanie-uzytkownikow</title>
+  <meta content="dodawanie-uzytkownikow" property="og:title">
+  <meta content="dodawanie-uzytkownikow" property="twitter:title">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="../../css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../../css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="../../css/justrun4fun.webflow.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script type="text/javascript">
+      WebFont.load({
+        google: {
+          families: ["Poppins:200italic,300,regular,500,600,700:latin,latin-ext"]
+        }
+      });
+    </script>
+  <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+  <script type="text/javascript">
+      ! function(o, c) {
+        var n = c.documentElement,
+          t = " w-mod-";
+        n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+      }(window, document);
+    </script>
+  <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="../images/webclip.png" rel="apple-touch-icon">
+</head>
+<body>
+  <div class="section-navbar">
+    <div data-collapse="small" data-animation="over-left" data-duration="400" role="banner" class="navbar w-nav">
+      <div class="content w-container">
+        <div class="menu">
+          <a href="../index.html" class="menu-logo w-nav-brand"><img src="../images/Group-532.png" loading="lazy" alt="" class="menu-logo-image"></a>
+          <nav role="navigation" class="nav-menu w-nav-menu">
+            <div class="menu-logo-mobile"><img src="../images/Group-532.png" loading="lazy" alt="" class="logo-mobile-image"></div>
+            <a href="../admin/admin-glowna.html" class="nav-link w-nav-link">Panel główny</a>
+            <div data-hover="" data-delay="0" class="dropdown w-dropdown">
+              <div class="nav-link w-dropdown-toggle">
+                <div class="icon-arrow w-icon-dropdown-toggle"></div>
+                <div class="nav-link-submenu">Użytkownicy</div>
+              </div>
+              <nav class="dropdown-list w-dropdown-list">
+                <div class="submenu">
+                  <a href="../admin/lista-uzytkownikow.html" class="submenu-block w-inline-block">
+                    <div class="submenu-text-block">
+                      <h4 class="submenu-heading">Lista użytkowników</h4>
+                    </div>
+                  </a>
+                  <a href="../admin/dodawanie-uzytkownikow.html" aria-current="page" class="submenu-block w-inline-block w--current">
+                    <div class="submenu-text-block">
+                      <h4 class="submenu-heading">Dodaj nowego</h4>
+                    </div>
+                  </a>
+                </div>
+              </nav>
+            </div>
+            <div data-hover="" data-delay="0" class="dropdown w-dropdown">
+              <div class="nav-link w-dropdown-toggle">
+                <div class="icon-arrow w-icon-dropdown-toggle"></div>
+                <div class="nav-link-submenu">Wydarzenia</div>
+              </div>
+              <nav class="dropdown-list w-dropdown-list">
+                <div class="submenu">
+                  <a href="../admin/lista-wydarzen.html" class="submenu-block w-inline-block">
+                    <div class="submenu-text-block">
+                      <h4 class="submenu-heading">Lista wydarzeń</h4>
+                    </div>
+                  </a>
+                  <a href="../admin/dodawanie-wydarzen.html" class="submenu-block w-inline-block">
+                    <div class="submenu-text-block">
+                      <h4 class="submenu-heading">Dodaj nowe</h4>
+                    </div>
+                  </a>
+                </div>
+              </nav>
+            </div>
+            <a href="../admin/kategorie.html" class="nav-link w-nav-link">Kategorie</a>
+            <a href="../fundacje.html" class="nav-link w-nav-link">Fundacje</a>
+          </nav>
+          <div class="menu-button w-nav-button"></div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    {!! Form::label('role_id', 'Rola:') !!}
-    {!! Form::select('role_id', [''=>'Wybierz rolę'] + $roles , null, ['class'=>'form-control'])!!}
+  <div class="section">
+    <div class="content w-container">
+      <h2 class="section-header">Dodaj użytkownika</h2>
+      <div class="separator"><img src="../images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
+      {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\AdminUsersController@store','files'=>true]) !!}
+      <div class="w-form">
+          <div>
+            {!! Form::label('firstname', 'Imię:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::text('firstname', null, ['class'=>'form-profile-text-field w-input'])!!} 
+          </div>
+          <div>
+            {!! Form::label('surname', 'Nazwisko:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::text('surname', null, ['class'=>'form-profile-text-field w-input'])!!} 
+          </div>
+          <div>
+            {!! Form::label('email', 'E-mail:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::email('email', null, ['class'=>'form-profile-text-field w-input'])!!}
+          </div>
+          <div>
+            {!! Form::label('role_id', 'Rola:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::select('role_id', [''=>'Wybierz rolę'] + $roles , null, ['class'=>'form-profile-select-field w-select'])!!}   
+          </div>
+          <div>
+            {!! Form::label('is_active', 'Status:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::select('is_active', array(1 => 'Aktywny', 0=> 'Nieaktywny'), null, ['class'=>'form-profile-select-field w-select'])!!}
+          </div>
+          <div>
+            {!! Form::label('age_category_id', 'Kategoria wiekowa:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::select('age_category_id', [''=>'Wybierz kategorię wiekową'] + $age_categories, null, ['class'=>'form-profile-select-field w-select'])!!}   
+          </div>
+          <div>
+            {!! Form::label('city', 'Miasto:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::text('city', null, ['class'=>'form-profile-text-field w-input'])!!} 
+          </div>
+          <div>
+            {!! Form::label('photo_id', 'Zdjęcie:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::file('photo_id', null, ['class'=>'form-profile-text-field w-input'])!!}
+          </div>
+          <br>
+          <div>
+            <div class="edit-profile-foundation">
+              {!! Form::label('foundation_id', 'Fundacja:', ['class'=>'form-profile-field-label']) !!}
+              <a href="../fundacje" class="form-profile-text-foundation">Przeczytaj o fundacjach &gt;</a>
+            </div>
+            {!! Form::select('foundation_id', [''=>'Wybierz fundację'] + $foundations, null, ['class'=>'form-profile-select-field w-select'])!!} 
+          </div>
+          <div>
+            {!! Form::label('password', 'Hasło:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::password('password', ['class'=>'form-profile-text-field w-input'])!!}
+          </div>
+          <div class="form-group" onclick="return confirm('Czy utworzyć nowego użytkownika?')">
+            {!! Form::submit('Utwórz', ['class'=>'submit-button w-button']) !!}
+          </div>
+      </div>
+      {!! Form::close() !!}
+    </div>
   </div>
-  <div class="form-group">
-    {!! Form::label('is_active', 'Status:') !!}
-    {!! Form::select('is_active', array(1 => 'Aktywny', 0=> 'Nieaktywny'), null, ['class'=>'form-control'])!!}
-  </div>
-  <div class="form-group">
-    {!! Form::label('photo_id', 'Zdjęcie:') !!}<br>
-    {!! Form::file('photo_id', null, ['class'=>'form-control'])!!}
-  </div>
-  <div class="form-group">
-    {!! Form::label('password', 'Hasło:') !!}
-    {!! Form::password('password', ['class'=>'form-control'])!!}
-  </div>
-  <div class="form-group" onclick="return confirm('Czy utworzyć nowego użytkownika?')">
-    {!! Form::submit('Utwórz', ['class'=>'btn btn-primary']) !!}
-  </div>
-{!! Form::close() !!}
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=600c61116aae5f5691a390c2" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="../js/webflow.js" type="text/javascript"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+</body>
+</html>
 
 @include('includes/error-form')
-
-@stop
