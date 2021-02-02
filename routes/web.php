@@ -39,7 +39,8 @@ Route::patch('/updateFoundation/{id}', [UserController::class, 'updateFoundation
 Route::group(['middleware'=>'admin'], function(){
     Route::get('/admin', function(){
       return view('admin/index');
-    });
+    })->name('admin.index');
+    
     Route::resources([
       'admin/uzytkownicy' => AdminUsersController::class,
       'admin/wydarzenia' => AdminEventsController::class,
