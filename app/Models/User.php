@@ -62,7 +62,7 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Role');
     }
 
-    public function age_categories()
+    public function age_category()
     {
         return $this->belongsTo('App\Models\AgeCategory');
     }

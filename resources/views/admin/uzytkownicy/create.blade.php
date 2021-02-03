@@ -91,52 +91,53 @@
       {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\AdminUsersController@store','files'=>true]) !!}
       <div class="w-form">
           <div>
-            {!! Form::label('firstname', 'Imię:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::label('firstname', 'Imię', ['class'=>'form-profile-field-label']) !!}
             {!! Form::text('firstname', null, ['class'=>'form-profile-text-field w-input'])!!} 
           </div>
           <div>
-            {!! Form::label('surname', 'Nazwisko:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::label('surname', 'Nazwisko', ['class'=>'form-profile-field-label']) !!}
             {!! Form::text('surname', null, ['class'=>'form-profile-text-field w-input'])!!} 
           </div>
           <div>
-            {!! Form::label('email', 'E-mail:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::label('email', 'E-mail*', ['class'=>'form-profile-field-label']) !!}
             {!! Form::email('email', null, ['class'=>'form-profile-text-field w-input'])!!}
           </div>
           <div>
-            {!! Form::label('role_id', 'Rola:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::label('role_id', 'Rola*', ['class'=>'form-profile-field-label']) !!}
             {!! Form::select('role_id', [''=>'Wybierz rolę'] + $roles , null, ['class'=>'form-profile-select-field w-select'])!!}   
           </div>
           <div>
-            {!! Form::label('is_active', 'Status:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::label('is_active', 'Status*', ['class'=>'form-profile-field-label']) !!}
             {!! Form::select('is_active', array(1 => 'Aktywny', 0=> 'Nieaktywny'), null, ['class'=>'form-profile-select-field w-select'])!!}
           </div>
           <div>
-            {!! Form::label('age_category_id', 'Kategoria wiekowa:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::label('age_category_id', 'Kategoria wiekowa', ['class'=>'form-profile-field-label']) !!}
             {!! Form::select('age_category_id', [''=>'Wybierz kategorię wiekową'] + $age_categories, null, ['class'=>'form-profile-select-field w-select'])!!}   
           </div>
           <div>
-            {!! Form::label('city', 'Miasto:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::label('city', 'Miasto', ['class'=>'form-profile-field-label']) !!}
             {!! Form::text('city', null, ['class'=>'form-profile-text-field w-input'])!!} 
           </div>
           <div>
-            {!! Form::label('photo_id', 'Zdjęcie:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::label('photo_id', 'Zdjęcie', ['class'=>'form-profile-field-label']) !!}
             {!! Form::file('photo_id', null, ['class'=>'form-profile-text-field w-input'])!!}
           </div>
           <br>
           <div>
             <div class="edit-profile-foundation">
-              {!! Form::label('foundation_id', 'Fundacja:', ['class'=>'form-profile-field-label']) !!}
-              <a href="../fundacje" class="form-profile-text-foundation">Przeczytaj o fundacjach &gt;</a>
+              {!! Form::label('foundation_id', 'Fundacja', ['class'=>'form-profile-field-label']) !!}
+              <a href="{{ route('fundacje') }}" target="_blank" class="form-profile-text-foundation">Przeczytaj o fundacjach &gt;</a>
             </div>
             {!! Form::select('foundation_id', [''=>'Wybierz fundację'] + $foundations, null, ['class'=>'form-profile-select-field w-select'])!!} 
           </div>
           <div>
-            {!! Form::label('password', 'Hasło:', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::label('password', 'Hasło', ['class'=>'form-profile-field-label']) !!}
             {!! Form::password('password', ['class'=>'form-profile-text-field w-input'])!!}
           </div>
           <div class="form-group" onclick="return confirm('Czy utworzyć nowego użytkownika?')">
             {!! Form::submit('Utwórz użytkownika', ['class'=>'submit-button w-button']) !!}
           </div>
+          @include('includes/error-form')
       </div>
       {!! Form::close() !!}
     </div>
@@ -146,5 +147,3 @@
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
 </body>
 </html>
-
-@include('includes/error-form')

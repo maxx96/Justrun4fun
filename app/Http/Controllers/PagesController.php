@@ -33,6 +33,8 @@ class PagesController extends Controller
         if(Auth::check()){
           $id = Auth::id();
           $userAuth = User::findOrFail($id);
+          if($userAuth->is_active == 0)
+            $userAuth = null;
         }
         else
         $userAuth = null;

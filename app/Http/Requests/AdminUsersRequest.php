@@ -11,9 +11,10 @@ class AdminUsersRequest extends FormRequest
      public function rules()
      {
          $rules = [
-             'name' => 'required',
+             'email' => 'required',
              'role_id' => 'required',
-             'is_active' => 'required'
+             'is_active' => 'required',
+             'password' => 'required',
          ];
 
          return $rules;

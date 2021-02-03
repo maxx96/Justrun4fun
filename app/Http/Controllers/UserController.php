@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\Event;
 use App\Models\Category;
 use App\Models\Foundation;
+use App\Models\AgeCategory;
 use DB;
 
 class UserController extends Controller
@@ -26,14 +27,15 @@ class UserController extends Controller
       $id = Auth::id();
       $user = User::findOrFail($id);
       $data = DB::table('event_users')->join('users', 'event_users.user_id', '=', 'users.id')
-      	->join('events', 'event_users.event_id', '=', 'events.id')
-        ->join('categories', 'events.category_id', '=', 'categories.id')
-        ->join('foundations', 'users.foundation_id', '=', 'foundations.id')
-      	->select('events.event_date', 'events.title', 'events.is_active', 'events.slug', 'events.place', 'foundations.name', 'categories.points', 'event_users.verification')
-        ->where('users.id', '=', $id)
-        ->orderBy('events.event_date', 'asc')
-        ->get();
-      $collection = $user->total_points/100;
+      ->join('events', 'event_users.event_id', '=', 'events.id')
+      ->join('categories', 'events.category_id', '=', 'categories.id')
+      ->join('foundations', 'users.foundation_id', '=', 'foundations.id')
+      ->join('age_categories', 'users.age_category_id', '=', 'age_categories.id')
+      ->select('events.event_date', 'events.title', 'events.is_active', 'events.slug', 'events.place', 'foundations.name', 'age_categories.name', 'categories.points', 'event_users.verification')
+      ->where('users.id', '=', $id)
+      ->orderBy('events.event_date', 'asc')
+      ->get();
+    $collection = $user->total_points/100;
       return view('profil/index', compact('user', 'data','collection'));
     }
 
@@ -79,7 +81,8 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $foundations = Foundation::pluck('name', 'id')->all();
-        return view('profil/edit', compact('user', 'foundations'));
+        $age_categories = AgeCategory::pluck('name', 'id')->all();
+        return view('profil/edit', compact('user', 'foundations', 'age_categories'));
     }
 
     /**
@@ -99,7 +102,7 @@ class UserController extends Controller
         $photo = Photo::create(['file'=>$name]);
         $input['photo_id'] = $photo->id;
       }
-      if(empty($request->firstname && $request->surname && $request->sex && $request->city && $request->date_of_birth && $user->foundation_id)){
+      if(empty($request->firstname && $request->surname && $request->city && $user->foundation_id && $user->age_category_id)){
         $user->is_active = 0;
       }
       else{

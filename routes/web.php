@@ -56,3 +56,11 @@ Route::get('/regulamin', function(){
 Route::get('/polityka-prywatnosci', function(){
   return view('polityka-prywatnosci');
 })->name('privacyPolicy');
+
+Route::get('/fundacje', function(){
+  return view('fundacje');
+})->name('fundacje');
+
+Route::get('/faq', function(){
+  return view('faq');
+})->name('faq');

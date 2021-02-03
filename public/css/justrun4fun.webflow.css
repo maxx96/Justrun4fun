@@ -999,6 +999,7 @@ a {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 70px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
@@ -1029,7 +1030,6 @@ a {
   display: -ms-grid;
   display: grid;
   margin-right: 20px;
-  margin-bottom: 70px;
   grid-auto-columns: 1fr;
   grid-column-gap: 32px;
   grid-row-gap: 32px;
@@ -1338,7 +1338,7 @@ a {
 .text-block-header {
   margin-bottom: 40px;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
 }
 
@@ -1366,6 +1366,7 @@ a {
 }
 
 .list-icon {
+  max-width: 50px;
   padding-right: 12px;
 }
 
@@ -1427,6 +1428,7 @@ a {
 }
 
 .grid-ranking-list {
+  margin-bottom: 70px;
   -ms-grid-columns: 1fr;
   grid-template-columns: 1fr;
 }
@@ -1456,7 +1458,16 @@ a {
 }
 
 .ranking-div.ranking-logged-user {
+  margin-top: auto;
   margin-bottom: 70px;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  background-color: #00ffa8;
+}
+
+.ranking-div.ranking-loggedd-top {
   background-color: #00ffa8;
 }
 
@@ -1579,7 +1590,10 @@ a {
 }
 
 .button-event-delete {
-  display: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 100%;
   height: 45px;
   margin-bottom: 10px;
@@ -1592,7 +1606,7 @@ a {
   -ms-flex-align: center;
   align-items: center;
   border-radius: 12px;
-  background-color: red;
+  background-color: #ff5d5d;
 }
 
 .button-event-delete-text {
@@ -1767,8 +1781,7 @@ a {
   display: -ms-flexbox;
   display: flex;
   width: 40%;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 20px auto 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1874,9 +1887,9 @@ a {
   border-color: #00ffa8;
   border-radius: 50%;
   background-color: #fff;
-  background-image: url('../images/slider_puffin_before_mobile.jpg');
+  background-image: none;
   background-position: 0px 0px;
-  background-size: cover;
+  background-size: auto;
 }
 
 .profil-info-details {
@@ -2209,7 +2222,7 @@ a {
 
 .foundation-name-text {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 700;
   text-align: center;
 }
 
@@ -2349,6 +2362,10 @@ a {
   margin-top: 100px;
 }
 
+.section.section-height-100 {
+  min-height: 85vh;
+}
+
 .menu-logo-mobile {
   display: none;
 }
@@ -2447,10 +2464,6 @@ a {
   border-bottom-right-radius: 12px;
 }
 
-.navbar-2 {
-  position: fixed;
-}
-
 .admin-panel-manage {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2478,25 +2491,6 @@ a {
   border-radius: 12px;
   background-color: #fff;
   box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.08);
-}
-
-.div-block-3 {
-  display: inline-block;
-}
-
-.div-block-4 {
-  display: inline-block;
-  margin-bottom: 20px;
-}
-
-.list-user-row {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
 }
 
 .list-user-text {
@@ -2536,8 +2530,8 @@ a {
   -ms-flex-pack: justify;
   justify-content: space-between;
   justify-items: center;
-  -ms-grid-columns: 0.25fr 1fr 2fr 1fr 1fr 1fr 1fr 0.25fr 0.25fr 0.25fr 0.25fr;
-  grid-template-columns: 0.25fr 1fr 2fr 1fr 1fr 1fr 1fr 0.25fr 0.25fr 0.25fr 0.25fr;
+  -ms-grid-columns: 0.25fr 0.5fr 1.5fr 0.75fr 0.25fr 0.5fr 0.5fr 0.5fr;
+  grid-template-columns: 0.25fr 0.5fr 1.5fr 0.75fr 0.25fr 0.5fr 0.5fr 0.5fr;
   -ms-grid-rows: auto;
   grid-template-rows: auto;
 }
@@ -2550,8 +2544,8 @@ a {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  -ms-grid-columns: 0.25fr 1fr 1.5fr 1fr 1fr 1fr 0.25fr 0.5fr 0.5fr 0.5fr 1fr;
-  grid-template-columns: 0.25fr 1fr 1.5fr 1fr 1fr 1fr 0.25fr 0.5fr 0.5fr 0.5fr 1fr;
+  -ms-grid-columns: 0.25fr 0.5fr 1.5fr 0.75fr 0.25fr 0.5fr 0.5fr 0.5fr;
+  grid-template-columns: 0.25fr 0.5fr 1.5fr 0.75fr 0.25fr 0.5fr 0.5fr 0.5fr;
   -ms-grid-rows: auto;
   grid-template-rows: auto;
   border-bottom: 2px dashed hsla(0, 0%, 43.9%, 0.6);
@@ -2560,10 +2554,6 @@ a {
 .list-event-text {
   font-size: 16px;
   font-weight: 400;
-}
-
-.div-block-5 {
-  margin: 20px;
 }
 
 .grid-category-header {
@@ -2633,12 +2623,6 @@ a {
   -ms-grid-rows: auto;
   grid-template-rows: auto;
   border-bottom: 2px dashed hsla(0, 0%, 43.9%, 0.6);
-}
-
-.image {
-  max-width: 50%;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 @media screen and (min-width: 1440px) {
@@ -2773,7 +2757,7 @@ a {
   .text-block-header {
     margin-bottom: 40px;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
   }
 
@@ -2812,6 +2796,10 @@ a {
     padding-bottom: 0px;
     border-radius: 12px;
     background-color: #fff;
+  }
+
+  .ranking-div.ranking-loggedd-top {
+    background-color: #00ffa8;
   }
 
   .foundation-title {
@@ -2872,10 +2860,6 @@ a {
     padding-bottom: 10px;
   }
 
-  .list-user-row {
-    padding-top: 20px;
-  }
-
   .grid-user-header {
     margin: 20px;
     -ms-grid-columns: 0.25fr 2fr 0.75fr 0.75fr 1fr 1fr 0.25fr;
@@ -2886,7 +2870,7 @@ a {
     margin: 0px 20px 20px;
   }
 
-  .link-block {
+  .logo-404-div {
     width: 20%;
     margin-right: auto;
     margin-left: auto;
@@ -3937,6 +3921,10 @@ a {
     width: 100%;
   }
 
+  .button-event-delete-text {
+    font-size: 16px;
+  }
+
   .login-div {
     width: 90%;
     margin-right: auto;
@@ -4567,6 +4555,16 @@ a {
 
   .pagination-text {
     font-size: 12px;
+  }
+
+  .button-event-delete {
+    height: 100%;
+    max-height: 100%;
+    padding: 10px;
+  }
+
+  .button-event-delete-text {
+    text-align: center;
   }
 
   .login-div {

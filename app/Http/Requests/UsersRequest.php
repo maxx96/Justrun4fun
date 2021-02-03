@@ -14,10 +14,8 @@ class UsersRequest extends FormRequest
 
     public function rules()
     {
-      $before_date = Carbon::today()->toDateString();
         return [
             'email' => 'required',
-            'date_of_birth'=>'nullable|date|before:' . $before_date,
         ];
     }
 }

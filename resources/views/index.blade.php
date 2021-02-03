@@ -2,34 +2,32 @@
 <!--  Last Published: Sat Jan 30 2021 15:56:29 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6012dfb42ada036d35de40d0" data-wf-site="600c61116aae5f5691a390c2">
 
-<head>
-    <meta charset="utf-8">
-    <title>justrun4fun</title>
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <meta content="Webflow" name="generator">
-    <link href="css/normalize.css" rel="stylesheet" type="text/css">
-    <link href="css/webflow.css" rel="stylesheet" type="text/css">
-    <link href="css/justrun4fun.webflow.css" rel="stylesheet" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        WebFont.load({
-            google: {
-                families: ["Poppins:200italic,300,regular,500,600,700:latin,latin-ext"]
-            }
-        });
-    </script>
-    <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
-    <script type="text/javascript">
-        ! function (o, c) {
-            var n = c.documentElement,
-                t = " w-mod-";
-            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n
-                .className += t + "touch")
-        }(window, document);
-    </script>
-    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-    <link href="images/webclip.png" rel="apple-touch-icon">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link href="{{ asset('css/normalize.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/webflow.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/justrun4fun.webflow.css') }}" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            WebFont.load({
+                google: {
+                    families: ["Poppins:200italic,300,regular,500,600,700:latin,latin-ext"]
+                }
+            });
+        </script>
+        <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+        <script type="text/javascript">
+            ! function (o, c) {
+                var n = c.documentElement,
+                    t = " w-mod-";
+                n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n
+                    .className += t + "touch")
+            }(window, document);
+        </script>
+        <link href="{{ asset('images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
+        <link href="{{ asset('images/webclip.png') }}" rel="apple-touch-icon">
+    </head>
 
 <body>
     <div class="section-navbar">
@@ -37,13 +35,13 @@
             <div class="content w-container">
                 <div class="menu">
                     <a href="{{ route('index') }}" aria-current="page" class="menu-logo w-nav-brand w--current"><img
-                            src="images/Group-532.png" loading="lazy" alt="" class="menu-logo-image"></a>
+                            src="{{ asset('images/Group-532.png') }}" loading="lazy" alt="" class="menu-logo-image"></a>
                     <nav role="navigation" class="nav-menu w-nav-menu">
-                        <div class="menu-logo-mobile"><img src="images/Group-532.png" loading="lazy" alt=""
+                        <div class="menu-logo-mobile"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt=""
                                 class="logo-mobile-image"></div>
-                        <a href="wydarzenia.html" class="nav-link w-nav-link">Wydarzenia</a>
-                        <a href="ranking.html" class="nav-link w-nav-link">Ranking</a>
-                        <a href="fundacje.html" class="nav-link w-nav-link">Fundacje</a>
+                        <a href="{{ route('wydarzenia') }}" class="nav-link w-nav-link">Wydarzenia</a>
+                        <a href="{{ route('ranking') }}" class="nav-link w-nav-link">Ranking</a>
+                        <a href="{{ route('fundacje') }}" class="nav-link w-nav-link">Fundacje</a>
                         <div data-hover="" data-delay="0" class="dropdown w-dropdown">
                             <div class="nav-link w-dropdown-toggle">
                                 <div class="icon-arrow w-icon-dropdown-toggle"></div>
@@ -51,15 +49,15 @@
                             </div>
                             <nav class="dropdown-list w-dropdown-list">
                                 <div class="submenu">
-                                    <a href="faq.html" class="submenu-block w-inline-block"><img
-                                            src="images/ikona-faq.png" loading="lazy" alt="" class="submenu-icon">
+                                    <a href="{{ route('faq') }}" class="submenu-block w-inline-block"><img
+                                            src="{{ asset('images/ikona-faq.png') }}" loading="lazy" alt="" class="submenu-icon">
                                         <div class="submenu-text-block">
                                             <h4 class="submenu-heading">FAQ</h4>
                                             <div class="submenu-text">Pytania i odpowiedzi<br>‍</div>
                                         </div>
                                     </a>
                                     <a href="https://www.facebook.com/" target="_blank"
-                                        class="submenu-block w-inline-block"><img src="images/ikona-czat.png"
+                                        class="submenu-block w-inline-block"><img src="{{ asset('images/ikona-czat.png') }}"
                                             loading="lazy" alt="" class="submenu-icon">
                                         <div class="submenu-text-block">
                                             <h4 class="submenu-heading">Czat</h4>
@@ -81,7 +79,7 @@
                             <a href="{{ route('logout') }}" class="submit-button navbar-button w-button" onclick="event.preventDefault();
                       this.closest('form').submit();">Wyloguj</a>
                     </form>
-                    <a href="profil.html" aria-current="page"
+                    <a href="{{ route('profil.index') }}" aria-current="page"
                         class="submit-button navbar-button w-button w--current">Mój profil</a>
 
                 </div>
@@ -101,9 +99,11 @@
             <div class="hero-block">
                 <h1 class="hero-heading">Motywacja, zabawa <br>i pomaganie w jednym</h1>
                 <div class="hero-text-block">Sprawdź sam i osiągnij wyższy poziom swoich celów biegowych.</div>
+                @if (!Auth::check())
                 <a href="{{ route('login') }}" class="button-big w-button">Dołącz do naszej społeczności</a>
+                @endif
             </div>
-            <div class="hero-image-block"><img src="images/undraw_finish_line_katerina_limpitsouni_xy20.png"
+            <div class="hero-image-block"><img src="{{ asset('images/undraw_finish_line_katerina_limpitsouni_xy20.png') }}"
                     loading="lazy" sizes="(max-width: 991px) 100vw, (max-width: 1439px) 38vw, 484.234375px"
                     srcset="images/undraw_finish_line_katerina_limpitsouni_xy20-p-500.png 500w, images/undraw_finish_line_katerina_limpitsouni_xy20.png 535w"
                     alt="" class="hero-image"></div>
@@ -114,7 +114,7 @@
             <div class="target-hero">Utrzymuj z nami swoją <strong class="target-hero-bold">motywację sportową</strong>
                 i jednocześnie <strong class="target-hero-bold">wspomagaj potrzebujących</strong>, a to nie wszystko!
             </div>
-            <div class="separator"><img src="images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
+            <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
             <div class="w-layout-grid grid-target">
                 <div id="w-node-b922e9023a6a-35de40d0" class="grid-one-target">
                     <div class="target-block-image"><img src="images/Component-10-–-1.png" loading="lazy" alt=""
@@ -245,12 +245,14 @@
             </div>
         </div>
     </div>
+    @if (!Auth::check())
     <div class="section-cta">
         <div class="cta-block">
             <div class="cta-text">Sprawdź nasz serwis w akcji i</div>
             <a href="{{ route('login') }}" class="button-cta w-button">dołącz teraz</a>
         </div>
     </div>
+    @endif
     <div>
         <div class="content w-container">
             <h2 class="section-header">Biegamy dla</h2>
@@ -266,7 +268,7 @@
                         alt=""></div>
             </div>
             <div class="button-big-div">
-                <a href="fundacje.html" class="button-big w-button">Pokaż więcej o fundacjach</a>
+                <a href="{{ route('fundacje') }}" class="button-big w-button">Pokaż więcej o fundacjach</a>
             </div>
         </div>
     </div>
@@ -320,12 +322,14 @@
             </div>
         </div>
     </div>
+    @if (!Auth::check())
     <div class="section-cta">
         <div class="cta-block">
             <div class="cta-text">Sprawdź nasz serwis w akcji i</div>
             <a href="{{ route('login') }}" class="button-cta w-button">dołącz teraz</a>
         </div>
     </div>
+    @endif
     <div class="section-footer">
         <div class="content w-container">
             <div class="footer-content">
@@ -340,13 +344,13 @@
                     <h2 class="footer-second-heading">justrun4.fun</h2>
                     <ul role="list" class="w-list-unstyled">
                         <li>
-                            <a href="fundacje.html" class="footer-link">O fundacjach</a>
+                            <a href="{{ route('fundacje') }}" class="footer-link">O fundacjach</a>
                         </li>
                         <li>
-                            <a href="regulamin.html" class="footer-link">Regulamin</a>
+                            <a href="{{ route('regulation') }}" class="footer-link">Regulamin</a>
                         </li>
                         <li>
-                            <a href="polityka-prywatnosci.html" class="footer-link">Polityka prywatności</a>
+                            <a href="{{ route('privacyPolicy') }}" class="footer-link">Polityka prywatności</a>
                         </li>
                     </ul>
                 </div>

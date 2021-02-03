@@ -15612,7 +15612,7 @@ function getQuerySelector(_ref) {
       }
     }
 
-    return "[data-w-id^=\"".concat(nodeId, "\"]");
+    return "[data-w-id=\"".concat(nodeId, "\"], [data-w-id^=\"").concat(nodeId, "_instance\"]");
   }
 
   return selector;
