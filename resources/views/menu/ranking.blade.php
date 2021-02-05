@@ -40,7 +40,7 @@
                         <div class="menu-logo-mobile"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt=""
                                 class="logo-mobile-image"></div>
                         <a href="{{ route('wydarzenia') }}" class="nav-link w-nav-link">Wydarzenia</a>
-                        <a href="{{ route('ranking') }}" class="nav-link w-nav-link">Ranking</a>
+                        <a href="{{ route('ranking') }}" class="nav-link w-nav-link w--current">Ranking</a>
                         <a href="{{ route('fundacje') }}" class="nav-link w-nav-link">Fundacje</a>
                         <div data-hover="" data-delay="0" class="dropdown w-dropdown">
                             <div class="nav-link w-dropdown-toggle">
@@ -151,57 +151,66 @@
           </div>
         </div>
       @endif
-      <div class="shapes-rank"><img src="images/Ellipse-125.png" loading="lazy" alt=""></div>
+      <div class="shapes-rank"><img src="{{ asset('images/Ellipse-125.png') }}" loading="lazy" alt=""></div>
     </div>
   </div>
   <div class="section-footer">
     <div class="content w-container">
-      <div class="footer-content">
-        <div class="footer-first"><img src="images/Component-15-–-12x.png" alt="" class="footer-image">
-          <div class="footer-first-block">
-            <div class="footer-first-heading">Dlaczego justrun4.fun?</div>
-            <div class="footer-first-text">Dbamy o motywację biegaczy oraz łączymy przyjemne z pożytecznym.</div>
-          </div>
+        <div class="footer-content">
+            <div class="footer-first"><img src="{{ asset('images/Component-15-–-12x.png') }}" alt="" class="footer-image">
+                <div class="footer-first-block">
+                    <div class="footer-first-heading">Dlaczego justrun4.fun?</div>
+                    <div class="footer-first-text">Dbamy o motywację biegaczy oraz łączymy przyjemne z pożytecznym.
+                    </div>
+                </div>
+            </div>
+            <div class="footer-second">
+                <h2 class="footer-second-heading">justrun4.fun</h2>
+                <ul role="list" class="w-list-unstyled">
+                    <li>
+                        <a href="{{ route('fundacje') }}" class="footer-link">O fundacjach</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('regulation') }}" class="footer-link">Regulamin</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('privacyPolicy') }}" class="footer-link">Polityka prywatności</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="footer-second-heading">Kontakt</h2>
+                <ul role="list" class="w-list-unstyled">
+                    <li>
+                        <a href="https://www.facebook.com/" target="_blank" class="footer-link">Czat na
+                            Messangerze</a>
+                    </li>
+                    <li>
+                        <a href="mailto:obsluga@justrun4.fun?subject=Zg%C5%82oszenie%20z%20justrun4.fun"
+                            class="footer-link">obsluga@justrun4.fun</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="footer-second">
-          <h2 class="footer-second-heading">justrun4.fun</h2>
-          <ul role="list" class="w-list-unstyled">
-            <li>
-              <a href="fundacje.html" class="footer-link">O fundacjach</a>
-            </li>
-            <li>
-              <a href="regulamin.html" class="footer-link">Regulamin</a>
-            </li>
-            <li>
-              <a href="polityka-prywatnosci.html" class="footer-link">Polityka prywatności</a>
-            </li>
-          </ul>
+        <div class="footer-copyright">
+            <div>
+                <div class="footer-copyright-text">© 2021 justrun4.fun</div>
+            </div>
+            <div class="footer-social-media">
+                <a href="https://www.facebook.com/" target="_blank" class="w-inline-block"><img
+                        src="images/SM-logos.png" loading="lazy" alt="" class="icon-facebook"></a>
+                <a href="https://www.linkedin.com/" target="_blank" class="w-inline-block"><img
+                        src="images/logo-circle-facebook.png" loading="lazy" alt="" class="icon-linkedin"></a>
+            </div>
         </div>
-        <div>
-          <h2 class="footer-second-heading">Kontakt</h2>
-          <ul role="list" class="w-list-unstyled">
-            <li>
-              <a href="https://www.facebook.com/" target="_blank" class="footer-link">Czat na Messangerze</a>
-            </li>
-            <li>
-              <a href="mailto:obsluga@justrun4.fun?subject=Zg%C5%82oszenie%20z%20justrun4.fun" class="footer-link">obsluga@justrun4.fun</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div>
-          <div class="footer-copyright-text">© 2021 justrun4.fun</div>
-        </div>
-        <div class="footer-social-media">
-          <a href="https://www.facebook.com/" target="_blank" class="w-inline-block"><img src="images/SM-logos.png" loading="lazy" alt="" class="icon-facebook"></a>
-          <a href="https://www.linkedin.com/" target="_blank" class="w-inline-block"><img src="images/logo-circle-facebook.png" loading="lazy" alt="" class="icon-linkedin"></a>
-        </div>
-      </div>
     </div>
-  </div>
-  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=600c61116aae5f5691a390c2" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  <script src="js/webflow.js" type="text/javascript"></script>
-  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+</div>
+<script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=600c61116aae5f5691a390c2"
+    type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
+</script>
+<script src="{{ asset('js/webflow.js') }}" type="text/javascript"></script>
+
+<!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
 </body>
+
 </html>

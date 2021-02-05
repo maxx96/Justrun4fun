@@ -3,14 +3,16 @@
 <html data-wf-page="6012dfb42ada03dc44de40d6" data-wf-site="600c61116aae5f5691a390c2">
 <head>
   <meta charset="utf-8">
-  <title>logowanie</title>
-  <meta content="logowanie" property="og:title">
-  <meta content="logowanie" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
-  <meta content="Webflow" name="generator">
-  <link href="css/normalize.css" rel="stylesheet" type="text/css">
-  <link href="css/webflow.css" rel="stylesheet" type="text/css">
-  <link href="css/justrun4fun.webflow.css" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/normalize.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/webflow.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/justrun4fun.webflow.css') }}" rel="stylesheet">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  {!! htmlScriptTagJsApi([
+    'action' => 'homepage',
+    'callback_then' => 'callbackThen',
+    'callback_catch' => 'callbackCatch'
+]) !!}   
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
   <script type="text/javascript">
       WebFont.load({
@@ -27,9 +29,12 @@
         n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
       }(window, document);
     </script>
-  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-  <link href="images/webclip.png" rel="apple-touch-icon">
+  <link href="{{ asset('images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
+  <link href="{{ asset('images/webclip.png') }}" rel="apple-touch-icon">
 </head>
+
+
+
 <body>
   <div class="section-navbar">
     <div data-collapse="small" data-animation="over-left" data-duration="400" role="banner" class="navbar w-nav">
@@ -70,10 +75,13 @@
       <div class="menu-button w-nav-button"></div>
     </div>
   </div>
+
+
+
     <div class="section">
         <div class="content w-container">
             <h2 class="section-header">Przypomnij hasło</h2>
-            <div class="separator"><img src="images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
+            <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
             <div class="login-div">
                 <div class="w-form">
 

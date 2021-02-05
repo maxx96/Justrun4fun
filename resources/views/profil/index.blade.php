@@ -219,7 +219,7 @@
     <div class="section-footer">
         <div class="content w-container">
             <div class="footer-content">
-                <div class="footer-first"><img src="images/Component-15-–-12x.png" alt="" class="footer-image">
+                <div class="footer-first"><img src="{{ asset('images/Component-15-–-12x.png') }}" alt="" class="footer-image">
                     <div class="footer-first-block">
                         <div class="footer-first-heading">Dlaczego justrun4.fun?</div>
                         <div class="footer-first-text">Dbamy o motywację biegaczy oraz łączymy przyjemne z pożytecznym.

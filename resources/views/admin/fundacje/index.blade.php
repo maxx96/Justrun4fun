@@ -33,7 +33,7 @@
           <a href="{{ route('index') }}" class="menu-logo w-nav-brand"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt="" class="menu-logo-image"></a>
           <nav role="navigation" class="nav-menu w-nav-menu">
             <div class="menu-logo-mobile"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt="" class="logo-mobile-image"></div>
-            <a href="{{ route('admin.index') }}" aria-current="page" class="nav-link w-nav-link w--current">Panel główny</a>
+            <a href="{{ route('admin.index') }}" aria-current="page" class="nav-link w-nav-link">Panel główny</a>
             <div data-hover="" data-delay="0" class="dropdown w-dropdown">
               <div class="nav-link w-dropdown-toggle">
                 <div class="icon-arrow w-icon-dropdown-toggle"></div>
@@ -75,7 +75,7 @@
               </nav>
             </div>
             <a href="{{ route('kategorie.index') }}" class="nav-link w-nav-link">Kategorie</a>
-            <a href="{{ route('fundacje.index') }}" class="nav-link w-nav-link">Fundacje</a>
+            <a href="{{ route('fundacje.index') }}" class="nav-link w-nav-link w--current">Fundacje</a>
           </nav>
           <div class="menu-button w-nav-button"></div>
         </div>
@@ -86,7 +86,7 @@
   <div class="section">
     <div class="content w-container">
       <h2 class="section-header">Fundacje</h2>
-      <div class="separator"><img src="../images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
+      <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
       @if($foundations)
         <div class="list-user-div">
           <div>
@@ -108,7 +108,7 @@
       @endif
 
       <h2 class="section-header">Dodaj fundację</h2>
-      <div class="separator"><img src="../images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
+      <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
       <div class="w-form">
         {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\FoundationController@store']) !!}
           <form id="email-form" name="email-form" data-name="Email Form">

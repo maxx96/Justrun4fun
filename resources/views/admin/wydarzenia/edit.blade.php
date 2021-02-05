@@ -1,6 +1,5 @@
-<!DOCTYPE html><!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Sat Jan 30 2021 15:56:29 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="6013f8e24c8fde32dc34da4c" data-wf-site="600c61116aae5f5691a390c2">
+<!DOCTYPE html>
+<html data-wf-page="6013ca16cfbaea78ee924207" data-wf-site="600c61116aae5f5691a390c2">
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -27,14 +26,14 @@
   <link href="{{ asset('images/webclip.png') }}" rel="apple-touch-icon">
 </head>
 <body>
-<div class="section-navbar">
+  <div class="section-navbar">
     <div data-collapse="small" data-animation="over-left" data-duration="400" role="banner" class="navbar w-nav">
       <div class="content w-container">
         <div class="menu">
           <a href="{{ route('index') }}" class="menu-logo w-nav-brand"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt="" class="menu-logo-image"></a>
           <nav role="navigation" class="nav-menu w-nav-menu">
             <div class="menu-logo-mobile"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt="" class="logo-mobile-image"></div>
-            <a href="{{ route('admin.index') }}" aria-current="page" class="nav-link w-nav-link w--current">Panel główny</a>
+            <a href="{{ route('admin.index') }}" aria-current="page" class="nav-link w-nav-link">Panel główny</a>
             <div data-hover="" data-delay="0" class="dropdown w-dropdown">
               <div class="nav-link w-dropdown-toggle">
                 <div class="icon-arrow w-icon-dropdown-toggle"></div>
@@ -87,7 +86,7 @@
   <div class="section">
     <div class="content w-container">
       <h2 class="section-header">Edytuj wydarzenie</h2>
-      <div class="separator"><img src="../images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
+      <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
       {!! Form::open(['action' => ['App\Http\Controllers\AdminEventsController@update', $event->id], 'method' => 'PATCH', 'enctype' => 'multipart/form-data']) !!}
       @csrf
       <div class="w-form">

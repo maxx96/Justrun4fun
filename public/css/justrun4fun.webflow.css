@@ -10,10 +10,6 @@
   grid-column-gap: 16px;
 }
 
-.w-form-formrecaptcha {
-  margin-bottom: 8px;
-}
-
 .w-checkbox {
   display: block;
   margin-bottom: 5px;
@@ -1340,7 +1336,7 @@ a {
 }
 
 .text-block-header {
-  width: 90%;
+  width: 100%;
   margin-bottom: 40px;
   font-size: 20px;
   font-weight: 600;
@@ -1892,7 +1888,7 @@ a {
   border-color: #00ffa8;
   border-radius: 50%;
   background-color: #fff;
-
+  background-image: url('../images/slider_puffin_before_mobile.jpg');
   background-position: 50% 50%;
   background-size: contain;
 }

@@ -39,7 +39,7 @@
                     <nav role="navigation" class="nav-menu w-nav-menu">
                         <div class="menu-logo-mobile"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt=""
                                 class="logo-mobile-image"></div>
-                        <a href="{{ route('wydarzenia') }}" class="nav-link w-nav-link">Wydarzenia</a>
+                        <a href="{{ route('wydarzenia') }}" class="nav-link w-nav-link w--current">Wydarzenia</a>
                         <a href="{{ route('ranking') }}" class="nav-link w-nav-link">Ranking</a>
                         <a href="{{ route('fundacje') }}" class="nav-link w-nav-link">Fundacje</a>
                         <div data-hover="" data-delay="0" class="dropdown w-dropdown">
