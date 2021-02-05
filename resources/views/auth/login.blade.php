@@ -83,7 +83,7 @@
     </div>
     <div class="section">
         <div class="content w-container">
-            <h2 class="section-header">Panel logowania</h2>
+            <h2 class="section-header">Logowanie</h2>
             <div class="separator"><img src="images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
             <div class="login-div">
                 <div class="w-form">

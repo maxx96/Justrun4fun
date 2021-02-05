@@ -96,7 +96,8 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $input = $request->all();
-            if ($file = $request->file('photo_id')) {
+        if ($file = $request->file('photo_id')) 
+        {
         $name = time() . $file->getClientOriginalName();
         $file->move('images', $name);
         $photo = Photo::create(['file'=>$name]);
@@ -108,14 +109,7 @@ class UserController extends Controller
       else{
         $user->is_active = 1;
       }
-      if ($request->password) {
-        $input = $request->except('password');
-    } else {
-        $input = $request->all();
-        $input['password'] = bcrypt($request->password);
-    }
       $user->update($input);
-      $user->save();
       return redirect('profil');
     }
 
@@ -129,7 +123,7 @@ class UserController extends Controller
     {
         $id = Auth::id();
       $user = User::findOrFail($id);
-      if ($user->photo->file != '/images/no_image.png')
+      if ($user->photo->file != '/images/no_image.svg')
       {
           Storage::delete('public'.$user->photo->file);
       }

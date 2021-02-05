@@ -132,8 +132,7 @@
                         </div>
                         <x-jet-input id="password_confirmation" class="form-login-text-field w-input" type="password"
                             name="password_confirmation" required autocomplete="new-password" />
-
-
+                       
                         <label for="regulations" class="w-checkbox checkbox-regulations-div">
                             <input type="checkbox" id="regulations" name="regulations" required="" data-name="Checkbox"
                                 class="w-checkbox-input">

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\AdminCategoriesController;
@@ -10,6 +12,7 @@ use App\Http\Controllers\EventOpinionsController;
 use App\Http\Controllers\FoundationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\VerifyEmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +25,13 @@ use App\Http\Controllers\ChangePasswordController;
 |
 */
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
-    return view('/'); 
-  })->name('index'); 
+Route::middleware(['auth:sanctum', 'verified'])->get('/profil', function () {
+    return view('/profil'); 
+  }); 
 
 Route::get('/wydarzenia', [PagesController::class, 'events'])->name('wydarzenia');
 Route::get('/wydarzenia/{id}', [AdminEventsController::class, 'event'])->name('wydarzenie');
-Route::resource('/profil', UserController::class);
+Route::resource('/profil', UserController::class)->middleware('verified');
 Route::get('/eventRegistration/{id}', [UserController::class, 'eventRegistration'])->name('eventRegistration');
 Route::get('/rankingRegistration/{id}', [UserController::class, 'rankingRegistration'])->name('rankingRegistration');;
 Route::get('/ranking', [PagesController::class, 'ranking'])->name('ranking');
@@ -69,3 +72,18 @@ Route::get('/fundacje', function(){
 Route::get('/faq', function(){
   return view('faq');
 })->name('faq');
+
+Route::get('/email/verify', function () {
+  return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');

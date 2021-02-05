@@ -99,8 +99,8 @@
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
       <div class="edit-profile-div">
         <div class="manage-profile-div">
-          <div class="profil-image" style="background-image: url('{{$user->photo->file}}')"></div>
-          <div class="manage-profile">
+          <div class="profil-image" style=" background: url('{{$user->photo->file}}'); background-size: cover; background-repeat: no-repeat; background-position: center"></div>
+            <div class="manage-profile">
             <a href="{{ route('changePassword') }}" class="button-manage-profile w-button">Zmień hasło</a>
           </div>
           <div class="manage-profile" onclick="return confirm('Czy na pewno chcesz usunąć konto?')">
@@ -116,42 +116,38 @@
                 @include('includes/error-form')
               </div>
               <div>
-                {!! Form::label('firstname', 'Imię*', ['class'=>'form-profile-field-label']) !!}
-                {!! Form::text('firstname', null, ['class'=>'form-profile-text-field w-input'])!!} 
-              </div>
-              <div>
-                {!! Form::label('surname', 'Nazwisko', ['class'=>'form-profile-field-label']) !!}
-                {!! Form::text('surname', null, ['class'=>'form-profile-text-field w-input'])!!} 
-              </div>
-              <div>
                 {!! Form::label('email', 'E-mail*', ['class'=>'form-profile-field-label']) !!}
                 {!! Form::email('email', null, ['class'=>'form-profile-text-field w-input'])!!}
               </div>
               <div>
-                {!! Form::label('is_active', 'Status*', ['class'=>'form-profile-field-label']) !!}
-                {!! Form::select('is_active', array(1 => 'Aktywny', 0=> 'Nieaktywny'), null, ['class'=>'form-profile-select-field w-select'])!!}
+                {!! Form::label('firstname', 'Imię*', ['class'=>'form-profile-field-label']) !!}
+                {!! Form::text('firstname', null, ['class'=>'form-profile-text-field w-input'])!!} 
               </div>
               <div>
-                {!! Form::label('age_category_id', 'Kategoria wiekowa', ['class'=>'form-profile-field-label']) !!}
-                {!! Form::select('age_category_id', [''=>'Wybierz kategorię wiekową'] + $age_categories, null, ['class'=>'form-profile-select-field w-select'])!!}   
+                {!! Form::label('surname', 'Nazwisko*', ['class'=>'form-profile-field-label']) !!}
+                {!! Form::text('surname', null, ['class'=>'form-profile-text-field w-input'])!!} 
               </div>
               <div>
-                {!! Form::label('city', 'Miasto', ['class'=>'form-profile-field-label']) !!}
+                {!! Form::label('city', 'Miasto*', ['class'=>'form-profile-field-label']) !!}
                 {!! Form::text('city', null, ['class'=>'form-profile-text-field w-input'])!!} 
               </div>
               <div>
-                {!! Form::label('photo_id', 'Zdjęcie', ['class'=>'form-profile-field-label']) !!}
-                {!! Form::file('photo_id', null, ['class'=>'form-profile-text-field w-input'])!!}
+                {!! Form::label('age_category_id', 'Kategoria wiekowa*', ['class'=>'form-profile-field-label']) !!}
+                {!! Form::select('age_category_id', [''=>'Wybierz kategorię wiekową'] + $age_categories, null, ['class'=>'form-profile-select-field w-select'])!!}   
               </div>
-              <br>
               <div>
                 <div class="edit-profile-foundation">
-                  {!! Form::label('foundation_id', 'Fundacja', ['class'=>'form-profile-field-label']) !!}
+                  {!! Form::label('foundation_id', 'Fundacja*', ['class'=>'form-profile-field-label']) !!}
                   <a href="{{ route('fundacje') }}" target="_blank" class="form-profile-text-foundation">Przeczytaj o fundacjach &gt;</a>
                 </div>
                 {!! Form::select('foundation_id', [''=>'Wybierz fundację'] + $foundations, null, ['class'=>'form-profile-select-field w-select'])!!} 
               </div>
               <div>
+              <div>
+                {!! Form::label('photo_id', 'Zdjęcie', ['class'=>'form-profile-field-label']) !!}
+                {!! Form::file('photo_id', null, ['class'=>'form-profile-text-field w-input'])!!}
+              </div>
+              <br>
                 <div class="form-edit-profile-rules">* pola wymagane, aby być ujętym w rankingu użytkowników. Twoje dane <span class="form-edit-profile-bold-text">nie będą nigdzie udostępniane</span>. Służą jedynie do weryfikacji wydarzeń sportowych.</div>
               </div>
               <div class="form-group" onclick="return confirm('Czy zatwierdzić zmiany?')">

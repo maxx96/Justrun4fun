@@ -10,6 +10,10 @@
   grid-column-gap: 16px;
 }
 
+.w-form-formrecaptcha {
+  margin-bottom: 8px;
+}
+
 .w-checkbox {
   display: block;
   margin-bottom: 5px;
@@ -1336,6 +1340,7 @@ a {
 }
 
 .text-block-header {
+  width: 90%;
   margin-bottom: 40px;
   font-size: 20px;
   font-weight: 600;
@@ -1887,9 +1892,9 @@ a {
   border-color: #00ffa8;
   border-radius: 50%;
   background-color: #fff;
-  background-image: none;
-  background-position: 0px 0px;
-  background-size: auto;
+
+  background-position: 50% 50%;
+  background-size: contain;
 }
 
 .profil-info-details {
@@ -2399,7 +2404,7 @@ a {
   height: 300px;
 }
 
-.div-block {
+.div-opinions {
   margin-bottom: 40px;
   border-radius: 12px;
   background-color: #fff;
@@ -2623,6 +2628,31 @@ a {
   -ms-grid-rows: auto;
   grid-template-rows: auto;
   border-bottom: 2px dashed hsla(0, 0%, 43.9%, 0.6);
+}
+
+.text-block-header-events {
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.text-block-header-verification {
+  width: 80%;
+  margin-bottom: 18px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.text-block-warning {
+  margin-bottom: 30px;
+  padding: 24px;
+  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.08);
+  font-weight: 400;
+}
+
+.warning-block-profile {
+  border-radius: 12px;
+  background-color: rgba(255, 93, 93, 0.3);
 }
 
 @media screen and (min-width: 1440px) {
@@ -2874,10 +2904,6 @@ a {
     width: 20%;
     margin-right: auto;
     margin-left: auto;
-  }
-
-  .image-2 {
-    width: 100%;
   }
 }
 
@@ -4502,7 +4528,7 @@ a {
   .opinions-div {
     height: 250px;
     max-height: 250px;
-    background-image: url('../images/Component-20-–-1.png');
+    background-image: url('../images/Component-20-–-1_1.png');
   }
 
   .opinions-text {

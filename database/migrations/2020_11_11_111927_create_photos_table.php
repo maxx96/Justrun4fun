@@ -19,7 +19,7 @@ class CreatePhotosTable extends Migration
         });
 
         DB::table('photos')->insert([
-            ['id' =>  1, 'file' => 'no_image.png']
+            ['id' =>  1, 'file' => 'no_image.svg']
         ]);
     }
 

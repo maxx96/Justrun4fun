@@ -99,7 +99,7 @@
             <div class="row">
 
                 <div class="col-sm-3">
-                    <img src="{{$user->photo ? $user->photo->file : '/no_image.png'}}" alt=""
+                    <img src="{{$user->photo ? $user->photo->file : '/no_image.svg'}}" alt=""
                         class="img-responsive img-rounded" width=100%>
                 </div>
 

@@ -150,7 +150,7 @@
           </div>
         @else
         <div>
-          <div class="text-block-header">Brak wydarzeń</div>
+          <div class="text-block-header-events">Brak wydarzeń</div>
         </div>
         @endif
 
