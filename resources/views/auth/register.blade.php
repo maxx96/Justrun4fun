@@ -137,10 +137,10 @@
                         <label for="regulations" class="w-checkbox checkbox-regulations-div">
                             <input type="checkbox" id="regulations" name="regulations" required="" data-name="Checkbox"
                                 class="w-checkbox-input">
-                            <span class="checkbox-regulations w-form-label">Niniejszy Regulamin ma zastosowanie wobec
+                            <span class="checkbox-regulations w-form-label">Niniejszy <a href="{{ route('regulation') }}" target="_blank"><u>regulamin</u></a> ma zastosowanie wobec
                                 naszych usług. Informacje na temat typu danych osobowych gromadzonych przez nas oraz
                                 sposobu ich wykorzystania (np. do zapewniania spersonalizowanych treści) znajdują się w
-                                naszej Polityce prywatności.</span></label>
+                                naszej <a href="{{ route('privacyPolicy') }}" target="_blank"><u>polityce prywatności</u></a>.</span></label>
      
                                 <input type="submit" value="Załóż konto"
                             data-wait="Please wait..." class="button-submit-outside w-button">

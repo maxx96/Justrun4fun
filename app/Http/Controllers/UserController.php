@@ -35,7 +35,7 @@ class UserController extends Controller
       ->where('users.id', '=', $id)
       ->orderBy('events.event_date', 'asc')
       ->get();
-    $collection = $user->total_points/100;
+      $collection = $user->total_points/100;
       return view('profil/index', compact('user', 'data','collection'));
     }
 
@@ -57,7 +57,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+  
     }
 
     /**
@@ -95,7 +95,7 @@ class UserController extends Controller
     public function update(UsersRequest $request, $id)
     {
         $user = Auth::user();
-      $input = $request->all();
+        $input = $request->all();
             if ($file = $request->file('photo_id')) {
         $name = time() . $file->getClientOriginalName();
         $file->move('images', $name);
@@ -108,6 +108,12 @@ class UserController extends Controller
       else{
         $user->is_active = 1;
       }
+      if ($request->password) {
+        $input = $request->except('password');
+    } else {
+        $input = $request->all();
+        $input['password'] = bcrypt($request->password);
+    }
       $user->update($input);
       $user->save();
       return redirect('profil');
@@ -164,4 +170,5 @@ class UserController extends Controller
       $user->save();
       return redirect('profil');
     }
+
 }

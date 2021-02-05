@@ -95,9 +95,7 @@
                         </div>
                                 <x-jet-input id="email" class="form-login-text-field w-input" type="email" name="email" :value="old('email')" required autofocus />
                                 
-                            <input type="submit"
-                                :value="old('email')" class="button-submit-outside w-button"
-                                required="">
+                            <input type="submit" class="button-submit-outside w-button">
 
                 </div>
             </div>

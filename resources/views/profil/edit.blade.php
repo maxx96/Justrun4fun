@@ -96,13 +96,13 @@
   <div class="section">
     <div class="content w-container">
       <h2 class="section-header">Edycja profilu</h2>
-      <div class="separator"><img src="images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
+      <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
       <div class="edit-profile-div">
         <div class="manage-profile-div">
           <div class="profil-image" style="background-image: url('{{$user->photo->file}}')"></div>
           <div class="manage-profile">
-            <a href="{{ route('password.reset') }}" class="button-manage-profile w-button">Zmień hasło</a>
-          </div>             
+            <a href="{{ route('changePassword') }}" class="button-manage-profile w-button">Zmień hasło</a>
+          </div>
           <div class="manage-profile" onclick="return confirm('Czy na pewno chcesz usunąć konto?')">
             {!! Form::open(['method'=>'DELETE', 'action'=>['App\Http\Controllers\UserController@destroy', $user->id]]) !!}
             {!! Form::submit('Usuń konto', ['class'=>'button-manage-profile w-button']) !!}
@@ -159,7 +159,7 @@
               </div>
           </div>
           {!! Form::close() !!}
-
+      
         </div>
       </div>
     </div>
@@ -221,3 +221,6 @@
 <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
 </body>
 </html>
+
+
+  

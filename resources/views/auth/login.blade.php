@@ -88,12 +88,6 @@
             <div class="login-div">
                 <div class="w-form">
 
-                    @if (session('status'))
-                    <div class="mb-4 font-medium text-sm text-green-600">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
                     <x-jet-validation-errors class="mb-4" />
 
                     <form method="POST" action="{{ route('login') }}" class="form-login">
@@ -116,16 +110,8 @@
                             data-name="password" placeholder="" id="password"
                             autocomplete="current-password" />
 
-
-
-                        <label for="remember_me" class="w-checkbox checkbox-regulations-div">
-                            <input type="checkbox" id="remember_me" name="remember_me" data-name="Checkbox"
-                                class="w-checkbox-input"><span class="checkbox-regulations w-form-label">
-                                {{ __('Zapamiętaj hasło') }}</span></label>
                         <input type="submit" value="Zaloguj" data-wait="Please wait..."
                             class="button-submit-outside w-button">
-
-
 
                         @if (Route::has('password.request'))
                         <a class="remind-password w-inline-block" href="{{ route('password.request') }}">

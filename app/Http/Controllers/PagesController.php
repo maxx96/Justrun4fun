@@ -28,16 +28,16 @@ class PagesController extends Controller
         return view('menu/wydarzenia', compact('events','categories'));
     }
   
-      public function ranking(){
-        $users = User::where('is_active', 1)->orderBy('total_points', 'desc')->get();
-        if(Auth::check()){
-          $id = Auth::id();
-          $userAuth = User::findOrFail($id);
-          if($userAuth->is_active == 0)
-            $userAuth = null;
-        }
-        else
-        $userAuth = null;
-        return view('menu/ranking', compact('users', 'userAuth'));
+    public function ranking(){
+      $users = User::where('is_active', 1)->orderBy('total_points', 'desc')->get();
+      if(Auth::check()){
+        $id = Auth::id();
+        $userAuth = User::findOrFail($id);
+        if($userAuth->is_active == 0)
+          $userAuth = null;
       }
+      else
+      $userAuth = null;
+      return view('menu/ranking', compact('users', 'userAuth'));
+    }
 }

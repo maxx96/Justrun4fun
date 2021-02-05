@@ -129,6 +129,9 @@
                     <div class="ranking-user-points">{{$user->total_points}}</div>
                   </div>
                 </div>
+                @if ($i==10) 
+                  @break;
+                @endif
               @php ($i++)
            @endforeach
         @endif
