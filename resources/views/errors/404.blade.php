@@ -29,7 +29,7 @@
 <body>
   <div class="utility-page-wrap">
     <div class="utility-page-content w-form">
-      <a href="{{ route('index') }}" class="logo-404-div w-inline-block"><img src="images/Group-532.png" loading="lazy" alt=""></a>
+      <a href="{{ route('index') }}" class="logo-404-div w-inline-block"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt=""></a>
       <h2>Nie odnaleziono strony</h2>
       <div>Strona, której szukasz, nie istnieje lub została przeniesiona.</div>
       <a href="{{ route('index') }}" class="list-user-text list-user-text-link">Wróć na stronę główną</a>

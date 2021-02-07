@@ -78,7 +78,8 @@ class AdminUsersController extends Controller
         ->where('users.id', '=', $id)
         ->orderBy('events.event_date', 'asc')
       	->get();
-      return view('admin/uzytkownicy/show', compact('user', 'data'));
+    $collection = $user->total_points/100;
+      return view('admin/uzytkownicy/show', compact('user', 'data', 'collection'));
     }
 
     /**
@@ -91,7 +92,8 @@ class AdminUsersController extends Controller
     {
         $user = User::findOrFail($id);
         $roles = Role::pluck('name', 'id')->all();
-        return view('admin/uzytkownicy/edit', compact('user', 'roles'));
+        $age_categories = AgeCategory::pluck('name', 'id')->all();
+        return view('admin/uzytkownicy/edit', compact('user', 'roles', 'age_categories'));
     }
 
     /**
@@ -116,6 +118,14 @@ class AdminUsersController extends Controller
             $photo = Photo::create(['file'=>$name]);
             $input['photo_id'] = $photo->id;
         }
+        if(empty($request->firstname && $request->surname && $request->city && $user->foundation_id && $user->age_category_id)){
+            $user->is_active = 0;
+            $user->save();
+          }
+          else{
+            $user->is_active = 1;
+            $user->save();
+          }
         $user->update($input);
         return redirect('/admin/uzytkownicy');
     }

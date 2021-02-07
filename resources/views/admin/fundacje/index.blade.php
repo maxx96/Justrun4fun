@@ -110,6 +110,7 @@
       <h2 class="section-header">Dodaj fundację</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
       <div class="w-form">
+        @csrf
         {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\FoundationController@store']) !!}
           <form id="email-form" name="email-form" data-name="Email Form">
             <div>

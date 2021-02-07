@@ -134,7 +134,7 @@
             </div>
 
             <div>
-                <a href="../public/profil/{{$user->id}}/edit" class="button-edit-profile w-button">Edytuj profil</a>
+              <a href="{{ route('uzytkownicy.edit', $user->id)}}" class="button-edit-profile w-button">Edytuj profil</a>
             </div>
         </div>
 

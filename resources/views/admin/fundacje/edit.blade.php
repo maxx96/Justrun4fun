@@ -88,6 +88,7 @@
       <h2 class="section-header">Edytuj fundację</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
       {!! Form::model($foundation, ['method'=>'PATCH', 'action'=> ['App\Http\Controllers\FoundationController@update', $foundation->id]]) !!}
+      @csrf
       <div class="w-form">
         <form id="email-form" name="email-form" data-name="Email Form">
           <div>

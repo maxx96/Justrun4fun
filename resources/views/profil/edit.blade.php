@@ -98,23 +98,11 @@
       <h2 class="section-header">Edycja profilu</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
       <div class="edit-profile-div">
-        <div class="manage-profile-div">
-          <div class="profil-image" style=" background: url('{{$user->photo->file}}'); background-size: cover; background-repeat: no-repeat; background-position: center"></div>
-            <div class="manage-profile">
-            <a href="{{ route('changePassword') }}" class="button-manage-profile w-button">Zmień hasło</a>
-          </div>
-          <div class="manage-profile" onclick="return confirm('Czy na pewno chcesz usunąć konto?')">
-            {!! Form::open(['method'=>'DELETE', 'action'=>['App\Http\Controllers\UserController@destroy', $user->id]]) !!}
-            {!! Form::submit('Usuń konto', ['class'=>'button-manage-profile w-button']) !!}
-            {!! Form::close() !!}
-          </div>
-        </div>
         <div class="form-edit-profile">
           {!! Form::model($user, ['method'=>'PATCH', 'action'=> ['App\Http\Controllers\UserController@update', $user->id], 'files'=>true]) !!}
+          @csrf
           <div class="w-form">
-              <div class="row">
                 @include('includes/error-form')
-              </div>
               <div>
                 {!! Form::label('email', 'E-mail*', ['class'=>'form-profile-field-label']) !!}
                 {!! Form::email('email', null, ['class'=>'form-profile-text-field w-input'])!!}
@@ -150,16 +138,23 @@
               <br>
                 <div class="form-edit-profile-rules">* pola wymagane, aby być ujętym w rankingu użytkowników. Twoje dane <span class="form-edit-profile-bold-text">nie będą nigdzie udostępniane</span>. Służą jedynie do weryfikacji wydarzeń sportowych.</div>
               </div>
-              <div class="form-group" onclick="return confirm('Czy zatwierdzić zmiany?')">
+              <div class="manage-profile-div" onclick="return confirm('Czy zatwierdzić zmiany?')">
                 {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button w-button']) !!}
               </div>
           </div>
           {!! Form::close() !!}
       
         </div>
-      </div>
     </div>
+        <div class="manage-profile-div">
+            <a href="{{ route('changePassword') }}" class="submit-button w-button">Zmień hasło</a>
+                {!! Form::open(['method'=>'DELETE', 'action'=>['App\Http\Controllers\UserController@destroy', $user->id]]) !!}
+                @csrf
+                {!! Form::submit('Usuń konto', ['class'=>'submit-button w-button']) !!}
+                {!! Form::close() !!}
+        </div>
   </div>
+</div>
   <div class="section-footer">
     <div class="content w-container">
         <div class="footer-content">
@@ -200,7 +195,7 @@
         </div>
         <div class="footer-copyright">
             <div>
-                <div class="footer-copyright-text">© 2021 justrun4.fun</div>
+                <div class="footer-copyright-text">© {{ date('Y') }} justrun4.fun</div>
             </div>
             <div class="footer-social-media">
                 <a href="https://www.facebook.com/" target="_blank" class="w-inline-block"><img

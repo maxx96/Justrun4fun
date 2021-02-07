@@ -108,11 +108,13 @@
             <div class="list-user-text">{{ $event->opinions()->count() }}<br></div>
             @if($event->is_active == 1)
               {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\AdminEventsController@update', $event->id]]) }}
+              @csrf
                 <input type="hidden" name="is_active" value="0">
                   {{ Form::submit('Archiwizuj') }}
               {{ Form::close() }}
             @else
               {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\AdminEventsController@update', $event->id]]) }}
+              @csrf
                 <input type="hidden" name="is_active" value="1">
                     {{ Form::submit('Aktywuj') }}
               {{ Form::close() }}

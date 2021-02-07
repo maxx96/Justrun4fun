@@ -104,9 +104,9 @@
             <div class="login-div">
                 <div class="w-form">
 
+                    @include('includes/error-form')
                     <form method="POST" action="{{ route('change.password') }}" class="form-login">
                         @csrf
-                        @include('includes/error-form')
 
                         <div class="password-div">
                             <x-jet-label for="password" class="form-login-text" value="{{ __('Aktualne hasło') }}" />
@@ -177,7 +177,7 @@
             </div>
             <div class="footer-copyright">
                 <div>
-                    <div class="footer-copyright-text">© 2021 justrun4.fun</div>
+                    <div class="footer-copyright-text">© {{ date('Y') }} justrun4.fun</div>
                 </div>
                 <div class="footer-social-media">
                     <a href="https://www.facebook.com/" target="_blank" class="w-inline-block"><img

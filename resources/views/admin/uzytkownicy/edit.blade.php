@@ -83,62 +83,74 @@
     </div>
   </div>
 
-    <div class="section">
-        <div class="content w-container">
-
-            <h2>Edytuj użytkownika</h2>
-            <hr>
-
-            <div class="row">
-
-                <div class="col-sm-3">
-                    <img src="{{$user->photo ? $user->photo->file : '/no_image.svg'}}" alt=""
-                        class="img-responsive img-rounded" width=100%>
-                </div>
-
-                <div class="col-sm-9">
+  <div class="section">
+    <div class="content w-container">
+      <h2 class="section-header">Edycja {{ $user->email }}</h2>
+      <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
+      <div class="edit-profile-div">
+        <div class="form-edit-profile">
 
                     {!! Form::model($user, ['method'=>'PATCH', 'action'=>
                     ['App\Http\Controllers\AdminUsersController@update', $user->id], 'files'=>true]) !!}
-                    <div class="form-group">
-                        {!! Form::label('name', 'Nazwa użytkownika:') !!}
-                        {!! Form::text('name', null, ['class'=>'form-control'])!!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('role_id', 'Rola:') !!}
-                        {!! Form::select('role_id', $roles , null, ['class'=>'form-control'])!!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('is_active', 'Status:') !!}
-                        {!! Form::select('is_active', array(1 => 'Aktywny', 0=> 'Nieaktywny'), null,
-                        ['class'=>'form-control'])!!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('photo_id', 'Zdjęcie:') !!}
-                        {!! Form::file('photo_id', null, ['class'=>'form-control'])!!}
-                    </div>
-                    <div class="form-group" onclick="return confirm('Czy zapisać zmiany?')">
-                        {!! Form::submit('Zapisz zmiany', ['class'=>'btn btn-primary col-sm-6']) !!}
-                    </div>
+                     @csrf
+                      <div class="w-form">
+                        <div class="row">
+                          @include('includes/error-form')
+                        </div>
+                        <div>
+                          {!! Form::label('email', 'E-mail', ['class'=>'form-profile-field-label']) !!}
+                          {!! Form::email('email', null, ['class'=>'form-profile-text-field w-input'])!!}
+                        </div>
+                        <div>
+                          {!! Form::label('firstname', 'Imię', ['class'=>'form-profile-field-label']) !!}
+                          {!! Form::text('firstname', null, ['class'=>'form-profile-text-field w-input'])!!} 
+                        </div>
+                        <div>
+                          {!! Form::label('surname', 'Nazwisko', ['class'=>'form-profile-field-label']) !!}
+                          {!! Form::text('surname', null, ['class'=>'form-profile-text-field w-input'])!!} 
+                        </div>
+                        <div>
+                          {!! Form::label('city', 'Miasto', ['class'=>'form-profile-field-label']) !!}
+                          {!! Form::text('city', null, ['class'=>'form-profile-text-field w-input'])!!} 
+                        </div>
+                        <div class="form-group">
+                          {!! Form::label('role_id', 'Rola', ['class'=>'form-profile-field-label']) !!}
+                          {!! Form::select('role_id', $roles , null, ['class'=>'form-profile-text-field w-input'])!!} 
+                        </div>
+                        <div>
+                          {!! Form::label('age_category_id', 'Kategoria wiekowa', ['class'=>'form-profile-field-label']) !!}
+                          {!! Form::select('age_category_id', [''=>'Wybierz kategorię wiekową'] + $age_categories, null, ['class'=>'form-profile-select-field w-select'])!!}   
+                        </div>
+                        <div>
+                          {!! Form::label('photo_id', 'Zdjęcie', ['class'=>'form-profile-field-label']) !!}
+                          {!! Form::file('photo_id', null, ['class'=>'form-profile-text-field w-input'])!!}
+                        </div>
+                        <div class="manage-profile-div" onclick="return confirm('Czy zatwierdzić zmiany?')">
+                          {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button w-button']) !!}
+                        </div>
+                      </div>
                     {!! Form::close() !!}
 
                     {!! Form::open(['method'=>'DELETE', 'action'=>['App\Http\Controllers\AdminUsersController@destroy',
                     $user->id]]) !!}
-                    <div class="form-group" onclick="return confirm('Czy na pewno usunąć wybranego użytkownika?')">
-                        {!! Form::submit('Usuń użytkownika', ['class'=>'btn btn-danger col-sm-6']) !!}
+                     @csrf
+                     <div class="manage-profile-div">
+                          {!! Form::open(['method'=>'DELETE', 'action'=>['App\Http\Controllers\UserController@destroy', $user->id]]) !!}
+                          {!! Form::submit('Usuń konto', ['class'=>'submit-button w-button']) !!}
+                          {!! Form::close() !!}
                     </div>
-                    {!! Form::close() !!}
 
-                </div>
-
-            </div>
-
-            <div class="row">
-                @include('includes/error-form')
-            </div>
 
         </div>
+
       </div>
+
+      <div class="row">
+          @include('includes/error-form')
+      </div>
+
+    </div>
+  </div>
         <script
             src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=600c61116aae5f5691a390c2"
             type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="

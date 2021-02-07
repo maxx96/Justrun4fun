@@ -29,7 +29,7 @@ return [
         'array'   => 'Pole :attribute musi składać się z :min - :max elementów.',
     ],
     'boolean'              => 'Pole :attribute musi mieć wartość logiczną prawda albo fałsz.',
-    'confirmed'            => 'Potwierdzenie pola :attribute nie zgadza się.',
+    'confirmed'            => 'Hasła nie są ze sobą zgodne.',
     'date'                 => 'Pole :attribute nie jest prawidłową datą.',
     'date_equals'          => 'Pole :attribute musi być datą równą :date.',
     'date_format'          => 'Pole :attribute nie jest w formacie :format.',

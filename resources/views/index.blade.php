@@ -298,7 +298,7 @@
 
             </div>
             <div class="button-big-div">
-                <a href="wydarzenia.html" class="button-big w-button">Pokaż wszystkie wydarzenia</a>
+                <a href="{{ route('wydarzenia') }}" class="button-big w-button">Pokaż wszystkie wydarzenia</a>
             </div>
         </div>
     </div>
@@ -372,7 +372,7 @@
             </div>
             <div class="footer-copyright">
                 <div>
-                    <div class="footer-copyright-text">© 2021 justrun4.fun</div>
+                    <div class="footer-copyright-text">© {{ date('Y') }} justrun4.fun</div>
                 </div>
                 <div class="footer-social-media">
                     <a href="https://www.facebook.com/" target="_blank" class="w-inline-block"><img

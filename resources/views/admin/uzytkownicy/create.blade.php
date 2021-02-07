@@ -89,6 +89,7 @@
       <h2 class="section-header">Dodaj użytkownika</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
       {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\AdminUsersController@store','files'=>true]) !!}
+      @csrf
       <div class="w-form">
           <div>
             {!! Form::label('firstname', 'Imię', ['class'=>'form-profile-field-label']) !!}

@@ -104,6 +104,8 @@
               <div class="w-form">
                 <form id="wf-form-opinions-form" name="wf-form-opinions-form" data-name="opinions-form" class="form-opinions">
                 {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\EventOpinionsController@store']) !!}
+                @csrf
+                @include('includes/error-form')
                   <div class="form-opinions-text">Chętnie poznamy Twoje zdanie na temat wydarzenia, w którym uczestniczyłeś :)</div>
                   <div class="form-opinions-rules">* wypełnienie ankiety jest wymagane do przyznania punktów rankingowych dla użytkownika.</div>
                   <div class="w-embed">
@@ -121,7 +123,6 @@
                   {!! Form::textarea('body', null, ['class'=>'form-opinions-textarea w-input','rows'=>3])!!}
                     {!! Form::submit('Prześlij opinię', ['class'=>'button-submit-outside w-button']) !!}
                     {!! Form::close() !!}
-                    @include('includes/error-form')
                 </form>
               </div>
               @endif
@@ -271,7 +272,7 @@
         </div>
         <div class="footer-copyright">
             <div>
-                <div class="footer-copyright-text">© 2021 justrun4.fun</div>
+              <div class="footer-copyright-text">© {{ date('Y') }} justrun4.fun</div>
             </div>
             <div class="footer-social-media">
                 <a href="https://www.facebook.com/" target="_blank" class="w-inline-block"><img

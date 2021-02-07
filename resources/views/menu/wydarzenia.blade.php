@@ -100,31 +100,42 @@
       <div class="separator"><img src="images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
       <div class="event-div">
         <div class="event-search">
-          <div class="w-layout-grid grid-event-search">
-            <div class="event-search-category maraton">
-              <div class="category-text">MARATON
-              </div>
+
+          <form class="ml-auto" method="get" action="{{route('filterSearch')}}">
+            @csrf
+            <div class="w-layout-grid grid-event-search">
+
+                <div class="w-form">
+                    
+                   <input type="text" class="event-search-textbox w-input" maxlength="256" name="title" data-name="title" placeholder="Szukaj po nazwie..." 
+                    id="title" value="{{Request()->title}}">
+
+                      <input class="event-search-textbox w-input" type="text" id="place" name="place" placeholder="Szukaj po mieście..." 
+                      maxlength="256" name="place" data-name="place" value="{{Request()->place}}">
+
+                    <select id="category" name="category" data-name="category" class="event-search-textbox w-input event-search-mobile">
+                      <option value>Kategoria wydarzenia</option>
+                      @foreach($categories as $category)
+                        @if ($category->id == Request()->category)
+                        {
+                          <option selected value="{{ $category->id }}">{{ $category->name }}</option>
+                        }
+                        @else
+                        {
+                          <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        }
+                        @endif
+                      @endforeach
+                    </select>
+
+                      <input class="event-search-textbox w-input" name="from_date" type="date" placeholder="Szukaj po dacie od" value={{Request()->from_date}}>
+
+                      <input class="event-search-textbox w-input" name="to_date" type="date" placeholder="Szukaj po dacie do" value={{Request()->to_date}}>
+                    
+                  <input type="submit" value="Filtruj wydarzenia" data-wait="Please wait..." class="button-submit-outside button-event w-button">
+                  </div>
             </div>
-            <div class="event-search-category p-maraton">
-              <div class="category-text">PÓŁMARATON
-              </div>
-            </div>
-            <div class="event-search-category _10-km">
-              <div class="category-text">10 KM</div>
-            </div>
-            <div class="event-search-category _5-km">
-              <div class="category-text">5 KM</div>
-            </div>
-            <div class="event-search-category inne">
-              <div class="category-text">INNE</div>
-            </div>
-            <div class="event-search-category g-rskie">
-              <div class="category-text">GÓRSKIE</div>
-            </div>
-            <div class="event-search-category">
-              <div class="category-text">WSZYSTKIE</div>
-            </div>
-          </div>
+          </form>
         </div>
 
         @if(count($events) > 0)
@@ -161,10 +172,10 @@
   @if(!Auth::check())
   <div class="section-cta">
     <div class="cta-block">
-      <div class="cta-text">Sprawdź nasz serwis w akcji i</div>
-      <a href="#" class="button-cta w-button">dołącz teraz</a>
+        <div class="cta-text">Sprawdź nasz serwis w akcji i</div>
+        <a href="{{ route('login') }}" class="button-cta w-button">dołącz teraz</a>
     </div>
-  </div>
+</div>
   @endif
 
   <div class="section-footer">
@@ -207,7 +218,7 @@
         </div>
         <div class="footer-copyright">
             <div>
-                <div class="footer-copyright-text">© 2021 justrun4.fun</div>
+              <div class="footer-copyright-text">© {{ date('Y') }} justrun4.fun</div>
             </div>
             <div class="footer-social-media">
                 <a href="https://www.facebook.com/" target="_blank" class="w-inline-block"><img

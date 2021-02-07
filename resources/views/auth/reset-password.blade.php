@@ -77,14 +77,14 @@
   </div>
 
 
-    <div class="section">
+    <div class="section section-height-100">
         <div class="content w-container">
             <h2 class="section-header">Zmień swoje hasło</h2>
             <div class="separator"><img src="images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
             <div class="login-div">
                 <div class="w-form">
 
-                    <x-jet-validation-errors class="mb-4" />
+                  @include('includes/error-form')
 
                     <form method="POST" action="{{ route('password.update') }}" class="form-login">
                         @csrf
@@ -163,7 +163,7 @@
                 </div>
                 <div class="footer-copyright">
                     <div>
-                        <div class="footer-copyright-text">© 2021 justrun4.fun</div>
+                      <div class="footer-copyright-text">© {{ date('Y') }} justrun4.fun</div>
                     </div>
                     <div class="footer-social-media">
                         <a href="https://www.facebook.com/" target="_blank" class="w-inline-block"><img

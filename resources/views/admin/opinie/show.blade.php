@@ -173,6 +173,7 @@
         @if($row->verification == "Brak")
         <td>
           {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
+          @csrf
             <input type="hidden" name="verification" value="Zaakceptowane">
               <div class="form-group">
                 {!! Form::submit('Akceptuj', ['class'=>'btn btn-success']) !!}
@@ -181,6 +182,7 @@
         </td>
         <td>
           {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
+          @csrf
             <input type="hidden" name="verification" value="Odrzucone">
               <div class="form-group">
                 {!! Form::submit('Odrzuć', ['class'=>'btn btn-danger']) !!}
@@ -190,6 +192,7 @@
         @elseif($row->verification == "Zaakceptowane")
         <td>
           {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
+          @csrf
             <input type="hidden" name="verification" value="Odrzucone">
               <div class="form-group">
                 {!! Form::submit('Odrzuć', ['class'=>'btn btn-danger']) !!}
@@ -199,6 +202,7 @@
         @elseif($row->verification == "Odrzucone")
         <td>
           {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
+          @csrf
             <input type="hidden" name="verification" value="Zaakceptowane">
               <div class="form-group">
                 {!! Form::submit('Akceptuj', ['class'=>'btn btn-success']) !!}

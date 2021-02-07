@@ -35,8 +35,10 @@ class UserController extends Controller
       ->where('users.id', '=', $id)
       ->orderBy('events.event_date', 'asc')
       ->get();
+      $upcomingEvents = $data->where('is_active', '=', 1);
+      $finishedEvents = $data->where('is_active', '=', 0);
       $collection = $user->total_points/100;
-      return view('profil/index', compact('user', 'data','collection'));
+      return view('profil/index', compact('user', 'collection', 'upcomingEvents', 'finishedEvents'));
     }
 
     /**
@@ -103,12 +105,13 @@ class UserController extends Controller
         $photo = Photo::create(['file'=>$name]);
         $input['photo_id'] = $photo->id;
       }
-      if(empty($request->firstname && $request->surname && $request->city && $user->foundation_id && $user->age_category_id)){
-        $user->is_active = 0;
+      if(!empty($request->firstname && $request->surname && $request->city && $user->foundation_id && $user->age_category_id)){
+        $user->is_active=1;
       }
       else{
-        $user->is_active = 1;
+        $user->is_active=0;
       }
+      $user->save();
       $user->update($input);
       return redirect('profil');
     }
@@ -148,21 +151,6 @@ class UserController extends Controller
           $participate->delete();
       }
       return redirect()->back()->with('isParticipate', $isParticipate);
-    }
-
-
-    public function updateFoundation(Request $request, $id)
-    {
-      $user = Auth::user();
-      $user->update($request->all());
-      if(empty($user->firstname && $user->surname && $user->sex && $user->city && $user->date_of_birth && $request->foundation_id)){
-        $user->is_active = 0;
-      }
-      else{
-        $user->is_active = 1;
-      }
-      $user->save();
-      return redirect('profil');
     }
 
 }

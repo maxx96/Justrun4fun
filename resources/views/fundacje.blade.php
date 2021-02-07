@@ -236,7 +236,7 @@
         </div>
         <div class="footer-copyright">
             <div>
-                <div class="footer-copyright-text">© 2021 justrun4.fun</div>
+              <div class="footer-copyright-text">© {{ date('Y') }} justrun4.fun</div>
             </div>
             <div class="footer-social-media">
                 <a href="https://www.facebook.com/" target="_blank" class="w-inline-block"><img

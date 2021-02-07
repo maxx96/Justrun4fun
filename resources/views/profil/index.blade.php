@@ -99,7 +99,7 @@
     <div class="section">
         <div class="content w-container">
             <h2 class="section-header">Mój profil</h2>
-            <div class="separator"><img src="images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
+            <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
             @if($user->is_active==0)
             <div class="warning-block-profile">
                 <div class="text-block-warning"><strong>Uwaga!</strong> Nie jesteś brany pod uwagę w rankingu, ponieważ
@@ -151,68 +151,70 @@
                 @endif
             </div>
             <div>
-                <a href="../public/profil/{{$user->id}}/edit" class="button-edit-profile w-button">Edytuj profil</a>
+                <a href="{{ route('profil.edit', $user->id)}}" class="button-edit-profile w-button">Edytuj profil</a>
             </div>
         </div>
         <h2 class="section-header">Moje starty</h2>
-        <div class="separator"><img src="images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
+        <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
         <div class="my-events-div">
             <h3 class="my-events-heading">Nadchodzące wydarzenia</h3>
-            @foreach($data as $row)
-            @if ($row->is_active==1)
-            <div class="my-event">
-                <div class="my-event-name">
-                    <div class="my-event-text">{{ $row->title }}</div>
-                </div>
-                <div class="my-event-date">
-                    <div class="my-event-text">{{ $row->event_date }}</div>
-                </div>
-                <div class="my-event-details">
-                    <a href="{{ url('wydarzenia', [$row->slug]) }}" class="button-details-event w-button">Szczegóły</a>
-                </div>
-            </div>
+            @if(!$upcomingEvents->isEmpty())
+                @foreach($upcomingEvents as $row)
+                    <div class="my-event">
+                        <div class="my-event-name">
+                            <div class="my-event-text">{{ $row->title }}</div>
+                        </div>
+                        <div class="my-event-date">
+                            <div class="my-event-text">{{ $row->event_date }}</div>
+                        </div>
+                        <div class="my-event-details">
+                            <a href="{{ url('wydarzenia', [$row->slug]) }}" class="button-details-event w-button">Szczegóły</a>
+                        </div>
+                    </div>
+                @endforeach
             @else
-            <div>
-                <div class="text-block-header">Brak nadchodzących wydarzeń</div>
-            </div>
+                <div>
+                    <div class="text-block-header">Brak nadchodzących wydarzeń</div>
+                </div>
             @endif
         </div>
+
         <div class="my-events-div">
             <h3 class="my-events-heading">Ukończone wydarzenia</h3>
-
-            @if ($row->is_active==0)
-            @if ($row->verification=="Zaakceptowane")
-            <div class="my-event">
-                <div class="my-event-name">
-                    <div class="my-event-text">{{ $row->title }}</div>
-                </div>
-                <div class="my-event-date">
-                    <div class="my-event-text">{{ $row->event_date }}</div>
-                </div>
-                <div class="my-event-details">
-                    <div class="my-event-text">+ {{ $row->points }} pkt</div>
-                </div>
-            </div>
-            @else
-            <div class="my-event">
-                <div class="my-event-name">
-                    <div class="my-event-text">{{ $row->title }}</div>
-                </div>
-                <div class="my-event-date">
-                    <div class="my-event-text">{{ $row->event_date }}</div>
-                </div>
-                <div class="my-event-details">
-                    <a href="{{ url('wydarzenia', [$row->slug]) }}" class="button-details-event w-button">Oczekuje na
-                        opinię</a>
-                </div>
-            </div>
-            @endif
+            @if(!$finishedEvents->isEmpty())
+                @foreach($finishedEvents as $row)
+                        @if ($row->verification=="Zaakceptowane")
+                        <div class="my-event">
+                            <div class="my-event-name">
+                                <div class="my-event-text">{{ $row->title }}</div>
+                            </div>
+                            <div class="my-event-date">
+                                <div class="my-event-text">{{ $row->event_date }}</div>
+                            </div>
+                            <div class="my-event-details">
+                                <div class="my-event-text">+ {{ $row->points }} pkt</div>
+                            </div>
+                        </div>
+                        @else
+                        <div class="my-event">
+                            <div class="my-event-name">
+                                <div class="my-event-text">{{ $row->title }}</div>
+                            </div>
+                            <div class="my-event-date">
+                                <div class="my-event-text">{{ $row->event_date }}</div>
+                            </div>
+                            <div class="my-event-details">
+                                <a href="{{ url('wydarzenia', [$row->slug]) }}" class="button-details-event w-button">Oczekuje na
+                                    opinię</a>
+                            </div>
+                        </div>
+                        @endif
+                @endforeach
             @else
             <div>
                 <div class="text-block-header">Brak ukończonych wydarzeń</div>
             </div>
-            @endif
-            @endforeach
+        @endif
         </div>
     </div>
     </div>
@@ -256,7 +258,7 @@
             </div>
             <div class="footer-copyright">
                 <div>
-                    <div class="footer-copyright-text">© 2021 justrun4.fun</div>
+                    <div class="footer-copyright-text">© {{ date('Y') }} justrun4.fun</div>
                 </div>
                 <div class="footer-social-media">
                     <a href="https://www.facebook.com/" target="_blank" class="w-inline-block"><img

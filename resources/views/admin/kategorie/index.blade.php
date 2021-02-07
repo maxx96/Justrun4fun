@@ -113,6 +113,7 @@
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
       <div class="w-form">
       {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\AdminCategoriesController@store']) !!}
+      @csrf
         <form id="email-form" name="email-form" data-name="Email Form">
           <div>
             {!! Form::label('name', 'Nazwa:', ['class'=>'form-profile-field-label']) !!}
