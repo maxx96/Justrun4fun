@@ -50,6 +50,11 @@ class Event extends Model
         return $this->belongsTo('App\Models\Category');
     }
 
+    public function public_opinions()
+    {
+        return $this->hasMany('App\Models\PublicOpinion');
+    }
+
     public function opinions()
     {
         return $this->hasMany('App\Models\Opinion');

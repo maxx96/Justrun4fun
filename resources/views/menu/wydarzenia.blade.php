@@ -173,7 +173,7 @@
   <div class="section-cta">
     <div class="cta-block">
         <div class="cta-text">Sprawdź nasz serwis w akcji i</div>
-        <a href="{{ route('login') }}" class="button-cta w-button">dołącz teraz</a>
+        <a href="{{ route('login') }}" class="cta-button w-button">dołącz teraz</a>
     </div>
 </div>
   @endif

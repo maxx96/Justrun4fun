@@ -13,6 +13,7 @@ use App\Http\Controllers\FoundationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\VerifyEmailController;
+use App\Http\Controllers\AdminPublicOpinionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::get('/rankingRegistration/{id}', [UserController::class, 'rankingRegistra
 Route::get('/ranking', [PagesController::class, 'ranking'])->name('ranking');
 Route::get('/', [PagesController::class, 'index'])->name('index');
 Route::resource('admin/opinie', EventOpinionsController::class);
+Route::resource('admin/referencje', AdminPublicOpinionsController::class);
 Route::patch('admin/opinie/verification/{id}', [EventOpinionsController::class, 'updateVerification'])->name('updateVerification');
 Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('changePassword');
 Route::post('/change-password', [ChangePasswordController::class, 'store'])->name('change.password');

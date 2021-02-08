@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Opinion;
 use App\Models\EventUser;
 use App\Models\Category;
+use App\Models\PublicOpinion;
 use Illuminate\Support\Facades\Auth;
 
 class AdminEventsController extends Controller
@@ -124,6 +125,7 @@ class AdminEventsController extends Controller
     public function event($slug)
     {
         $event = Event::where('slug', '=', $slug)->first();
+        $references = PublicOpinion::where('event_id', '=', $event->id)->get();
         $opinions = $event->opinions()->get();
         $user = null;
         $isParticipate = false;
@@ -135,6 +137,6 @@ class AdminEventsController extends Controller
             $giveOpinion = Opinion::where('event_id', '=', $event->id)->where('author', '=', $user->email)->first();
             $isGiveOpinion = !($giveOpinion === null);
         }
-        return view('wydarzenia', compact('event', 'opinions', 'user'))->with('isParticipate', $isParticipate)->with('isGiveOpinion', $isGiveOpinion);
+        return view('wydarzenia', compact('event', 'opinions', 'user', 'references'))->with('isParticipate', $isParticipate)->with('isGiveOpinion', $isGiveOpinion);
     }
 }

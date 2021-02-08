@@ -103,7 +103,7 @@
     <div class="section section-height-100">
         <div class="content w-container">
             <h2 class="section-header">Zweryfikuj adres e-mail</h2>
-            <div class="separator"><img src="images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
+            <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
             <div class="login-div">
                 <div class="w-form">
                     @if (session('status'))

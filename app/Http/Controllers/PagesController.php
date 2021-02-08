@@ -33,7 +33,6 @@ class PagesController extends Controller
         $name_part = $request->get('title');
         $place_part = $request->get('place');
         /* Filtracja na podstawie nazwy i miejsca */
-
         $events = Event::where('title', 'like', '%'.$name_part.'%');
         if($request->filled('place'))
         {
@@ -41,24 +40,20 @@ class PagesController extends Controller
                 $query->where('place', 'like', '%'.$place_part.'%');
             });
         }
-
         /* Dolny zakres dat */
         if ($request->filled('from_date')) {
             $from = $request->get('from_date');
             $events = $events->where('event_date', '>=', date($from).' 00:00:00');
         }
-
         /* Górny zakres dat */
         if ($request->filled('to_date')) {
             $to = $request->get('to_date');
             $events = $events->where('event_date', '<=', date($to).' 23:59:59');
         }
-
         if ($request->filled('category')) {
             $category = $request->get('category');
             $events = $events->where('category_id', '=', $category);
         }
-
         $events->where('event_date', '>=', Carbon::today());
         $events = $events->orderBy('event_date', 'asc')->paginate(50);
         $categories = Category::all();

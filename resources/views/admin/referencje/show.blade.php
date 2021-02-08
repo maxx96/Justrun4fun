@@ -83,52 +83,63 @@
     </div>
   </div>
 
+
   <div class="section">
     <div class="content w-container">
-      <h2 class="section-header">Dodaj wydarzenie</h2>
+      <h2 class="section-header">Referencje - {{ $event->title }}</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
-      {{ Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\AdminEventsController@store','files'=>true]) }}
-      @csrf
-      <div class="w-form">
-        @include('includes/error-form')
+      @if($public_opinions)
+      <div class="list-user-div">
+        <div>
+          <div class="w-layout-grid grid-reference-header">
+            <div>ID</div>
+            <div>Autor</div>
+            <div>Opis autora</div>
+            <div>Treść</div>
+          </div>
+        </div>
+        @foreach($public_opinions as $public_opinion)
           <div>
-            {{ Form::label('title', 'Nazwa*', ['class'=>'form-profile-field-label']) }}
-            {{ Form::text('title', null, ['class'=>'form-profile-text-field w-input']) }} 
+            <div class="w-layout-grid grid-reference-content">
+              <div class="list-event-text">{{ $public_opinion->id }}</div>
+              <div class="list-user-text">{{ $public_opinion->author }}</div>
+              <div class="list-user-text">{{ $public_opinion->author_description }}</div>
+              <div class="list-user-text">{{ $public_opinion->content }}</div>
+              <a href="{{ route('referencje.edit', [$public_opinion->id]) }}" class="list-user-text list-user-text-link">Zarządzaj</a>
+            </div>
           </div>
-          <div>
-            {{ Form::label('place', 'Miejsce*', ['class'=>'form-profile-field-label']) }}
-            {{ Form::text('place', null, ['class'=>'form-profile-text-field w-input']) }} 
-          </div>
-          <div>
-            {{ Form::label('event_date', 'Data*', ['class'=>'form-profile-field-label']) }}
-            {{ Form::date('event_date', null, ['class'=>'form-profile-text-field w-input']) }} 
-          </div>
-          <div>
-            {{ Form::label('category_id', 'Kategoria*', ['class'=>'form-profile-field-label']) }}
-            {{ Form::select('category_id', [''=>'Wybierz kategorię'] + $categories , null, ['class'=>'form-profile-select-field w-select']) }}   
-          </div>
-          <div>
-            {{ Form::label('photo_id', 'Zdjęcie*', ['class'=>'form-profile-field-label']) }} 
-            {{ Form::file('photo_id', null, ['class'=>'form-profile-text-field w-input']) }} 
-          </div>
-          <br>
-          <div>
-            {{ Form::label('web_page', 'Strona WWW', ['class'=>'form-profile-field-label']) }}
-            {{ Form::text('web_page', null, ['class'=>'form-profile-text-field w-input']) }} 
-          </div>
-          <div>
-            {{ Form::label('sign_up', 'Link do zapisów', ['class'=>'form-profile-field-label']) }}
-            {{ Form::text('sign_up', null, ['class'=>'form-profile-text-field w-input']) }} 
-          </div>
-          <div>
-            {{ Form::label('fanpage', 'Link do Facebooka', ['class'=>'form-profile-field-label']) }}
-            {{ Form::text('fanpage', null, ['class'=>'form-profile-text-field w-input']) }} 
-          </div>
-          <div class="form-group" onclick="return confirm('Czy utworzyć nowe wydarzenie?')">
-            {{ Form::submit('Utwórz wydarzenie', ['class'=>'submit-button w-button']) }} 
-          </div>
+        @endforeach
       </div>
-      {{ Form::close() }}
+      @endif
+
+      <h2 class="section-header">Dodaj referencję</h2>
+      <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
+      <div class="w-form">
+        {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\AdminPublicOpinionsController@store']) !!}
+        @csrf
+        <div class="w-form">
+            @include('includes/error-form')
+              <input type="hidden" name="event_id" value="{{ $event->id }}">
+            <div>
+              {!! Form::label('content', 'Treść referencji (do 200 znaków)*', ['class'=>'form-profile-field-label']) !!}
+              {!! Form::textarea('content', null, ['class'=>'form-profile-text-field w-input'])!!} 
+            </div>
+            <div>
+              {!! Form::label('author', 'Autor (do 30 znaków)*', ['class'=>'form-profile-field-label']) !!}
+              {!! Form::text('author', null, ['class'=>'form-profile-text-field w-input'])!!} 
+            </div>
+            <div>
+              {!! Form::label('author_description', 'Opis autora (do 60 znaków)*', ['class'=>'form-profile-field-label']) !!}
+              {!! Form::text('author_description', null, ['class'=>'form-profile-text-field w-input'])!!}
+            </div>
+            <div class="form-edit-profile-rules">* pola wymagane, aby utworzyć referencję.</div>
+            <div class="button-edit-div" onclick="return confirm('Czy utworzyć nową referencję?')">
+              {!! Form::submit('Utwórz referencję', ['class'=>'submit-button w-button']) !!}
+            </div>
+            
+        </div>
+        {!! Form::close() !!}
+
     </div>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=600c61116aae5f5691a390c2" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>

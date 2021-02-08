@@ -203,23 +203,19 @@
               </div>
             </div>
           </div>
+          @if($references)
           <div class="participants-opinions">
             <div class="text-block-header">Opinie uczestników o wydarzeniu</div>
             <div class="w-layout-grid grid-participants-opinions">
+              @foreach($references as $key => $reference)
               <div class="opinions-div">
-                <div class="opinions-text">Malownicza trasa :) dds dsdssds fdsfdfdsfdsfdfdsdadd fdsfdffd fdsffdfddfsdffd dfdssssssssff fdjhjdjk dahs dsaj dssaddasds a adsdsdsa asd sad </div>
-                <div class="opinions-participant-name">Jan Kowalski, uczestnik 41. PZU Maraton Warszawski</div>
+                <div class="opinions-text">{{ $reference->content }}</div>
+                <div class="opinions-participant-name">{{ $reference->author }}, {{ $reference->author_description }}</div>
               </div>
-              <div class="opinions-div">
-                <div class="opinions-text">Malownicza trasa :)</div>
-                <div class="opinions-participant-name">Jan Kowalski, uczestnik 41. PZU Maraton Warszawski</div>
-              </div>
-              <div class="opinions-div">
-                <div class="opinions-text">Malownicza trasa :)</div>
-                <div class="opinions-participant-name">Jan Kowalski, uczestnik 41. PZU Maraton Warszawski</div>
-              </div>
+              @endforeach
             </div>
           </div>
+          @endif
         </div>
       </div>
 
@@ -227,7 +223,7 @@
   <div class="section-cta">
     <div class="cta-block">
       <div class="cta-text">Sprawdź nasz serwis w akcji i</div>
-      <a href="{{ route('login') }}" class="button-cta w-button">dołącz teraz</a>
+      <a href="{{ route('login') }}" class="cta-button w-button">dołącz teraz</a>
     </div>
   </div>
   @endif

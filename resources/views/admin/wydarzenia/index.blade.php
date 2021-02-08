@@ -96,13 +96,14 @@
             <div>Zdjęcie</div>
             <div>Nazwa</div>
             <div>Ogólna</div>
-            <div>Ilość</div>
+            <div>Opinie</div>
           </div>
         </div>
         @foreach($events as $event)
         <div>
           <div class="w-layout-grid grid-events-content">
-            <div class="list-event-text">{{$event->id}}</div><img src="{{ asset($event->photo->file) }}" loading="lazy" alt="">
+            <div class="list-event-text">{{$event->id}}</div>
+            <img src="{{ asset($event->photo->file) }}" loading="lazy" alt="">
             <a href="{{ url('wydarzenia', [$event->slug]) }}" class="list-user-text list-user-text-link">{{$event->title}}</a>
             <div class="list-user-text">{{ number_format($event->opinions()->avg('overall_rating'), 1) }} / 10.0<br></div>
             <div class="list-user-text">{{ $event->opinions()->count() }}<br></div>
@@ -120,6 +121,7 @@
               {{ Form::close() }}
             @endif
             <a href="../admin/opinie/{{$event->id}}" class="list-user-text list-user-text-link">Opinie</a>
+            <a href="../admin/referencje/{{$event->id}}" class="list-user-text list-user-text-link">Referencje</a>
             <a href="../admin/wydarzenia/{{$event->id}}/edit" class="list-user-text list-user-text-link">Zarządzaj</a>
           </div>
         </div>

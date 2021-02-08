@@ -88,7 +88,7 @@
     <div class="content w-container">
       <h2 class="section-header"><a href="{{ url('wydarzenia', [$event->slug]) }}">Opinie - {{$event->title}}</a></h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
-      @if(count($data) > 0)
+      @if($data)
       <div class="list-user-div">
         <div>
           <div class="w-layout-grid grid-opinions-header">
@@ -163,50 +163,3 @@
 </body>
 </html>
 
-
-
-        </td>
-        <td>{{$row->atmosphere_rating}} / 10</td>
-        <td>{{$row->road_rating}} / 10</td>
-        <td>{{$row->organization_rating}} / 10</td>
-        <td>{{$row->overall_rating}} / 10</td>
-        @if($row->verification == "Brak")
-        <td>
-          {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
-          @csrf
-            <input type="hidden" name="verification" value="Zaakceptowane">
-              <div class="form-group">
-                {!! Form::submit('Akceptuj', ['class'=>'btn btn-success']) !!}
-              </div>
-          {!! Form::close() !!}
-        </td>
-        <td>
-          {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
-          @csrf
-            <input type="hidden" name="verification" value="Odrzucone">
-              <div class="form-group">
-                {!! Form::submit('Odrzuć', ['class'=>'btn btn-danger']) !!}
-              </div>
-          {!! Form::close() !!}
-        </td>
-        @elseif($row->verification == "Zaakceptowane")
-        <td>
-          {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
-          @csrf
-            <input type="hidden" name="verification" value="Odrzucone">
-              <div class="form-group">
-                {!! Form::submit('Odrzuć', ['class'=>'btn btn-danger']) !!}
-              </div>
-          {!! Form::close() !!}
-        </td>
-        @elseif($row->verification == "Odrzucone")
-        <td>
-          {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
-          @csrf
-            <input type="hidden" name="verification" value="Zaakceptowane">
-              <div class="form-group">
-                {!! Form::submit('Akceptuj', ['class'=>'btn btn-success']) !!}
-              </div>
-          {!! Form::close() !!}
-        </td>
-        @endif
