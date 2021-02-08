@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\OpinionsRequest;
+use Session;
 
 class EventOpinionsController extends Controller
 {
@@ -52,7 +53,7 @@ class EventOpinionsController extends Controller
           'body' => $request->body
       ];
         Opinion::create($data);
-        $request->session()->flash('comment_message', 'Twoja opinia została przesłana i zostanie zweryfikowana w ciągu 24h!');
+        Session::flash('comment_message', 'Twoja opinia została przesłana i zostanie zweryfikowana w ciągu 24 godzin.');
         return redirect()->back();
     }
 
@@ -116,6 +117,7 @@ class EventOpinionsController extends Controller
         }
         $user->update($request->all());
         $user->save();
+        Session::flash('add_verification', "Dokonano weryfikacji opinii $user->email.");
         return redirect()->back();
     }
 

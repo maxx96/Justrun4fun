@@ -90,6 +90,7 @@
       {!! Form::model($category, ['method'=>'PATCH', 'action'=> ['App\Http\Controllers\AdminCategoriesController@update', $category->id]]) !!}
       @csrf
       <div class="w-form">
+        @include('includes/error-form')
           <div>
             {!! Form::label('name', 'Nazwa:', ['class'=>'form-profile-field-label']) !!}
             {!! Form::text('name', null, ['class'=>'form-profile-text-field w-input'])!!} 
@@ -100,11 +101,11 @@
           </div>
 
           <div class="button-edit-div">
-            {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button edit-button-admin w-button']) !!}
+            {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button edit-button-admin w-button', 'onclick'=>'return confirm("Czy na pewno zapisać zmiany?")']) !!}
             {!! Form::close() !!}
 
             {!! Form::open(['method'=>'DELETE', 'action'=> ['App\Http\Controllers\AdminCategoriesController@destroy', $category->id]]) !!}
-            {!! Form::submit('Usuń kategorię', ['class'=>'submit-button edit-button-admin w-button']) !!}
+            {!! Form::submit('Usuń kategorię', ['class'=>'submit-button edit-button-admin w-button', 'onclick'=>'return confirm("Czy na pewno usunąć kategorię?")']) !!}
             {!! Form::close() !!}
 
           </div>

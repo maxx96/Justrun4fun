@@ -87,6 +87,28 @@
     <div class="content w-container">
       <h2 class="section-header">Fundacje</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
+      @if(Session::has('add_foundations'))
+      <div class="success-block">
+        <div class="text-block-info">
+          {{session('add_foundations')}}
+        </div>
+      </div>
+      @endif
+      @if(Session::has('update_foundations'))
+      <div class="success-block">
+        <div class="text-block-info">
+          {{session('update_foundations')}}
+        </div>
+      </div>
+      @endif
+      @if(Session::has('delete_foundations'))
+      <div class="warning-block">
+        <div class="text-block-info">
+          {{session('delete_foundations')}}
+        </div>
+      </div>
+      @endif
+
       @if($foundations)
         <div class="list-user-div">
           <div>
@@ -111,12 +133,13 @@
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
       <div class="w-form">
         @csrf
+        @include('includes/error-form')
         {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\FoundationController@store']) !!}
           <form id="email-form" name="email-form" data-name="Email Form">
             <div>
               {!! Form::label('nazwa', 'Nazwa:', ['class'=>'form-profile-field-label']) !!}
               {!! Form::text('name', null, ['class'=>'form-profile-text-field w-input'])!!}
-              {!! Form::submit('Utwórz fundację', ['class'=>'submit-button w-button']) !!}
+              {!! Form::submit('Utwórz fundację', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno utworzyć fundację?")']) !!}
             </div>
           </form>
         {!! Form::close() !!}

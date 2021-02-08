@@ -11,6 +11,7 @@ use App\Models\Role;
 use App\Models\AgeCategory;
 use App\Models\Foundation;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class AdminUsersController extends Controller
 {
@@ -58,7 +59,20 @@ class AdminUsersController extends Controller
             $photo = Photo::create(['file'=>$name]);
             $input['photo_id'] = $photo->id;
         }
+        $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => [
+                    'required',
+                    'string', 
+                    'min:8',             // must be at least 8 characters in length
+                    'regex:/[a-z]/',      // must contain at least one lowercase letter
+                    'regex:/[A-Z]/',      // must contain at least one uppercase letter
+                    'regex:/[0-9]/',      // must contain at least one digit 
+            ],
+            'role_id' => 'required',
+        ]);
         User::create($input);
+        Session::flash('add_users', "Utworzono pomyślnie nowego użytkownika $request->email.");
         return redirect('/admin/uzytkownicy'); //przekierowanie do danej trasy po wykonaniu funkcji
     }
 
@@ -79,7 +93,9 @@ class AdminUsersController extends Controller
         ->orderBy('events.event_date', 'asc')
       	->get();
     $collection = $user->total_points/100;
-      return view('admin/uzytkownicy/show', compact('user', 'data', 'collection'));
+    $upcomingEvents = $data->where('is_active', '=', 1);
+    $finishedEvents = $data->where('is_active', '=', 0);
+      return view('admin/uzytkownicy/show', compact('user', 'collection', 'upcomingEvents', 'finishedEvents'));
     }
 
     /**
@@ -92,8 +108,9 @@ class AdminUsersController extends Controller
     {
         $user = User::findOrFail($id);
         $roles = Role::pluck('name', 'id')->all();
+        $foundations = Foundation::pluck('name', 'id')->all();
         $age_categories = AgeCategory::pluck('name', 'id')->all();
-        return view('admin/uzytkownicy/edit', compact('user', 'roles', 'age_categories'));
+        return view('admin/uzytkownicy/edit', compact('user', 'roles', 'age_categories', 'foundations'));
     }
 
     /**
@@ -127,6 +144,7 @@ class AdminUsersController extends Controller
             $user->save();
           }
         $user->update($input);
+        Session::flash('update_users', "Dane użytkownika $user->email zostały zaktualizowane.");
         return redirect('/admin/uzytkownicy');
     }
 
@@ -141,7 +159,7 @@ class AdminUsersController extends Controller
         $user = User::findOrFail($id);
         unlink(public_path() . $user->photo->file);
         $user->delete();
-        Session::flash('deleted_user', 'Użytkownik został usunięty!');
+        Session::flash('delete_users', "Użytkownik został usunięty.");
         return redirect('admin/uzytkownicy');
     }
 }

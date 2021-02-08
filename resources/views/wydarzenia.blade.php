@@ -98,8 +98,13 @@
           <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
             <div class="div-block">
               @if(Session::has('comment_message'))
-              {{session('comment_message')}}
+              <div class="success-block">
+                <div class="text-block-info">
+                  {{session('comment_message')}}
+                </div>
+              </div>
               @endif
+
               @if(Auth::check() && $isParticipate && $event->is_active==0 && !$isGiveOpinion)
               <div class="w-form">
                 <form id="wf-form-opinions-form" name="wf-form-opinions-form" data-name="opinions-form" class="form-opinions">
@@ -121,7 +126,7 @@
                   </div>
                   {!! Form::label('body', 'Treść:', ['class'=>'form-profile-field-label']) !!}
                   {!! Form::textarea('body', null, ['class'=>'form-opinions-textarea w-input','rows'=>3])!!}
-                    {!! Form::submit('Prześlij opinię', ['class'=>'button-submit-outside w-button']) !!}
+                    {!! Form::submit('Prześlij opinię', ['class'=>'button-submit-outside w-button', 'onclick'=>'return confirm("Czy na pewno przesłać opinię?")']) !!}
                     {!! Form::close() !!}
                 </form>
               </div>

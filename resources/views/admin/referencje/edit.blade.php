@@ -107,11 +107,11 @@
         <div class="form-edit-profile-rules">* pola wymagane, aby utworzyć referencję.</div>
 
         <div class="button-edit-div">
-            {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button edit-button-admin w-button']) !!}
+            {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button edit-button-admin w-button'], 'onclick'=>'return confirm("Czy na pewno zapisać zmiany?")']) !!}
             {!! Form::close() !!}
 
             {!! Form::open(['method'=>'DELETE', 'action'=> ['App\Http\Controllers\AdminPublicOpinionsController@destroy', $public_opinion->id]]) !!}
-            {!! Form::submit('Usuń referencję', ['class'=>'submit-button edit-button-admin w-button']) !!}
+            {!! Form::submit('Usuń referencję', ['class'=>'submit-button edit-button-admin w-button'], 'onclick'=>'return confirm("Czy na pewno usunąć referencję?")']) !!}
             {!! Form::close() !!}
         </div>
     </div>

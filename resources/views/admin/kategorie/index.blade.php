@@ -87,6 +87,28 @@
     <div class="content w-container">
       <h2 class="section-header">Kategorie</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
+      @if(Session::has('add_categories'))
+      <div class="success-block">
+        <div class="text-block-info">
+          {{session('add_categories')}}
+        </div>
+      </div>
+      @endif
+      @if(Session::has('update_categories'))
+      <div class="success-block">
+        <div class="text-block-info">
+          {{session('update_categories')}}
+        </div>
+      </div>
+      @endif
+      @if(Session::has('delete_categories'))
+      <div class="warning-block">
+        <div class="text-block-info">
+          {{session('delete_categories')}}
+        </div>
+      </div>
+      @endif
+      
       @if($categories)
       <div class="list-user-div">
         <div>
@@ -112,6 +134,7 @@
       <h2 class="section-header">Dodaj kategorię</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
       <div class="w-form">
+        @include('includes/error-form')
       {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\AdminCategoriesController@store']) !!}
       @csrf
         <form id="email-form" name="email-form" data-name="Email Form">
@@ -123,9 +146,7 @@
             {!! Form::label('points', 'Ilość punktów:', ['class'=>'form-profile-field-label']) !!}
             {!! Form::text('points', null, ['class'=>'form-profile-text-field w-input'])!!}
           </div>
-          <div>
-            {!! Form::submit('Utwórz kategorię', ['class'=>'submit-button w-button']) !!}
-          </div>
+            {!! Form::submit('Utwórz kategorię', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno utworzyć kategorię?")']) !!}
         </form>
         {!! Form::close() !!}
       </div>

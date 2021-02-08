@@ -89,10 +89,14 @@
             <h2 class="section-header">Profil {{$user->email}}</h2>
             <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
 
+            @if($user->is_active==0)
+            <div class="warning-block">
+                <div class="text-block-info">Użytkownik nie jest brany pod uwagę w rankingu.</div>
+            </div>
+            @endif
+
             <div class="profil-info">
-                <div class="profil-details-div">
-                  <div class="profil-image" style=" background-image: url('/{{$user->photo->file}}'); background-size: cover; background-repeat: no-repeat; background-position: center">
-                  </div>
+              <div class="profil-details-div">
 
                     <div class="profil-info-details">
                         <div class="profil-name">
@@ -119,16 +123,16 @@
                 </div>
                 <div class="profil-info-foundation">
                     @if(!isset($user->foundation->name))
-                    <div class="profil-info-other">Jeszcze nie wybrano żadnej fundacji</div>
-                    @elseif($collection <= 0) <div class="profil-info-other">Wspierasz: <strong
+                    <div class="profil-info-other">Jeszcze nie wybrał żadnej fundacji</div>
+                    @elseif($collection <= 0) <div class="profil-info-other">Wspiera: <strong
                             class="profil-info-bold-text">{{$user->foundation->name}}</strong></div>
-                <div class="profil-info-other">Jeszcze nic nie zebrano :(</div>
+                <div class="profil-info-other">Jeszcze nic nie zebrał</div>
                 @else
-                <div class="profil-info-other">Wspierasz: <strong
+                <div class="profil-info-other">Wspiera: <strong
                         class="profil-info-bold-text">{{$user->foundation->name}}</strong></div>
                 <div class="profil-info-other">Ilość punktów: <strong
                         class="profil-info-bold-text">{{$user->total_points}}</strong></div>
-                <div class="profil-info-other">Dzięki Tobie uzbierano już: <strong
+                <div class="profil-info-other">Uzbierał już: <strong
                         class="profil-info-bold-text">{{$collection}}</strong></div>
                 @endif
             </div>
@@ -138,66 +142,68 @@
             </div>
         </div>
 
-        <h2 class="section-header">Moje starty</h2>
+        <h2 class="section-header">Starty użytkownika</h2>
         <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
         <div class="my-events-div">
-            <h3 class="my-events-heading">Nadchodzące wydarzenia</h3>
-            @foreach($data as $row)
-            @if ($row->is_active==1)
-            <div class="my-event">
-                <div class="my-event-name">
-                    <div class="my-event-text">{{ $row->title }}</div>
-                </div>
-                <div class="my-event-date">
-                    <div class="my-event-text">{{ $row->event_date }}</div>
-                </div>
-                <div class="my-event-details">
-                    <a href="{{ url('wydarzenia', [$row->slug]) }}" class="button-details-event w-button">Szczegóły</a>
-                </div>
-            </div>
-            @else
-            <div>
-                <div class="text-block-header">Brak nadchodzących wydarzeń</div>
-            </div>
-            @endif
-        </div>
-        <div class="my-events-div">
-            <h3 class="my-events-heading">Ukończone wydarzenia</h3>
+          <h3 class="my-events-heading">Nadchodzące wydarzenia</h3>
+          @if(!$upcomingEvents->isEmpty())
+              @foreach($upcomingEvents as $row)
+                  <div class="my-event">
+                      <div class="my-event-name">
+                          <div class="my-event-text">{{ $row->title }}</div>
+                      </div>
+                      <div class="my-event-date">
+                          <div class="my-event-text">{{ $row->event_date }}</div>
+                      </div>
+                      <div class="my-event-details">
+                          <a href="{{ url('wydarzenia', [$row->slug]) }}" class="button-details-event w-button">Szczegóły</a>
+                      </div>
+                  </div>
+              @endforeach
+          @else
+              <div>
+                  <div class="text-block-header">Brak nadchodzących wydarzeń</div>
+              </div>
+          @endif
+      </div>
 
-            @if ($row->is_active==0)
-            @if ($row->verification=="Zaakceptowane")
-            <div class="my-event">
-                <div class="my-event-name">
-                    <div class="my-event-text">{{ $row->title }}</div>
-                </div>
-                <div class="my-event-date">
-                    <div class="my-event-text">{{ $row->event_date }}</div>
-                </div>
-                <div class="my-event-details">
-                    <div class="my-event-text">+ {{ $row->points }} pkt</div>
-                </div>
-            </div>
-            @else
-            <div class="my-event">
-                <div class="my-event-name">
-                    <div class="my-event-text">{{ $row->title }}</div>
-                </div>
-                <div class="my-event-date">
-                    <div class="my-event-text">{{ $row->event_date }}</div>
-                </div>
-                <div class="my-event-details">
-                    <a href="{{ url('wydarzenia', [$row->slug]) }}" class="button-details-event w-button">Oczekuje na
-                        opinię</a>
-                </div>
-            </div>
-            @endif
-            @else
-            <div>
-                <div class="text-block-header">Brak ukończonych wydarzeń</div>
-            </div>
-            @endif
-            @endforeach
-        </div>
+      <div class="my-events-div">
+          <h3 class="my-events-heading">Ukończone wydarzenia</h3>
+          @if(!$finishedEvents->isEmpty())
+              @foreach($finishedEvents as $row)
+                      @if ($row->verification=="Zaakceptowane")
+                      <div class="my-event">
+                          <div class="my-event-name">
+                              <div class="my-event-text">{{ $row->title }}</div>
+                          </div>
+                          <div class="my-event-date">
+                              <div class="my-event-text">{{ $row->event_date }}</div>
+                          </div>
+                          <div class="my-event-details">
+                              <div class="my-event-text">+ {{ $row->points }} pkt</div>
+                          </div>
+                      </div>
+                      @else
+                      <div class="my-event">
+                          <div class="my-event-name">
+                              <div class="my-event-text">{{ $row->title }}</div>
+                          </div>
+                          <div class="my-event-date">
+                              <div class="my-event-text">{{ $row->event_date }}</div>
+                          </div>
+                          <div class="my-event-details">
+                              <a href="{{ url('wydarzenia', [$row->slug]) }}" class="button-details-event w-button">Oczekuje na
+                                  opinię</a>
+                          </div>
+                      </div>
+                      @endif
+              @endforeach
+          @else
+          <div>
+              <div class="text-block-header">Brak ukończonych wydarzeń</div>
+          </div>
+      @endif
+      </div>
     </div>
     </div>
 

@@ -2521,18 +2521,18 @@ a {
   text-align: center;
 }
 
-.text-block-warning {
+.text-block-info {
   margin-bottom: 30px;
   padding: 24px;
   font-weight: 400;
 }
 
-.warning-block-profile {
+.warning-block {
   border-radius: 12px;
   background-color: rgba(255, 93, 93, 0.3);
 }
 
-.warning-block-profile.warning-block-login {
+.warning-block.warning-block-login {
   margin: 12px;
   box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.08);
 }
@@ -2564,6 +2564,11 @@ a {
 
 .cta-button:hover {
   background-color: #575757;
+}
+
+.success-block {
+  border-radius: 12px;
+  background-color: rgba(7, 202, 0, 0.3);
 }
 
 @media screen and (min-width: 1440px) {

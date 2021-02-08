@@ -138,9 +138,7 @@
               <br>
                 <div class="form-edit-profile-rules">* pola wymagane, aby być ujętym w rankingu użytkowników. Twoje dane <span class="form-edit-profile-bold-text">nie będą nigdzie udostępniane</span>. Służą jedynie do weryfikacji wydarzeń sportowych.</div>
               </div>
-              <div class="manage-profile-div" onclick="return confirm('Czy zatwierdzić zmiany?')">
-                {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button w-button']) !!}
-              </div>
+                {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno zapisać zmiany?")']) !!}
           </div>
           {!! Form::close() !!}
       
@@ -150,7 +148,7 @@
             <a href="{{ route('changePassword') }}" class="submit-button w-button">Zmień hasło</a>
                 {!! Form::open(['method'=>'DELETE', 'action'=>['App\Http\Controllers\UserController@destroy', $user->id]]) !!}
                 @csrf
-                {!! Form::submit('Usuń konto', ['class'=>'submit-button w-button']) !!}
+                {!! Form::submit('Usuń konto', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno usunąć konto?")']) !!}
                 {!! Form::close() !!}
         </div>
   </div>

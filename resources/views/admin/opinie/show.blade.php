@@ -88,6 +88,14 @@
     <div class="content w-container">
       <h2 class="section-header"><a href="{{ url('wydarzenia', [$event->slug]) }}">Opinie - {{$event->title}}</a></h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
+      @if(Session::has('add_verification'))
+      <div class="success-block">
+        <div class="text-block-info">
+          {{session('add_verification')}}
+        </div>
+      </div>
+      @endif
+
       @if($data)
       <div class="list-user-div">
         <div>
@@ -116,14 +124,14 @@
               {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
               <input type="hidden" name="verification" value="Zaakceptowane">
                 <div class="form-group">
-                  {!! Form::submit('Akceptuj', ['class'=>'submit-button w-button']) !!}
+                  {!! Form::submit('Akceptuj', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno akceptować opinię?")']) !!}
                 </div>
                {!! Form::close() !!}
             
                 {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
                   <input type="hidden" name="verification" value="Odrzucone">
                     <div class="form-group">
-                      {!! Form::submit('Odrzuć', ['class'=>'submit-button w-button']) !!}
+                      {!! Form::submit('Odrzuć', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno odrzucić opinię?")']) !!}
                     </div>
                 {!! Form::close() !!}
               
@@ -131,7 +139,7 @@
                 {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
               <input type="hidden" name="verification" value="Odrzucone">
               <div class="form-group">
-                {!! Form::submit('Odrzuć', ['class'=>'btn btn-danger']) !!}
+                {!! Form::submit('Odrzuć', ['class'=>'btn btn-danger'], 'onclick'=>'return confirm("Czy na pewno odrzucić opinię?")']) !!}
               </div>
           {!! Form::close() !!}
 
@@ -140,7 +148,7 @@
           {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
             <input type="hidden" name="verification" value="Zaakceptowane">
               <div class="form-group">
-                {!! Form::submit('Akceptuj', ['class'=>'btn btn-success']) !!}
+                {!! Form::submit('Akceptuj', ['class'=>'btn btn-success'], 'onclick'=>'return confirm("Czy na pewno akceptować opinię?")']) !!}
               </div>
           {!! Form::close() !!}
         @endif

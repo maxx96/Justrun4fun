@@ -90,6 +90,7 @@
       {!! Form::open(['action' => ['App\Http\Controllers\AdminEventsController@update', $event->id], 'method' => 'PATCH', 'enctype' => 'multipart/form-data']) !!}
       @csrf
       <div class="w-form">
+        @include('includes/error-form')
           <div>
             {{ Form::label('title', 'Nazwa*', ['class'=>'form-profile-field-label']) }}
             {{ Form::text('title', $event->title, ['class'=>'form-profile-text-field w-input']) }} 
@@ -124,10 +125,10 @@
             {{ Form::text('fanpage', $event->fanpage, ['class'=>'form-profile-text-field w-input']) }} 
           </div>
           <div class="button-edit-div">
-          {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button edit-button-admin w-button']) !!} 
+          {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button edit-button-admin w-button'], 'onclick'=>'return confirm("Czy na pewno zapisać zmiany?")']) !!}
           {{ Form::close() }}
             {!! Form::open(['method'=>'DELETE', 'action'=> ['App\Http\Controllers\AdminEventsController@destroy', $event->id]]) !!}
-            {!! Form::submit('Usuń wydarzenie', ['class'=>'submit-button edit-button-admin w-button']) !!}
+            {!! Form::submit('Usuń wydarzenie', ['class'=>'submit-button edit-button-admin w-button'], 'onclick'=>'return confirm("Czy na pewno usunąć wydarzenie?")']) !!}
             {!! Form::close() !!}
         </div>
          

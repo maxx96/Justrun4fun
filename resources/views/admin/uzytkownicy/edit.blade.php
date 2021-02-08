@@ -94,9 +94,7 @@
                     ['App\Http\Controllers\AdminUsersController@update', $user->id], 'files'=>true]) !!}
                      @csrf
                       <div class="w-form">
-                        <div class="row">
-                          @include('includes/error-form')
-                        </div>
+                        @include('includes/error-form')
                         <div>
                           {!! Form::label('email', 'E-mail', ['class'=>'form-profile-field-label']) !!}
                           {!! Form::email('email', null, ['class'=>'form-profile-text-field w-input'])!!}
@@ -122,12 +120,17 @@
                           {!! Form::select('age_category_id', [''=>'Wybierz kategorię wiekową'] + $age_categories, null, ['class'=>'form-profile-select-field w-select'])!!}   
                         </div>
                         <div>
+                          <div class="edit-profile-foundation">
+                            {!! Form::label('foundation_id', 'Fundacja*', ['class'=>'form-profile-field-label']) !!}
+                            <a href="{{ route('fundacje') }}" target="_blank" class="form-profile-text-foundation">Przeczytaj o fundacjach &gt;</a>
+                          </div>
+                          {!! Form::select('foundation_id', [''=>'Wybierz fundację'] + $foundations, null, ['class'=>'form-profile-select-field w-select'])!!} 
+                        </div>
+                        <div>
                           {!! Form::label('photo_id', 'Zdjęcie', ['class'=>'form-profile-field-label']) !!}
                           {!! Form::file('photo_id', null, ['class'=>'form-profile-text-field w-input'])!!}
                         </div>
-                        <div class="manage-profile-div" onclick="return confirm('Czy zatwierdzić zmiany?')">
-                          {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button w-button']) !!}
-                        </div>
+                          {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy zapisać zmiany?")']) !!}
                       </div>
                     {!! Form::close() !!}
 
@@ -136,17 +139,13 @@
                      @csrf
                      <div class="manage-profile-div">
                           {!! Form::open(['method'=>'DELETE', 'action'=>['App\Http\Controllers\UserController@destroy', $user->id]]) !!}
-                          {!! Form::submit('Usuń konto', ['class'=>'submit-button w-button']) !!}
+                          {!! Form::submit('Usuń konto', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno usunąć użytkownika?")']) !!}
                           {!! Form::close() !!}
                     </div>
 
 
         </div>
 
-      </div>
-
-      <div class="row">
-          @include('includes/error-form')
       </div>
 
     </div>
@@ -160,5 +159,3 @@
 </body>
 
 </html>
-
-@include('includes/error-form')

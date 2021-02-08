@@ -15,6 +15,6 @@ class MatchOldPassword implements Rule
 
     public function message()
     {
-        return 'Nowe hasło nie może być zgodne ze starym hasłem.';
+        return 'Aktualne hasło jest nieprawidłowe lub takie samo jak nowe hasło.';
     }
 }

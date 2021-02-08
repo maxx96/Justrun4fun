@@ -114,6 +114,28 @@
 
       <h2 class="section-header">Dodaj referencję</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
+      @if(Session::has('add_references'))
+      <div class="success-block">
+        <div class="text-block-info">
+          {{session('add_references')}}
+        </div>
+      </div>
+      @endif
+      @if(Session::has('update_references'))
+      <div class="success-block">
+        <div class="text-block-info">
+          {{session('update_references')}}
+        </div>
+      </div>
+      @endif
+      @if(Session::has('delete_references'))
+      <div class="warning-block">
+        <div class="text-block-info">
+          {{session('delete_references')}}
+        </div>
+      </div>
+      @endif
+
       <div class="w-form">
         {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\AdminPublicOpinionsController@store']) !!}
         @csrf
@@ -133,9 +155,7 @@
               {!! Form::text('author_description', null, ['class'=>'form-profile-text-field w-input'])!!}
             </div>
             <div class="form-edit-profile-rules">* pola wymagane, aby utworzyć referencję.</div>
-            <div class="button-edit-div" onclick="return confirm('Czy utworzyć nową referencję?')">
-              {!! Form::submit('Utwórz referencję', ['class'=>'submit-button w-button']) !!}
-            </div>
+              {!! Form::submit('Utwórz referencję', ['class'=>'submit-button w-button'], 'onclick'=>'return confirm("Czy na pewno utworzyć referencję?")']) !!}
             
         </div>
         {!! Form::close() !!}

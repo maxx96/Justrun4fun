@@ -14,6 +14,7 @@ use App\Models\Category;
 use App\Models\Foundation;
 use App\Models\AgeCategory;
 use DB;
+use Session;
 
 class UserController extends Controller
 {
@@ -113,6 +114,7 @@ class UserController extends Controller
       }
       $user->save();
       $user->update($input);
+      Session::flash('update_users', "Dane profilowe zostały zaktualizowane pomyślnie.");
       return redirect('profil');
     }
 

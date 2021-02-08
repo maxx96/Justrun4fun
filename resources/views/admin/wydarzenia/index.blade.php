@@ -88,6 +88,27 @@
     <div class="content w-container">
       <h2 class="section-header">Lista wydarzeń</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
+      @if(Session::has('add_event'))
+      <div class="success-block">
+        <div class="text-block-info">
+          {{session('add_event')}}
+        </div>
+      </div>
+      @endif
+      @if(Session::has('update_event'))
+      <div class="success-block">
+        <div class="text-block-info">
+          {{session('update_event')}}
+        </div>
+      </div>
+      @endif
+      @if(Session::has('delete_event'))
+      <div class="success-block">
+        <div class="text-block-info">
+          {{session('delete_event')}}
+        </div>
+      </div>
+      @endif
       @if($events)
       <div class="list-user-div">
         <div>
@@ -111,13 +132,13 @@
               {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\AdminEventsController@update', $event->id]]) }}
               @csrf
                 <input type="hidden" name="is_active" value="0">
-                  {{ Form::submit('Archiwizuj') }}
+                  {{ Form::submit('Archiwizuj', ['onclick'=>'return confirm("Czy na pewno archiwizować?")']) }}
               {{ Form::close() }}
             @else
               {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\AdminEventsController@update', $event->id]]) }}
               @csrf
                 <input type="hidden" name="is_active" value="1">
-                    {{ Form::submit('Aktywuj') }}
+                    {{ Form::submit('Aktywuj', ['onclick'=>'return confirm("Czy na pewno aktywować?")']) }}
               {{ Form::close() }}
             @endif
             <a href="../admin/opinie/{{$event->id}}" class="list-user-text list-user-text-link">Opinie</a>

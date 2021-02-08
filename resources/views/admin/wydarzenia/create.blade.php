@@ -124,9 +124,7 @@
             {{ Form::label('fanpage', 'Link do Facebooka', ['class'=>'form-profile-field-label']) }}
             {{ Form::text('fanpage', null, ['class'=>'form-profile-text-field w-input']) }} 
           </div>
-          <div class="form-group" onclick="return confirm('Czy utworzyć nowe wydarzenie?')">
-            {{ Form::submit('Utwórz wydarzenie', ['class'=>'submit-button w-button']) }} 
-          </div>
+            {{ Form::submit('Utwórz wydarzenie', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno utworzyć wydarzenie?")']) }}
       </div>
       {{ Form::close() }}
     </div>

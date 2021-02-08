@@ -100,9 +100,16 @@
         <div class="content w-container">
             <h2 class="section-header">Mój profil</h2>
             <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
+            @if(Session::has('update_users'))
+            <div class="success-block">
+              <div class="text-block-info">
+                {{session('update_users')}}
+              </div>
+            </div>
+            @endif
             @if($user->is_active==0)
-            <div class="warning-block-profile">
-                <div class="text-block-warning"><strong>Uwaga!</strong> Nie jesteś brany pod uwagę w rankingu, ponieważ
+            <div class="warning-block">
+                <div class="text-block-info"><strong>Uwaga!</strong> Nie jesteś brany pod uwagę w rankingu, ponieważ
                     posiadasz niepełne dane na swoim profilu. Uzupełnij je. W przeciwnym wypadku administrator nie
                     zweryfikuje zawodów, w których brałeś udział.</div>
             </div>

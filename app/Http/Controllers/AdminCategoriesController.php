@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Session;
 
 class AdminCategoriesController extends Controller
 {
@@ -36,7 +37,12 @@ class AdminCategoriesController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => ['required', 'max:15'],
+            'points' => ['required', 'int'],
+        ]);
         Category::create($request->all());
+        Session::flash('add_categories', "Kategoria $request->name została dodana.");
         return redirect('/admin/kategorie');
     }
 
@@ -73,7 +79,12 @@ class AdminCategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::findOrFail($id);
+        $request->validate([
+            'name' => ['required', 'max:15'],
+            'points' => ['required', 'int'],
+        ]);
         $category->update($request->all());
+        Session::flash('update_categories', "Dane kategorii zostały zaktualizowane pomyślnie."); 
         return redirect('/admin/kategorie');
     }
 
@@ -86,6 +97,7 @@ class AdminCategoriesController extends Controller
     public function destroy($id)
     {
         Category::findOrFail($id)->delete();
+        Session::flash('delete_categories', "Kategoria została usunięta."); 
         return redirect('admin/kategorie');
     }
 }

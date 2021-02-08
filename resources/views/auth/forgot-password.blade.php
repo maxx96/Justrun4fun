@@ -85,6 +85,7 @@
             <div class="login-div">
                 <div class="w-form">
 
+                 
                     @if (session('status'))
                     <div class="text-block-header">
                         {{ session('status') }}

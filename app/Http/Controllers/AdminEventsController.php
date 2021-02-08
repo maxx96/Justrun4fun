@@ -12,6 +12,7 @@ use App\Models\EventUser;
 use App\Models\Category;
 use App\Models\PublicOpinion;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class AdminEventsController extends Controller
 {
@@ -54,6 +55,7 @@ class AdminEventsController extends Controller
             $input['photo_id'] = $photo->id;
         }
         $event = Event::create($input);
+        Session::flash('add_event', "Wydarzenie $request->title została dodana.");
         return redirect('/admin/wydarzenia');
     }
     /**
@@ -98,6 +100,7 @@ class AdminEventsController extends Controller
             $input['photo_id'] = $photo->id;
         }
         Event::findOrFail($id)->update($input);
+        Session::flash('update_event', "Dane wydarzenia zostały zaktualizowane pomyślnie.");
         return redirect('admin/wydarzenia');
     }
 
@@ -118,7 +121,8 @@ class AdminEventsController extends Controller
             $photo->delete();
         }
         $event->delete();
-        return redirect('admin/wydarzenia')->with('success','Wydarzenie usunięte');
+        Session::flash('delete_event', "Wydarzenie zostało usunięte.");
+        return redirect('admin/wydarzenia');
     }
 
     // Wyświetlanie wydarzenia

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Foundation;
 use Illuminate\Http\Request;
+use Session;
 
 class FoundationController extends Controller
 {
@@ -37,6 +38,7 @@ class FoundationController extends Controller
     public function store(Request $request)
     {
         Foundation::create($request->all());
+        Session::flash('add_foundations', "Fundacja $request->name została dodana.");
         return redirect('/admin/fundacje');
     }
 
@@ -74,6 +76,7 @@ class FoundationController extends Controller
     {
         $foundation = Foundation::findOrFail($id);
         $foundation->update($request->all());
+        Session::flash('update_foundations', "Dane fundacji zostały zaktualizowane pomyślnie.");
         return redirect('/admin/fundacje');
     }
 
@@ -86,6 +89,7 @@ class FoundationController extends Controller
     public function destroy($id)
     {
         Foundation::findOrFail($id)->delete();
+        Session::flash('delete_foundations', "Fundacja została usunięta.");
         return redirect('admin/fundacje');
     }
 }

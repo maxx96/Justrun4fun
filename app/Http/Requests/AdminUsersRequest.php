@@ -13,7 +13,6 @@ class AdminUsersRequest extends FormRequest
          $rules = [
              'email' => 'required',
              'role_id' => 'required',
-             'is_active' => 'required',
              'password' => 'required',
          ];
 

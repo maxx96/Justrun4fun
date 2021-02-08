@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PublicOpinion;
 use App\Models\Event;
+use Session;
 
 class AdminPublicOpinionsController extends Controller
 {
@@ -42,6 +43,7 @@ class AdminPublicOpinionsController extends Controller
         PublicOpinion::create($request->all());
         $event = Event::findOrFail($request->event_id);
         $public_opinions = PublicOpinion::where('id', '=', $request->event_id)->get();
+        Session::flash('add_references', "Referencja $request->author została dodana.");
         return view('admin/referencje/show', compact('event', 'public_opinions'));
     }
 
@@ -87,6 +89,7 @@ class AdminPublicOpinionsController extends Controller
             'content' => 'required|max:200',
         ]);
         $public_opinions->update($request->all());
+        Session::flash('update_references', "Dane referencji zostały zaktualizowane pomyślnie.");
         return redirect()->route('referencje.show', [$public_opinions->event_id]);
     }
 
@@ -99,6 +102,7 @@ class AdminPublicOpinionsController extends Controller
     public function destroy($id)
     {
         PublicOpinion::findOrFail($id)->delete();
+        Session::flash('delete_references', "Referencja została usunięta.");
         return redirect()->back();
     }
 }

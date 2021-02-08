@@ -91,6 +91,7 @@
       {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\AdminUsersController@store','files'=>true]) !!}
       @csrf
       <div class="w-form">
+        @include('includes/error-form')
           <div>
             {!! Form::label('firstname', 'Imię', ['class'=>'form-profile-field-label']) !!}
             {!! Form::text('firstname', null, ['class'=>'form-profile-text-field w-input'])!!} 
@@ -106,10 +107,6 @@
           <div>
             {!! Form::label('role_id', 'Rola*', ['class'=>'form-profile-field-label']) !!}
             {!! Form::select('role_id', [''=>'Wybierz rolę'] + $roles , null, ['class'=>'form-profile-select-field w-select'])!!}   
-          </div>
-          <div>
-            {!! Form::label('is_active', 'Status*', ['class'=>'form-profile-field-label']) !!}
-            {!! Form::select('is_active', array(1 => 'Aktywny', 0=> 'Nieaktywny'), null, ['class'=>'form-profile-select-field w-select'])!!}
           </div>
           <div>
             {!! Form::label('age_category_id', 'Kategoria wiekowa', ['class'=>'form-profile-field-label']) !!}
@@ -132,13 +129,11 @@
             {!! Form::select('foundation_id', [''=>'Wybierz fundację'] + $foundations, null, ['class'=>'form-profile-select-field w-select'])!!} 
           </div>
           <div>
-            {!! Form::label('password', 'Hasło', ['class'=>'form-profile-field-label']) !!}
+            {!! Form::label('password', 'Hasło*', ['class'=>'form-profile-field-label']) !!}
             {!! Form::password('password', ['class'=>'form-profile-text-field w-input'])!!}
           </div>
-          <div class="form-group" onclick="return confirm('Czy utworzyć nowego użytkownika?')">
-            {!! Form::submit('Utwórz użytkownika', ['class'=>'submit-button w-button']) !!}
-          </div>
-          @include('includes/error-form')
+          <div class="form-edit-profile-rules">* pola wymagane, aby utworzyć użytkownika</div>
+            {!! Form::submit('Utwórz użytkownika', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno utworzyć nowego użytkownika?")']) !!}
       </div>
       {!! Form::close() !!}
     </div>
