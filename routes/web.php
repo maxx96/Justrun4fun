@@ -44,16 +44,15 @@ Route::patch('admin/opinie/verification/{id}', [EventOpinionsController::class, 
 Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('changePassword');
 Route::post('/change-password', [ChangePasswordController::class, 'store'])->name('change.password');
 
-Route::group(['middleware'=>'admin'], function(){
-    Route::get('/admin', function(){
-      return view('admin/index');
+Route::group(['prefix'=>'/admin', 'middleware'=>'admin'], function(){
+    Route::get('/', function(){
+      return view('admin.index');
     })->name('admin.index');
-    
     Route::resources([
-      'admin/uzytkownicy' => AdminUsersController::class,
-      'admin/wydarzenia' => AdminEventsController::class,
-      'admin/kategorie' => AdminCategoriesController::class,
-      'admin/fundacje' => FoundationController::class
+      'uzytkownicy' => AdminUsersController::class,
+      'wydarzenia' => AdminEventsController::class,
+      'kategorie' => AdminCategoriesController::class,
+      'fundacje' => FoundationController::class
     ]);
 });
 

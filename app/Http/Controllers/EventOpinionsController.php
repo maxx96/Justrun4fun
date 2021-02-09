@@ -65,7 +65,7 @@ class EventOpinionsController extends Controller
         ->join('opinions', 'events.id', '=', 'opinions.event_id')
         ->select('opinions.*', 'events.title', 'users.email', 'event_users.verification', 'event_users.id as id_event_users')
         ->where('events.id', '=', $id)
-        ->get();
+        ->paginate(10);
         return view('admin/opinie/show', compact('data', 'event'));
     }
 

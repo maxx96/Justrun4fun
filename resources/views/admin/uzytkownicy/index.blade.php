@@ -123,6 +123,7 @@
           </div>
         </div>
         @endforeach
+        @include('includes/pagination', ['pagination' => $users])
       </div>
       @endif
     </div>

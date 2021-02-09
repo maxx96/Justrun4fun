@@ -2365,6 +2365,7 @@ a {
 
 .list-user-div {
   display: block;
+  margin-bottom: 100px;
   padding-top: 10px;
   padding-bottom: 10px;
   -webkit-justify-content: space-around;

@@ -133,6 +133,7 @@
           </div>
         </div>
         @endforeach
+        @include('includes/pagination', ['pagination' => $events])
       </div>
       @endif
     </div>

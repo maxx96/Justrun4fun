@@ -23,7 +23,7 @@ class PagesController extends Controller
       }
   
     public function events(){
-        $events = Event::where('is_active', 1)->orderBy('event_date', 'asc')->get();
+        $events = Event::where('is_active', 1)->orderBy('event_date', 'asc')->paginate(24);
         $categories = Category::all();
         return view('menu/wydarzenia', compact('events','categories'));
     }
@@ -55,7 +55,7 @@ class PagesController extends Controller
             $events = $events->where('category_id', '=', $category);
         }
         $events->where('event_date', '>=', Carbon::today());
-        $events = $events->orderBy('event_date', 'asc')->paginate(50);
+        $events = $events->orderBy('event_date', 'asc')->paginate(24);
         $categories = Category::all();
         return view('menu/wydarzenia', compact('events','categories'));
     }

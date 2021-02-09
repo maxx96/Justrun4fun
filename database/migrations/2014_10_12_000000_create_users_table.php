@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('surname', 20)->nullable();
             $table->string('city', 30)->nullable();
             $table->integer('total_points')->default(0);
+            $table->integer('rank')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

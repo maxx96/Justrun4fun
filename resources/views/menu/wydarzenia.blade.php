@@ -158,6 +158,7 @@
                 </a>
               @endforeach
             </div>
+            @include('includes/pagination', ['pagination' => $events])
           </div>
         @else
         <div>

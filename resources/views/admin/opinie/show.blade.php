@@ -157,6 +157,7 @@
           </div>
           @endforeach
         </div>
+        @include('includes/pagination', ['pagination' => $data])
       </div>
       @else
         <br>
