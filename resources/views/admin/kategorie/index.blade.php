@@ -87,24 +87,10 @@
     <div class="content w-container">
       <h2 class="section-header">Kategorie</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
-      @if(Session::has('add_categories'))
+      @if(Session::has('message'))
       <div class="success-block">
         <div class="text-block-info">
-          {{session('add_categories')}}
-        </div>
-      </div>
-      @endif
-      @if(Session::has('update_categories'))
-      <div class="success-block">
-        <div class="text-block-info">
-          {{session('update_categories')}}
-        </div>
-      </div>
-      @endif
-      @if(Session::has('delete_categories'))
-      <div class="warning-block">
-        <div class="text-block-info">
-          {{session('delete_categories')}}
+          {{session('message')}}
         </div>
       </div>
       @endif

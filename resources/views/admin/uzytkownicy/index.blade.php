@@ -89,24 +89,10 @@
     <div class="content w-container">
       <h2 class="section-header">Lista użytkowników</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
-      @if(Session::has('add_users'))
+      @if(Session::has('message'))
       <div class="success-block">
         <div class="text-block-info">
-          {{session('add_users')}}
-        </div>
-      </div>
-      @endif
-      @if(Session::has('update_users'))
-      <div class="success-block">
-        <div class="text-block-info">
-          {{session('update_users')}}
-        </div>
-      </div>
-      @endif
-      @if(Session::has('delete_users'))
-      <div class="success-block">
-        <div class="text-block-info">
-          {{session('delete_users')}}
+          {{session('message')}}
         </div>
       </div>
       @endif

@@ -88,10 +88,10 @@
     <div class="content w-container">
       <h2 class="section-header"><a href="{{ url('wydarzenia', [$event->slug]) }}">Opinie - {{$event->title}}</a></h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
-      @if(Session::has('add_verification'))
+      @if(Session::has('message'))
       <div class="success-block">
         <div class="text-block-info">
-          {{session('add_verification')}}
+          {{session('message')}}
         </div>
       </div>
       @endif

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EventsCreateRequest;
 use Illuminate\Http\Request;
 use App\Models\Photo;
 use App\Models\Event;
@@ -12,40 +11,49 @@ use App\Models\EventUser;
 use App\Models\Category;
 use App\Models\PublicOpinion;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Session;
+use Carbon\Carbon;
 
 class AdminEventsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected function validator($data){
+        $after_date = Carbon::today()->toDateString();
+
+        return Validator::make($data, [
+            'title'=>'required|max:100',
+            'place'=>'required|max:40',
+            'event_date'=>'required|date|after:' . $after_date,
+            'category_id'=>'required',
+            'photo_id'=>'required',
+        ],
+        [
+            'title.required' => 'Nazwa wydarzenia jest wymagana.',
+            'title.max' => 'Nazwa wydarzenia może mieć maksymalnie 100 znaków.',
+            'place.required' => 'Miejsce jest wymagane.',
+            'place.max' => 'Miejsce może mieć maksymalnie 40 znaków.',
+            'event_date.required' => 'Data jest wymagana.',
+            'event_date.after' => 'Data nie może być przeszła.',
+            'category_id.required' => 'Kategoria jest wymagana.',
+            'photo_id.required'  => 'Zdjęcie jest wymagane.',
+        ]);
+    }
+
     public function index()
     {
         $events = Event::paginate(10);
         return view('admin/wydarzenia/index', compact('events'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $categories = Category::pluck('name', 'id')->all();
         return view('admin/wydarzenia/create', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(eventsCreateRequest $request)
+    public function store(Request $request)
     {
+        $this->validator($request->all())->validate();
         $input = $request->all();
         $user = Auth::user();
         if ($file = $request->file('photo_id')) {
@@ -55,26 +63,14 @@ class AdminEventsController extends Controller
             $input['photo_id'] = $photo->id;
         }
         $event = Event::create($input);
-        Session::flash('add_event', "Wydarzenie $request->title została dodana.");
+        Session::flash('message', "Wydarzenie $request->title została dodana.");
         return redirect('/admin/wydarzenia');
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function show($id)
     {
-        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $event = Event::findOrFail($id);
@@ -82,16 +78,9 @@ class AdminEventsController extends Controller
         return view('admin/wydarzenia/edit', compact('event', 'categories'));
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
+        $this->validator($request->all())->validate();
         $input = $request->all();
         if ($file = $request->file('photo_id')) {
             $name = time() . $file->getClientOriginalName();
@@ -100,16 +89,10 @@ class AdminEventsController extends Controller
             $input['photo_id'] = $photo->id;
         }
         Event::findOrFail($id)->update($input);
-        Session::flash('update_event', "Dane wydarzenia zostały zaktualizowane pomyślnie.");
+        Session::flash('message', "Dane wydarzenia zostały zaktualizowane pomyślnie.");
         return redirect('admin/wydarzenia');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $event = Event::findOrFail($id);
@@ -121,7 +104,7 @@ class AdminEventsController extends Controller
             $photo->delete();
         }
         $event->delete();
-        Session::flash('delete_event', "Wydarzenie zostało usunięte.");
+        Session::flash('message', "Wydarzenie zostało usunięte.");
         return redirect('admin/wydarzenia');
     }
 

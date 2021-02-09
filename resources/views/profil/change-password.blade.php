@@ -107,7 +107,6 @@
                     @include('includes/error-form')
                     <form method="POST" action="{{ route('change.password') }}" class="form-login">
                         @csrf
-                        @include('includes/error-form')
 
                         <div class="password-div">
                             <x-jet-label for="password" class="form-login-text" value="{{ __('Aktualne hasło') }}" />

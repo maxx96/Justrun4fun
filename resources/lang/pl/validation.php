@@ -130,9 +130,6 @@ return [
 
     'custom' => [
         'attribute-name' => [
-            'current_password' => 'Obecne hasło',
-            'new_password' => 'Nowe hasło',
-            'new_confirm_password' => 'Potwierdzenie nowego hasła',
             'rule-name' => 'custom-message',
         ],
     ],
@@ -149,10 +146,5 @@ return [
     */
 
     'attributes' => [
-        'current_password' => 'Obecne hasło',
-        'new_password' => 'Nowe hasło',
-        'new_confirm_password' => '"Potwierdź nowe hasło"',
-        'points' => '"Ilość punktów"',
-        'name' => '"Nazwa"',
     ],
 ];

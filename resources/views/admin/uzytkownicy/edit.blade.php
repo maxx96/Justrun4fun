@@ -96,7 +96,7 @@
                       <div class="w-form">
                         @include('includes/error-form')
                         <div>
-                          {!! Form::label('email', 'E-mail', ['class'=>'form-profile-field-label']) !!}
+                          {!! Form::label('email', 'E-mail*', ['class'=>'form-profile-field-label']) !!}
                           {!! Form::email('email', null, ['class'=>'form-profile-text-field w-input'])!!}
                         </div>
                         <div>
@@ -121,7 +121,7 @@
                         </div>
                         <div>
                           <div class="edit-profile-foundation">
-                            {!! Form::label('foundation_id', 'Fundacja*', ['class'=>'form-profile-field-label']) !!}
+                            {!! Form::label('foundation_id', 'Fundacja', ['class'=>'form-profile-field-label']) !!}
                             <a href="{{ route('fundacje') }}" target="_blank" class="form-profile-text-foundation">Przeczytaj o fundacjach &gt;</a>
                           </div>
                           {!! Form::select('foundation_id', [''=>'Wybierz fundację'] + $foundations, null, ['class'=>'form-profile-select-field w-select'])!!} 

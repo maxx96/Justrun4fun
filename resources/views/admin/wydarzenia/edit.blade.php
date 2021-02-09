@@ -125,10 +125,10 @@
             {{ Form::text('fanpage', $event->fanpage, ['class'=>'form-profile-text-field w-input']) }} 
           </div>
           <div class="button-edit-div">
-          {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button edit-button-admin w-button'], 'onclick'=>'return confirm("Czy na pewno zapisać zmiany?")']) !!}
+          {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button edit-button-admin w-button', 'onclick'=>'return confirm("Czy na pewno zapisać zmiany?")']) !!}
           {{ Form::close() }}
             {!! Form::open(['method'=>'DELETE', 'action'=> ['App\Http\Controllers\AdminEventsController@destroy', $event->id]]) !!}
-            {!! Form::submit('Usuń wydarzenie', ['class'=>'submit-button edit-button-admin w-button'], 'onclick'=>'return confirm("Czy na pewno usunąć wydarzenie?")']) !!}
+            {!! Form::submit('Usuń wydarzenie', ['class'=>'submit-button edit-button-admin w-button', 'onclick'=>'return confirm("Czy na pewno usunąć wydarzenie?")']) !!}
             {!! Form::close() !!}
         </div>
          
