@@ -141,7 +141,7 @@
               {!! Form::text('author_description', null, ['class'=>'form-profile-text-field w-input'])!!}
             </div>
             <div class="form-edit-profile-rules">* pola wymagane, aby utworzyć referencję.</div>
-              {!! Form::submit('Utwórz referencję', ['class'=>'submit-button w-button'], 'onclick'=>'return confirm("Czy na pewno utworzyć referencję?")']) !!}
+              {!! Form::submit('Utwórz referencję', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno utworzyć referencję?")']) !!}
             
         </div>
         {!! Form::close() !!}

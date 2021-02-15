@@ -87,32 +87,32 @@
     <div class="content w-container">
       <h2 class="section-header">Edytuj referencję</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
-      {!! Form::model($public_opinion, ['method'=>'PATCH', 'action'=> ['App\Http\Controllers\AdminPublicOpinionsController@update', $public_opinion->id]]) !!}
+      {{ Form::model($public_opinion, ['method'=>'PATCH', 'action'=> ['App\Http\Controllers\AdminPublicOpinionsController@update', $public_opinion->id]]) }}
       @csrf
       <div class="w-form">
         @include('includes/error-form')
           <input type="hidden" name="event_id" value="{{ $event->id }}">
         <div>
-          {!! Form::label('content', 'Treść referencji (do 200 znaków)*', ['class'=>'form-profile-field-label']) !!}
-          {!! Form::textarea('content', null, ['class'=>'form-profile-text-field w-input'])!!} 
+          {{ Form::label('content', 'Treść referencji (do 200 znaków)*', ['class'=>'form-profile-field-label']) }}
+          {{ Form::textarea('content', null, ['class'=>'form-profile-text-field w-input']) }} 
         </div>
         <div>
-          {!! Form::label('author', 'Autor (do 30 znaków)*', ['class'=>'form-profile-field-label']) !!}
-          {!! Form::text('author', null, ['class'=>'form-profile-text-field w-input'])!!} 
+          {{ Form::label('author', 'Autor (do 30 znaków)*', ['class'=>'form-profile-field-label']) }}
+          {{ Form::text('author', null, ['class'=>'form-profile-text-field w-input']) }} 
         </div>
         <div>
-          {!! Form::label('author_description', 'Opis autora (do 60 znaków)*', ['class'=>'form-profile-field-label']) !!}
-          {!! Form::text('author_description', null, ['class'=>'form-profile-text-field w-input'])!!}
+          {{ Form::label('author_description', 'Opis autora (do 60 znaków)*', ['class'=>'form-profile-field-label']) }}
+          {{ Form::text('author_description', null, ['class'=>'form-profile-text-field w-input']) }}
         </div>
         <div class="form-edit-profile-rules">* pola wymagane, aby utworzyć referencję.</div>
 
         <div class="button-edit-div">
-            {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button edit-button-admin w-button'], 'onclick'=>'return confirm("Czy na pewno zapisać zmiany?")']) !!}
-            {!! Form::close() !!}
+            {{ Form::submit('Zapisz zmiany', ['class'=>'submit-button edit-button-admin w-button'], 'onclick'=>'return confirm("Czy na pewno zapisać zmiany?")']) }}
+            {{ Form::close() }}
 
-            {!! Form::open(['method'=>'DELETE', 'action'=> ['App\Http\Controllers\AdminPublicOpinionsController@destroy', $public_opinion->id]]) !!}
-            {!! Form::submit('Usuń referencję', ['class'=>'submit-button edit-button-admin w-button'], 'onclick'=>'return confirm("Czy na pewno usunąć referencję?")']) !!}
-            {!! Form::close() !!}
+            {{ Form::open(['method'=>'DELETE', 'action'=> ['App\Http\Controllers\AdminPublicOpinionsController@destroy', $public_opinion->id]]) }}
+            {{ Form::submit('Usuń referencję', ['class'=>'submit-button edit-button-admin w-button'], 'onclick'=>'return confirm("Czy na pewno usunąć referencję?")']) }}
+            {{ Form::close() }}
         </div>
     </div>
 

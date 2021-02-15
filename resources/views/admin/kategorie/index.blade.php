@@ -121,20 +121,20 @@
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
       <div class="w-form">
         @include('includes/error-form')
-      {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\AdminCategoriesController@store']) !!}
+      {{ Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\AdminCategoriesController@store']) !!}
       @csrf
         <form id="email-form" name="email-form" data-name="Email Form">
           <div>
-            {!! Form::label('name', 'Nazwa:', ['class'=>'form-profile-field-label']) !!}
-            {!! Form::text('name', null, ['class'=>'form-profile-text-field w-input'])!!}
+            {{ Form::label('name', 'Nazwa:', ['class'=>'form-profile-field-label']) !!}
+            {{ Form::text('name', null, ['class'=>'form-profile-text-field w-input'])!!}
           </div>
           <div>
-            {!! Form::label('points', 'Ilość punktów:', ['class'=>'form-profile-field-label']) !!}
-            {!! Form::text('points', null, ['class'=>'form-profile-text-field w-input'])!!}
+            {{ Form::label('points', 'Ilość punktów:', ['class'=>'form-profile-field-label']) !!}
+            {{ Form::text('points', null, ['class'=>'form-profile-text-field w-input'])!!}
           </div>
-            {!! Form::submit('Utwórz kategorię', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno utworzyć kategorię?")']) !!}
+            {{ Form::submit('Utwórz kategorię', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno utworzyć kategorię?")']) !!}
         </form>
-        {!! Form::close() !!}
+        {{ Form::close() !!}
       </div>
     </div>
   </div>

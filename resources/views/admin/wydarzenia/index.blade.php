@@ -115,15 +115,13 @@
             <div class="list-user-text">{{ number_format($event->opinions()->avg('overall_rating'), 1) }} / 10.0<br></div>
             <div class="list-user-text">{{ $event->opinions()->count() }}<br></div>
             @if($event->is_active == 1)
-              {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\AdminEventsController@update', $event->id]]) }}
+              {{ Form::open(['method'=>'POST', 'action'=> ['App\Http\Controllers\AdminEventsController@updateStatus', $event->id]]) }}
               @csrf
-                <input type="hidden" name="is_active" value="0">
                   {{ Form::submit('Archiwizuj', ['onclick'=>'return confirm("Czy na pewno archiwizować?")']) }}
               {{ Form::close() }}
             @else
-              {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\AdminEventsController@update', $event->id]]) }}
+              {{ Form::open(['method'=>'POST', 'action'=> ['App\Http\Controllers\AdminEventsController@updateStatus', $event->id]]) }}
               @csrf
-                <input type="hidden" name="is_active" value="1">
                     {{ Form::submit('Aktywuj', ['onclick'=>'return confirm("Czy na pewno aktywować?")']) }}
               {{ Form::close() }}
             @endif

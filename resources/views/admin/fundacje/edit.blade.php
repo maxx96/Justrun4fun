@@ -87,22 +87,22 @@
     <div class="content w-container">
       <h2 class="section-header">Edytuj fundację</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
-      {!! Form::model($foundation, ['method'=>'PATCH', 'action'=> ['App\Http\Controllers\FoundationController@update', $foundation->id]]) !!}
+      {{ Form::model($foundation, ['method'=>'PATCH', 'action'=> ['App\Http\Controllers\FoundationController@update', $foundation->id]]) }}
       @csrf
       <div class="w-form">
         @include('includes/error-form')
           <div>
-            {!! Form::label('nazwa', 'Nazwa:', ['class'=>'form-profile-field-label']) !!}
-            {!! Form::text('name', null, ['class'=>'form-profile-text-field w-input'])!!}
+            {{ Form::label('nazwa', 'Nazwa:', ['class'=>'form-profile-field-label']) }}
+            {{ Form::text('name', null, ['class'=>'form-profile-text-field w-input']) }}
           </div>
 
           <div class="button-edit-div">
-              {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button edit-button-admin w-button', 'onclick'=>'return confirm("Czy na pewno zapisać zmiany?")']) !!}
-      {!! Form::close() !!}
+              {{ Form::submit('Zapisz zmiany', ['class'=>'submit-button edit-button-admin w-button', 'onclick'=>'return confirm("Czy na pewno zapisać zmiany?")']) }}
+      {{ Form::close() }}
 
-            {!! Form::open(['method'=>'DELETE', 'action'=> ['App\Http\Controllers\FoundationController@destroy', $foundation->id]]) !!}
-              {!! Form::submit('Usuń fundację', ['class'=>'submit-button edit-button-admin w-button', 'onclick'=>'return confirm("Czy na pewno usunąć fundację?")']) !!}
-            {!! Form::close() !!}
+            {{ Form::open(['method'=>'DELETE', 'action'=> ['App\Http\Controllers\FoundationController@destroy', $foundation->id]]) }}
+              {{ Form::submit('Usuń fundację', ['class'=>'submit-button edit-button-admin w-button', 'onclick'=>'return confirm("Czy na pewno usunąć fundację?")']) }}
+            {{ Form::close() }}
           </div>
       </div>
     </div>

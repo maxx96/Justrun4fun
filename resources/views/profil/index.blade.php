@@ -202,6 +202,19 @@
                                 <div class="my-event-text">+ {{ $row->points }} pkt</div>
                             </div>
                         </div>
+                        @elseif($row->verification=="W trakcie")
+                        <div class="my-event">
+                            <div class="my-event-name">
+                                <div class="my-event-text">{{ $row->title }}</div>
+                            </div>
+                            <div class="my-event-date">
+                                <div class="my-event-text">{{ $row->event_date }}</div>
+                            </div>
+                            <div class="my-event-details">
+                                <a href="{{ url('wydarzenia', [$row->slug]) }}" class="button-details-event w-button">Oczekuje na
+                                    weryfikację</a>
+                            </div>
+                        </div>
                         @else
                         <div class="my-event">
                             <div class="my-event-name">

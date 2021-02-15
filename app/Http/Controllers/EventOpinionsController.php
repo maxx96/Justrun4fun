@@ -11,6 +11,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Session;
+use DB;
 
 class EventOpinionsController extends Controller
 {
@@ -53,6 +54,9 @@ class EventOpinionsController extends Controller
           'body' => $request->body
       ];
         Opinion::create($data);
+        $eventusers = EventUser::where('event_id', '=', $request->event_id)->where('user_id', '=', $user->id)->first();
+        $eventusers->verification='W trakcie';
+        $eventusers->save();
         Session::flash('message', 'Twoja opinia została przesłana i zostanie zweryfikowana w ciągu 24 godzin.');
         return redirect()->back();
     }
@@ -60,12 +64,20 @@ class EventOpinionsController extends Controller
     public function show($id)
     {
         $event = Event::findOrFail($id);
-        $data = EventUser::join('users', 'event_users.user_id', '=', 'users.id')
-        ->join('events', 'event_users.event_id', '=', 'events.id')
-        ->join('opinions', 'events.id', '=', 'opinions.event_id')
+        $data = DB::table('opinions')
+        ->join('events', 'events.id', '=', 'opinions.event_id') 
+        ->join('event_users', 'event_users.event_id', '=', 'events.id')
+        ->join('users', 'users.id', '=', 'event_users.user_id')
+        ->where('event_users.event_id', $id)->where(function ($query) {
+            $query->where('verification', 'W trakcie')
+            ->orWhere('verification', 'Zaakceptowane')
+            ->orWhere('verification', 'Odrzucone');
+        })
         ->select('opinions.*', 'events.title', 'users.email', 'event_users.verification', 'event_users.id as id_event_users')
         ->where('events.id', '=', $id)
-        ->paginate(10);
+        ->get();
+        $data = $data->unique('author');
+        return $data;
         return view('admin/opinie/show', compact('data', 'event'));
     }
 

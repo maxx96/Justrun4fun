@@ -120,44 +120,44 @@
             <div class="list-user-text">{{$row->organization_rating}} / 10<br></div>
             <div class="list-user-text">{{$row->overall_rating}} / 10<br></div>
             <div>
-              @if($row->verification == "Brak")
-              {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
+              @if($row->verification == "W trakcie")
+              {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id]]) }}
               <input type="hidden" name="verification" value="Zaakceptowane">
                 <div class="form-group">
-                  {!! Form::submit('Akceptuj', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno akceptować opinię?")']) !!}
+                  {{ Form::submit('Akceptuj', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno akceptować opinię?")']) }}
                 </div>
-               {!! Form::close() !!}
+               {{ Form::close() }}
             
-                {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
+                {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id]]) }}
                   <input type="hidden" name="verification" value="Odrzucone">
                     <div class="form-group">
-                      {!! Form::submit('Odrzuć', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno odrzucić opinię?")']) !!}
+                      {{ Form::submit('Odrzuć', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno odrzucić opinię?")']) }}
                     </div>
-                {!! Form::close() !!}
+                {{ Form::close() }}
               
                 @elseif($row->verification == "Zaakceptowane")
-                {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
+                {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id]]) }}
               <input type="hidden" name="verification" value="Odrzucone">
               <div class="form-group">
-                {!! Form::submit('Odrzuć', ['class'=>'btn btn-danger'], 'onclick'=>'return confirm("Czy na pewno odrzucić opinię?")']) !!}
+                {{ Form::submit('Odrzuć', ['class'=>'btn btn-danger', 'onclick'=>'return confirm("Czy na pewno odrzucić opinię?")']) }}
               </div>
-          {!! Form::close() !!}
+          {{ Form::close() }}
 
         @elseif($row->verification == "Odrzucone")
         
-          {!! Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id_event_users]]) !!}
+          {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id]]) }}
             <input type="hidden" name="verification" value="Zaakceptowane">
               <div class="form-group">
-                {!! Form::submit('Akceptuj', ['class'=>'btn btn-success'], 'onclick'=>'return confirm("Czy na pewno akceptować opinię?")']) !!}
+                {{ Form::submit('Akceptuj', ['class'=>'btn btn-success', 'onclick'=>'return confirm("Czy na pewno akceptować opinię?")']) }}
               </div>
-          {!! Form::close() !!}
+          {{ Form::close() }}
         @endif
  
             </div>
           </div>
           @endforeach
         </div>
-        @include('includes/pagination', ['pagination' => $data])
+        {{-- @include('includes/pagination', ['pagination' => $data]) --}}
       </div>
       @else
         <br>

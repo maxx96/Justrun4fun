@@ -120,15 +120,15 @@
       <div class="w-form">
         @csrf
         @include('includes/error-form')
-        {!! Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\FoundationController@store']) !!}
+        {{ Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\FoundationController@store']) }}
           <form id="email-form" name="email-form" data-name="Email Form">
             <div>
-              {!! Form::label('nazwa', 'Nazwa:', ['class'=>'form-profile-field-label']) !!}
-              {!! Form::text('name', null, ['class'=>'form-profile-text-field w-input'])!!}
-              {!! Form::submit('Utwórz fundację', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno utworzyć fundację?")']) !!}
+              {{ Form::label('nazwa', 'Nazwa:', ['class'=>'form-profile-field-label']) }}
+              {{ Form::text('name', null, ['class'=>'form-profile-text-field w-input']) }}
+              {{ Form::submit('Utwórz fundację', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno utworzyć fundację?")']) }}
             </div>
           </form>
-        {!! Form::close() !!}
+        {{ Form::close() !!}
       </div>
     </div>
   </div>

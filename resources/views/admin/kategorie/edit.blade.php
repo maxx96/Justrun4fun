@@ -87,26 +87,26 @@
     <div class="content w-container">
       <h2 class="section-header">Edytuj kategorię</h2>
       <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
-      {!! Form::model($category, ['method'=>'PATCH', 'action'=> ['App\Http\Controllers\AdminCategoriesController@update', $category->id]]) !!}
+      {{ Form::model($category, ['method'=>'PATCH', 'action'=> ['App\Http\Controllers\AdminCategoriesController@update', $category->id]]) }}
       @csrf
       <div class="w-form">
         @include('includes/error-form')
           <div>
-            {!! Form::label('name', 'Nazwa:', ['class'=>'form-profile-field-label']) !!}
-            {!! Form::text('name', null, ['class'=>'form-profile-text-field w-input'])!!} 
+            {{ Form::label('name', 'Nazwa:', ['class'=>'form-profile-field-label']) }}
+            {{ Form::text('name', null, ['class'=>'form-profile-text-field w-input']) }} 
           </div>
           <div>
-            {!! Form::label('points', 'Ilość punktów:', ['class'=>'form-profile-field-label']) !!}
-            {!! Form::text('points', null, ['class'=>'form-profile-text-field w-input'])!!} 
+            {{ Form::label('points', 'Ilość punktów:', ['class'=>'form-profile-field-label']) }}
+            {{ Form::text('points', null, ['class'=>'form-profile-text-field w-input']) }} 
           </div>
 
           <div class="button-edit-div">
-            {!! Form::submit('Zapisz zmiany', ['class'=>'submit-button edit-button-admin w-button', 'onclick'=>'return confirm("Czy na pewno zapisać zmiany?")']) !!}
-            {!! Form::close() !!}
+            {{ Form::submit('Zapisz zmiany', ['class'=>'submit-button edit-button-admin w-button', 'onclick'=>'return confirm("Czy na pewno zapisać zmiany?")']) }}
+            {{ Form::close() }}
 
-            {!! Form::open(['method'=>'DELETE', 'action'=> ['App\Http\Controllers\AdminCategoriesController@destroy', $category->id]]) !!}
-            {!! Form::submit('Usuń kategorię', ['class'=>'submit-button edit-button-admin w-button', 'onclick'=>'return confirm("Czy na pewno usunąć kategorię?")']) !!}
-            {!! Form::close() !!}
+            {{ Form::open(['method'=>'DELETE', 'action'=> ['App\Http\Controllers\AdminCategoriesController@destroy', $category->id]]) }}
+            {{ Form::submit('Usuń kategorię', ['class'=>'submit-button edit-button-admin w-button', 'onclick'=>'return confirm("Czy na pewno usunąć kategorię?")']) }}
+            {{ Form::close() }}
 
           </div>
       </div>

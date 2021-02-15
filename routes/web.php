@@ -33,6 +33,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/profil', function () {
 Route::get('/wydarzenia', [PagesController::class, 'events'])->name('wydarzenia');
 Route::get('/wyszukaj', [PagesController::class, 'filterSearch'])->name('filterSearch');
 Route::get('/wydarzenia/{id}', [AdminEventsController::class, 'event'])->name('wydarzenie');
+Route::post('/updateStatus/{id}', [AdminEventsController::class, 'updateStatus'])->name('updateStatus');
 Route::resource('/profil', UserController::class)->middleware('verified');
 Route::get('/eventRegistration/{id}', [UserController::class, 'eventRegistration'])->name('eventRegistration');
 Route::get('/rankingRegistration/{id}', [UserController::class, 'rankingRegistration'])->name('rankingRegistration');;

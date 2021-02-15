@@ -36,6 +36,17 @@ class UserController extends Controller
         ]);
     }
 
+    protected function validatorUpdate($data){
+        return Validator::make($data, [
+            'email' => ['required', 'string', 'email', 'max:50'],
+        ],
+        [
+            'email.required' => 'E-mail jest wymagany.',
+            'email.email' => 'E-mail musi być mailem.',
+            'email.max' => 'E-mail może mieć maksymalnie 50 znaków.',
+        ]);
+    }
+
     public function index()
     {
         $id = Auth::id();
@@ -77,7 +88,7 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validator($request->all())->validate();
+        $this->validatorUpdate($request->all())->validate();
         $user = Auth::user();
         $input = $request->all();
         if ($file = $request->file('photo_id')){

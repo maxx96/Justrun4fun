@@ -17,13 +17,11 @@ class PagesController extends Controller
 {
     public function index(){
         $events = Event::where('is_active', 1)->orderBy('event_date', 'asc')->limit(3)->get();
-        $count_events = Event::select('count')->count();
-        $count_users = User::select('count')->count();
-        return view('/index', compact('events','count_events','count_users'));
+        return view('/index', compact('events'));
       }
   
     public function events(){
-        $events = Event::where('is_active', 1)->orderBy('event_date', 'asc')->paginate(24);
+        $events = Event::where('is_active', 1)->orderBy('event_date', 'asc')->paginate(15);
         $categories = Category::all();
         return view('menu/wydarzenia', compact('events','categories'));
     }
@@ -55,7 +53,8 @@ class PagesController extends Controller
             $events = $events->where('category_id', '=', $category);
         }
         $events->where('event_date', '>=', Carbon::today());
-        $events = $events->orderBy('event_date', 'asc')->paginate(24);
+        $events = $events->orderBy('event_date', 'asc')->paginate(15);
+        $events->appends(request()->query())->links();
         $categories = Category::all();
         return view('menu/wydarzenia', compact('events','categories'));
     }

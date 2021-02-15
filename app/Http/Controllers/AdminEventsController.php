@@ -93,6 +93,20 @@ class AdminEventsController extends Controller
         return redirect('admin/wydarzenia');
     }
 
+    public function updateStatus($id)
+    {
+        $event = Event::findOrFail($id);
+        if($event->is_active == 0){
+            $event->is_active = 1;
+        }
+        else{
+            $event->is_active = 0;
+        }
+        $event->save();
+        Session::flash('message', "Dane wydarzenia zostały zaktualizowane pomyślnie.");
+        return redirect('admin/wydarzenia');
+    }
+
     public function destroy($id)
     {
         $event = Event::findOrFail($id);
