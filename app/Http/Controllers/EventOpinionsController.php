@@ -64,20 +64,32 @@ class EventOpinionsController extends Controller
     public function show($id)
     {
         $event = Event::findOrFail($id);
-        $data = DB::table('opinions')
-        ->join('events', 'events.id', '=', 'opinions.event_id') 
-        ->join('event_users', 'event_users.event_id', '=', 'events.id')
-        ->join('users', 'users.id', '=', 'event_users.user_id')
-        ->where('event_users.event_id', $id)->where(function ($query) {
-            $query->where('verification', 'W trakcie')
+        $data = DB::table('event_users')
+            ->join('users', 'event_users.user_id', '=', 'users.id')
+            ->join('events', 'event_users.event_id', '=', 'events.id')
+            ->join('opinions', 'event_users.event_id', '=', 'opinions.event_id')
+            ->select('opinions.*', 'events.title', 'users.email', 'event_users.verification', 'event_users.id as id_event_users')
+            ->where('event_users.event_id', $id)
+            ->where(function ($query) {
+             $query->where('verification', 'W trakcie')
             ->orWhere('verification', 'Zaakceptowane')
             ->orWhere('verification', 'Odrzucone');
         })
-        ->select('opinions.*', 'events.title', 'users.email', 'event_users.verification', 'event_users.id as id_event_users')
-        ->where('events.id', '=', $id)
         ->get();
-        $data = $data->unique('author');
-        return $data;
+        $result = json_decode($data, true);
+        $uniqueArray = [];
+        $usedValues = [
+            'id' => [],
+            'id_event_users' => [],
+        ];
+        foreach ($result as $element) {
+            if (!in_array($element['id'], $usedValues['id']) && !in_array($element['id_event_users'], $usedValues['id_event_users'])) {
+                $uniqueArray[] = $element;
+                $usedValues['id'][] = $element['id'];
+                $usedValues['id_event_users'][] = $element['id_event_users'];
+            }
+        }
+        $data = array_values($uniqueArray);
         return view('admin/opinie/show', compact('data', 'event'));
     }
 

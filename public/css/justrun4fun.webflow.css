@@ -1297,7 +1297,7 @@ a {
   justify-content: space-between;
   border-radius: 12px;
   background-color: #fff;
-  background-image: url('../images/Component-19-–-1.png');
+  background-image: url('../images/quote-background.png');
   background-position: 100% 0%;
   background-size: cover;
   box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.08);
@@ -3160,7 +3160,7 @@ a {
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    background-image: url('../images/Component-19-–-1.png');
+    background-image: url('../images/quote-background.png');
     background-position: 100% 0%;
     background-size: cover;
     background-repeat: repeat;
@@ -4384,7 +4384,7 @@ a {
   .opinions-div {
     height: 250px;
     max-height: 250px;
-    background-image: url('../images/Component-20-–-1.png');
+    background-image: url('../images/quote-background-square.png');
   }
 
   .opinions-text {

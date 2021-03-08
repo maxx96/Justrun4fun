@@ -22,7 +22,7 @@
         n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
       }(window, document);
     </script>
-  <link href="{{ asset('images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
+  <link href="{{ asset('images/favicon.png') }}" rel="shortcut icon" type="image/x-icon">
   <link href="{{ asset('images/webclip.png') }}" rel="apple-touch-icon">
 </head>
 <body>
@@ -30,9 +30,9 @@
     <div data-collapse="small" data-animation="over-left" data-duration="400" role="banner" class="navbar w-nav">
       <div class="content w-container">
         <div class="menu">
-          <a href="{{ route('index') }}" class="menu-logo w-nav-brand"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt="" class="menu-logo-image"></a>
+          <a href="{{ route('index') }}" class="menu-logo w-nav-brand"><img src="{{ asset('images/logo.svg') }}" loading="lazy" alt="" class="menu-logo-image"></a>
           <nav role="navigation" class="nav-menu w-nav-menu">
-            <div class="menu-logo-mobile"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt="" class="logo-mobile-image"></div>
+            <div class="menu-logo-mobile"><img src="{{ asset('images/logo.svg') }}" loading="lazy" alt="" class="logo-mobile-image"></div>
             <a href="{{ route('admin.index') }}" aria-current="page" class="nav-link w-nav-link">Panel główny</a>
             <div data-hover="" data-delay="0" class="dropdown w-dropdown">
               <div class="nav-link w-dropdown-toggle">
@@ -86,7 +86,7 @@
   <div class="section">
     <div class="content w-container">
       <h2 class="section-header">Fundacje</h2>
-      <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
+      <div class="separator"><img src="{{ asset('images/divider.svg') }}" loading="lazy" alt="" class="separator-image"></div>
       @if(Session::has('message'))
       <div class="success-block">
         <div class="text-block-info">
@@ -116,11 +116,11 @@
       @endif
 
       <h2 class="section-header">Dodaj fundację</h2>
-      <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
+      <div class="separator"><img src="{{ asset('images/divider.svg') }}" loading="lazy" alt="" class="separator-image"></div>
       <div class="w-form">
-        @csrf
         @include('includes/error-form')
         {{ Form::open(['method'=>'POST', 'action'=> 'App\Http\Controllers\FoundationController@store']) }}
+        @csrf
           <form id="email-form" name="email-form" data-name="Email Form">
             <div>
               {{ Form::label('nazwa', 'Nazwa:', ['class'=>'form-profile-field-label']) }}
@@ -128,7 +128,7 @@
               {{ Form::submit('Utwórz fundację', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno utworzyć fundację?")']) }}
             </div>
           </form>
-        {{ Form::close() !!}
+        {{ Form::close() }}
       </div>
     </div>
   </div>

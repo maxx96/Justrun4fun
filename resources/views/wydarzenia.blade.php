@@ -25,7 +25,7 @@
                     .className += t + "touch")
             }(window, document);
         </script>
-        <link href="{{ asset('images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
+        <link href="{{ asset('images/favicon.png') }}" rel="shortcut icon" type="image/x-icon">
         <link href="{{ asset('images/webclip.png') }}" rel="apple-touch-icon">
     </head>
     <body>
@@ -34,9 +34,9 @@
               <div class="content w-container">
                   <div class="menu">
                       <a href="{{ route('index') }}" aria-current="page" class="menu-logo w-nav-brand w--current"><img
-                              src="{{ asset('images/Group-532.png') }}" loading="lazy" alt="" class="menu-logo-image"></a>
+                              src="{{ asset('images/logo.svg') }}" loading="lazy" alt="" class="menu-logo-image"></a>
                       <nav role="navigation" class="nav-menu w-nav-menu">
-                          <div class="menu-logo-mobile"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt=""
+                          <div class="menu-logo-mobile"><img src="{{ asset('images/logo.svg') }}" loading="lazy" alt=""
                                   class="logo-mobile-image"></div>
                           <a href="{{ route('wydarzenia') }}" class="nav-link w-nav-link">Wydarzenia</a>
                           <a href="{{ route('ranking') }}" class="nav-link w-nav-link">Ranking</a>
@@ -49,14 +49,14 @@
                               <nav class="dropdown-list w-dropdown-list">
                                   <div class="submenu">
                                       <a href="{{ route('faq') }}" class="submenu-block w-inline-block"><img
-                                              src="{{ asset('images/ikona-faq.png') }}" loading="lazy" alt="" class="submenu-icon">
+                                              src="{{ asset('images/faq-icon.svg') }}" loading="lazy" alt="" class="submenu-icon">
                                           <div class="submenu-text-block">
                                               <h4 class="submenu-heading">FAQ</h4>
                                               <div class="submenu-text">Pytania i odpowiedzi<br>‍</div>
                                           </div>
                                       </a>
                                       <a href="https://www.facebook.com/" target="_blank"
-                                          class="submenu-block w-inline-block"><img src="{{ asset('images/ikona-czat.png') }}"
+                                          class="submenu-block w-inline-block"><img src="{{ asset('images/chat-icon.svg') }}"
                                               loading="lazy" alt="" class="submenu-icon">
                                           <div class="submenu-text-block">
                                               <h4 class="submenu-heading">Czat</h4>
@@ -95,7 +95,7 @@
       <div class="section">
         <div class="content w-container">
           <h2 class="section-header">{{ $event->title }}</h2>
-          <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
+          <div class="separator"><img src="{{ asset('images/divider.svg') }}" loading="lazy" alt="" class="separator-image"></div>
             <div class="div-block">
               @if(Session::has('message'))
               <div class="success-block">
@@ -183,24 +183,24 @@
                 </div>
               </div>
             </div>
-            <div class="shapes-div"><img src="{{ asset('images/Group-366.png') }}" loading="lazy" alt="" class="shapes-image"></div>
+            <div class="shapes-div"><img src="{{ asset('images/shape-grid.svg') }}" loading="lazy" alt="" class="shapes-image"></div>
           </div>
           <div class="participation-info">
             <div class="text-block-header">Biorąc udział w wydarzeniu:</div>
             <div class="list-div">
-              <div class="list-div-icon"><img src="{{ asset('images/check-svgrepo-com.png') }}" loading="lazy" alt="" class="list-icon"></div>
+              <div class="list-div-icon"><img src="{{ asset('images/check-icon.svg') }}" loading="lazy" alt="" class="list-icon"></div>
               <div class="list-div-text">
                 <div class="list-text">przekazujesz 5 zł na Fundacja DOM</div>
               </div>
             </div>
             <div class="list-div">
-              <div class="list-div-icon"><img src="{{ asset('images/check-svgrepo-com.png') }}" loading="lazy" alt="" class="list-icon"></div>
+              <div class="list-div-icon"><img src="{{ asset('images/check-icon.svg') }}" loading="lazy" alt="" class="list-icon"></div>
               <div class="list-div-text">
                 <div class="list-text">otrzymujesz {{ $event->category->points}} pkt do rankingu i walczysz o wspaniałe nagrody</div>
               </div>
             </div>
             <div class="list-div">
-              <div class="list-div-icon"><img src="{{ asset('images/check-svgrepo-com.png') }}" loading="lazy" alt="" class="list-icon"></div>
+              <div class="list-div-icon"><img src="{{ asset('images/check-icon.svg') }}" loading="lazy" alt="" class="list-icon"></div>
               <div class="list-div-text">
                 <div class="list-text">masz wpływ na organizację przyszłych zawodów</div>
               </div>
@@ -234,7 +234,7 @@
   <div class="section-footer">
     <div class="content w-container">
         <div class="footer-content">
-            <div class="footer-first"><img src="{{ asset('images/Component-15-–-12x.png') }}" alt="" class="footer-image">
+            <div class="footer-first"><img src="{{ asset('images/logo-footer.svg') }}" alt="" class="footer-image">
                 <div class="footer-first-block">
                     <div class="footer-first-heading">Dlaczego justrun4.fun?</div>
                     <div class="footer-first-text">Dbamy o motywację biegaczy oraz łączymy przyjemne z pożytecznym.
@@ -275,9 +275,9 @@
             </div>
             <div class="footer-social-media">
                 <a href="https://www.facebook.com/" target="_blank" class="w-inline-block"><img
-                        src="images/SM-logos.png" loading="lazy" alt="" class="icon-facebook"></a>
+                        src="{{ asset('images/facebook-icon.svg') }}" loading="lazy" alt="" class="icon-facebook"></a>
                 <a href="https://www.linkedin.com/" target="_blank" class="w-inline-block"><img
-                        src="images/logo-circle-facebook.png" loading="lazy" alt="" class="icon-linkedin"></a>
+                        src="{{ asset('images/linkedin-icon.svg') }}" loading="lazy" alt="" class="icon-linkedin"></a>
             </div>
         </div>
     </div>

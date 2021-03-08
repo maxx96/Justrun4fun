@@ -25,7 +25,7 @@
                     .className += t + "touch")
             }(window, document);
         </script>
-        <link href="{{ asset('images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
+        <link href="{{ asset('images/favicon.png') }}" rel="shortcut icon" type="image/x-icon">
         <link href="{{ asset('images/webclip.png') }}" rel="apple-touch-icon">
     </head>
     <body>
@@ -34,9 +34,9 @@
               <div class="content w-container">
                   <div class="menu">
                       <a href="{{ route('index') }}" aria-current="page" class="menu-logo w-nav-brand w--current"><img
-                              src="{{ asset('images/Group-532.png') }}" loading="lazy" alt="" class="menu-logo-image"></a>
+                              src="{{ asset('images/logo.svg') }}" loading="lazy" alt="" class="menu-logo-image"></a>
                       <nav role="navigation" class="nav-menu w-nav-menu">
-                          <div class="menu-logo-mobile"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt=""
+                          <div class="menu-logo-mobile"><img src="{{ asset('images/logo.svg') }}" loading="lazy" alt=""
                                   class="logo-mobile-image"></div>
                           <a href="{{ route('wydarzenia') }}" class="nav-link w-nav-link">Wydarzenia</a>
                           <a href="{{ route('ranking') }}" class="nav-link w-nav-link">Ranking</a>
@@ -49,14 +49,14 @@
                               <nav class="dropdown-list w-dropdown-list">
                                   <div class="submenu">
                                       <a href="{{ route('faq') }}" class="submenu-block w-inline-block"><img
-                                              src="{{ asset('images/ikona-faq.png') }}" loading="lazy" alt="" class="submenu-icon">
+                                              src="{{ asset('images/faq-icon.svg') }}" loading="lazy" alt="" class="submenu-icon">
                                           <div class="submenu-text-block">
                                               <h4 class="submenu-heading">FAQ</h4>
                                               <div class="submenu-text">Pytania i odpowiedzi<br>‍</div>
                                           </div>
                                       </a>
                                       <a href="https://www.facebook.com/" target="_blank"
-                                          class="submenu-block w-inline-block"><img src="{{ asset('images/ikona-czat.png') }}"
+                                          class="submenu-block w-inline-block"><img src="{{ asset('images/chat-icon.svg') }}"
                                               loading="lazy" alt="" class="submenu-icon">
                                           <div class="submenu-text-block">
                                               <h4 class="submenu-heading">Czat</h4>
@@ -96,43 +96,43 @@
   <div class="section">
     <div class="content w-container">
       <h2 class="section-header">O fundacjach</h2>
-      <div class="separator"><img src="images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
+      <div class="separator"><img src="images/divider.svg" loading="lazy" alt="" class="separator-image"></div>
       <div class="foundation-info">
         <div class="text-block-header">Justrun4.fun wspiera aktualnie 4 fundacje:</div>
         <div class="list-div">
-          <div class="list-div-icon"><img src="images/Group-546.png" loading="lazy" alt="" class="list-icon"></div>
+          <div class="list-div-icon"><img src="images/heart-icon.svg" loading="lazy" alt="" class="list-icon"></div>
           <div class="list-div-text">
             <div class="list-text">Polska Akcja Humanitarna</div>
           </div>
         </div>
         <div class="list-div">
-          <div class="list-div-icon"><img src="images/Group-546.png" loading="lazy" alt="" class="list-icon"></div>
+          <div class="list-div-icon"><img src="images/heart-icon.svg" loading="lazy" alt="" class="list-icon"></div>
           <div class="list-div-text">
             <div class="list-text">Fundacja DOM</div>
           </div>
         </div>
         <div class="list-div">
-          <div class="list-div-icon"><img src="images/Group-546.png" loading="lazy" alt="" class="list-icon"></div>
+          <div class="list-div-icon"><img src="images/heart-icon.svg" loading="lazy" alt="" class="list-icon"></div>
           <div class="list-div-text">
             <div class="list-text">Rak’n’Roll</div>
           </div>
         </div>
         <div class="list-div">
-          <div class="list-div-icon"><img src="images/Group-546.png" loading="lazy" alt="" class="list-icon"></div>
+          <div class="list-div-icon"><img src="images/heart-icon.svg" loading="lazy" alt="" class="list-icon"></div>
           <div class="list-div-text">
             <div class="list-text">Fundacja Dajemy Dzieciom Siłe</div>
           </div>
         </div>
       </div>
-      <div class="shapes-grid-foundation"><img src="images/Group-366.png" loading="lazy" alt="" class="shapes-grid"></div>
-      <div class="shapes-circle-foundation"><img src="images/Ellipse-125.png" loading="lazy" alt="" class="shapes-circle"></div>
+      <div class="shapes-grid-foundation"><img src="images/shape-grid.svg" loading="lazy" alt="" class="shapes-grid"></div>
+      <div class="shapes-circle-foundation"><img src="images/shape-ellipse.svg" loading="lazy" alt="" class="shapes-circle"></div>
       <div class="foundation-details">
-        <div class="foundation-image-div"><img src="images/Image-3.png" loading="lazy" alt="" class="foundation-image"></div>
+        <div class="foundation-image-div"><img src="images/pah-image.png" loading="lazy" alt="" class="foundation-image"></div>
         <div class="foundation-content">
           <div class="foundation-title">
-            <div><img src="images/logo_1.png" loading="lazy" alt="" class="foundation-logo"></div>
+            <div><img src="images/pah-logo-fundacje.png" loading="lazy" alt="" class="foundation-logo"></div>
             <div class="foundation-name">
-              <div class="foundation-name-text">Polska Akcja Humanitarna</div><img src="images/Line-17.png" loading="lazy" alt="" class="separator-image-foundation">
+              <div class="foundation-name-text">Polska Akcja Humanitarna</div><img src="images/divider-fundacje.svg" loading="lazy" alt="" class="separator-image-foundation">
             </div>
           </div>
           <div>
@@ -144,12 +144,12 @@
         </div>
       </div>
       <div class="foundation-details">
-        <div class="foundation-image-div"><img src="images/Image-4.png" loading="lazy" alt="" class="foundation-image"></div>
+        <div class="foundation-image-div"><img src="images/dom-image.png" loading="lazy" alt="" class="foundation-image"></div>
         <div class="foundation-content">
           <div class="foundation-title">
-            <div><img src="images/DOM-logo-mod2_1.png" loading="lazy" alt="" class="foundation-logo"></div>
+            <div><img src="images/dom-logo-fundacje.png" loading="lazy" alt="" class="foundation-logo"></div>
             <div class="foundation-name">
-              <div class="foundation-name-text">Fundacja DOM</div><img src="images/Line-17.png" loading="lazy" alt="" class="separator-image-foundation">
+              <div class="foundation-name-text">Fundacja DOM</div><img src="images/divider-fundacje.svg" loading="lazy" alt="" class="separator-image-foundation">
             </div>
           </div>
           <div>
@@ -161,12 +161,12 @@
         </div>
       </div>
       <div class="foundation-details">
-        <div class="foundation-image-div"><img src="images/Image-5.png" loading="lazy" alt="" class="foundation-image"></div>
+        <div class="foundation-image-div"><img src="images/rnr-image.png" loading="lazy" alt="" class="foundation-image"></div>
         <div class="foundation-content">
           <div class="foundation-title">
-            <div><img src="images/logo_rnr_1.png" loading="lazy" alt="" class="foundation-logo"></div>
+            <div><img src="images/rnr-logo-fundacje.png" loading="lazy" alt="" class="foundation-logo"></div>
             <div class="foundation-name">
-              <div class="foundation-name-text">Rak’n’Roll</div><img src="images/Line-17.png" loading="lazy" alt="" class="separator-image-foundation">
+              <div class="foundation-name-text">Rak’n’Roll</div><img src="images/divider-fundacje.svg" loading="lazy" alt="" class="separator-image-foundation">
             </div>
           </div>
           <div>
@@ -178,12 +178,12 @@
         </div>
       </div>
       <div class="foundation-details">
-        <div class="foundation-image-div"><img src="images/Image-6.png" loading="lazy" alt="" class="foundation-image"></div>
+        <div class="foundation-image-div"><img src="images/dds-image.png" loading="lazy" alt="" class="foundation-image"></div>
         <div class="foundation-content">
           <div class="foundation-title">
-            <div><img src="images/fdds_2.png" loading="lazy" alt="" class="foundation-logo"></div>
+            <div><img src="images/dds-logo-fundacje.png" loading="lazy" alt="" class="foundation-logo"></div>
             <div class="foundation-name">
-              <div class="foundation-name-text">Fundacja Dajemy Dzieciom Siłe</div><img src="images/Line-17.png" loading="lazy" alt="" class="separator-image-foundation">
+              <div class="foundation-name-text">Fundacja Dajemy Dzieciom Siłe</div><img src="images/divider-fundacje.svg" loading="lazy" alt="" class="separator-image-foundation">
             </div>
           </div>
           <div>
@@ -199,7 +199,7 @@
   <div class="section-footer">
     <div class="content w-container">
         <div class="footer-content">
-            <div class="footer-first"><img src="{{ asset('images/Component-15-–-12x.png') }}" alt="" class="footer-image">
+            <div class="footer-first"><img src="{{ asset('images/logo-footer.svg') }}" alt="" class="footer-image">
                 <div class="footer-first-block">
                     <div class="footer-first-heading">Dlaczego justrun4.fun?</div>
                     <div class="footer-first-text">Dbamy o motywację biegaczy oraz łączymy przyjemne z pożytecznym.
@@ -240,9 +240,9 @@
             </div>
             <div class="footer-social-media">
                 <a href="https://www.facebook.com/" target="_blank" class="w-inline-block"><img
-                        src="images/SM-logos.png" loading="lazy" alt="" class="icon-facebook"></a>
+                        src="{{ asset('images/facebook-icon.svg') }}" loading="lazy" alt="" class="icon-facebook"></a>
                 <a href="https://www.linkedin.com/" target="_blank" class="w-inline-block"><img
-                        src="images/logo-circle-facebook.png" loading="lazy" alt="" class="icon-linkedin"></a>
+                        src="{{ asset('images/linkedin-icon.svg') }}" loading="lazy" alt="" class="icon-linkedin"></a>
             </div>
         </div>
     </div>

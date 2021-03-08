@@ -29,7 +29,7 @@
         n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
       }(window, document);
     </script>
-  <link href="{{ asset('images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
+  <link href="{{ asset('images/favicon.png') }}" rel="shortcut icon" type="image/x-icon">
   <link href="{{ asset('images/webclip.png') }}" rel="apple-touch-icon">
 </head>
 
@@ -40,9 +40,9 @@
     <div data-collapse="small" data-animation="over-left" data-duration="400" role="banner" class="navbar w-nav">
       <div class="content w-container">
         <div class="menu">
-          <a href="{{ route('index') }}" class="menu-logo w-nav-brand"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt="" class="menu-logo-image"></a>
+          <a href="{{ route('index') }}" class="menu-logo w-nav-brand"><img src="{{ asset('images/logo.svg') }}" loading="lazy" alt="" class="menu-logo-image"></a>
           <nav role="navigation" class="nav-menu w-nav-menu">
-            <div class="menu-logo-mobile"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt="" class="logo-mobile-image"></div>
+            <div class="menu-logo-mobile"><img src="{{ asset('images/logo.svg') }}" loading="lazy" alt="" class="logo-mobile-image"></div>
             <a href="{{ route('wydarzenia') }}" class="nav-link w-nav-link">Wydarzenia</a>
             <a href="{{ route('ranking') }}" class="nav-link w-nav-link">Ranking</a>
             <a href="{{ route('fundacje') }}" class="nav-link w-nav-link">Fundacje</a>
@@ -53,13 +53,13 @@
               </div>
               <nav class="dropdown-list w-dropdown-list">
                 <div class="submenu">
-                  <a href="{{ route('faq') }}" class="submenu-block w-inline-block"><img src="{{ asset('images/ikona-faq.png') }}" loading="lazy" alt="" class="submenu-icon">
+                  <a href="{{ route('faq') }}" class="submenu-block w-inline-block"><img src="{{ asset('images/faq-icon.svg') }}" loading="lazy" alt="" class="submenu-icon">
                     <div class="submenu-text-block">
                       <h4 class="submenu-heading">FAQ</h4>
                       <div class="submenu-text">Pytania i odpowiedzi<br>‍</div>
                     </div>
                   </a>
-                  <a href="https://www.facebook.com/" target="_blank" class="submenu-block w-inline-block"><img src="{{ asset('images/ikona-faq.png') }}" loading="lazy" alt="" class="submenu-icon">
+                  <a href="https://www.facebook.com/" target="_blank" class="submenu-block w-inline-block"><img src="{{ asset('images/chat-icon.svg') }}" loading="lazy" alt="" class="submenu-icon">
                     <div class="submenu-text-block">
                       <h4 class="submenu-heading">Czat</h4>
                       <div class="submenu-text">Skontaktuj się z nami przez Messanger</div>
@@ -80,7 +80,7 @@
     <div class="section section-height-100">
         <div class="content w-container">
             <h2 class="section-header">Zmień swoje hasło</h2>
-            <div class="separator"><img src="images/Line-11.png" loading="lazy" alt="" class="separator-image"></div>
+            <div class="separator"><img src="images/divider.svg" loading="lazy" alt="" class="separator-image"></div>
             <div class="login-div">
                 <div class="w-form">
 
@@ -92,14 +92,14 @@
                         <input type="hidden" name="token" value="{{ $request->route('token') }}">
                     
                         <div class="email-div">
-                            <img src="{{ asset('images/Component-20-–-1_1.png') }}" loading="lazy" alt=""
+                            <img src="{{ asset('images/user-icon.svg') }}" loading="lazy" alt=""
                                 class="form-login-image">
                                 <x-jet-label for="email" class="form-login-text" value="{{ __('E-mail') }}" />
                         </div>
                             <x-jet-input id="email" class="form-login-text-field w-input" type="email" name="email" :value="old('email', $request->email)" required autofocus />
 
                                 <div class="password-div">
-                                    <img src="{{ asset('images/Component-21-–-1.png') }}" loading="lazy" alt=""
+                                    <img src="{{ asset('images/password-icon.svg') }}" loading="lazy" alt=""
                                         class="form-login-image">
                                     <x-jet-label for="password" value="{{ __('Hasło') }}" class="form-login-text" />
                                 </div>
@@ -107,7 +107,7 @@
                                     required autocomplete="new-password" />
 
                                     <div class="password-div">
-                                        <img src="{{ asset('images/Component-21-–-1.png') }}" loading="lazy" alt=""
+                                        <img src="{{ asset('images/password-icon.svg') }}" loading="lazy" alt=""
                                             class="form-login-image">
                                         <x-jet-label for="password_confirmation" value="{{ __('Potwierdź hasło') }}"
                                             class="form-login-text" />
@@ -126,7 +126,7 @@
         <div class="section-footer">
             <div class="content w-container">
                 <div class="footer-content">
-                    <div class="footer-first"><img src="images/Component-15-–-12x.png" alt="" class="footer-image">
+                    <div class="footer-first"><img src="images/logo-footer.svg" alt="" class="footer-image">
                         <div class="footer-first-block">
                             <div class="footer-first-heading">Dlaczego justrun4.fun?</div>
                             <div class="footer-first-text">Dbamy o motywację biegaczy oraz łączymy przyjemne z
@@ -167,9 +167,9 @@
                     </div>
                     <div class="footer-social-media">
                         <a href="https://www.facebook.com/" target="_blank" class="w-inline-block"><img
-                                src="images/SM-logos.png" loading="lazy" alt="" class="icon-facebook"></a>
+                                src="{{ asset('images/facebook-icon.svg') }}" loading="lazy" alt="" class="icon-facebook"></a>
                         <a href="https://www.linkedin.com/" target="_blank" class="w-inline-block"><img
-                                src="images/logo-circle-facebook.png" loading="lazy" alt="" class="icon-linkedin"></a>
+                                src="{{ asset('images/linkedin-icon.svg') }}" loading="lazy" alt="" class="icon-linkedin"></a>
                     </div>
                 </div>
             </div>

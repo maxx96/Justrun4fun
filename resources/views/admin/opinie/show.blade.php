@@ -22,7 +22,7 @@
         n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
       }(window, document);
     </script>
-  <link href="{{ asset('images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
+  <link href="{{ asset('images/favicon.png') }}" rel="shortcut icon" type="image/x-icon">
   <link href="{{ asset('images/webclip.png') }}" rel="apple-touch-icon">
 </head>
 <body>
@@ -30,9 +30,9 @@
     <div data-collapse="small" data-animation="over-left" data-duration="400" role="banner" class="navbar w-nav">
       <div class="content w-container">
         <div class="menu">
-          <a href="{{ route('index') }}" class="menu-logo w-nav-brand"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt="" class="menu-logo-image"></a>
+          <a href="{{ route('index') }}" class="menu-logo w-nav-brand"><img src="{{ asset('images/logo.svg') }}" loading="lazy" alt="" class="menu-logo-image"></a>
           <nav role="navigation" class="nav-menu w-nav-menu">
-            <div class="menu-logo-mobile"><img src="{{ asset('images/Group-532.png') }}" loading="lazy" alt="" class="logo-mobile-image"></div>
+            <div class="menu-logo-mobile"><img src="{{ asset('images/logo.svg') }}" loading="lazy" alt="" class="logo-mobile-image"></div>
             <a href="{{ route('admin.index') }}" aria-current="page" class="nav-link w-nav-link">Panel główny</a>
             <div data-hover="" data-delay="0" class="dropdown w-dropdown">
               <div class="nav-link w-dropdown-toggle">
@@ -87,7 +87,7 @@
   <div class="section">
     <div class="content w-container">
       <h2 class="section-header"><a href="{{ url('wydarzenia', [$event->slug]) }}">Opinie - {{$event->title}}</a></h2>
-      <div class="separator"><img src="{{ asset('images/Line-11.png') }}" loading="lazy" alt="" class="separator-image"></div>
+      <div class="separator"><img src="{{ asset('images/divider.svg') }}" loading="lazy" alt="" class="separator-image"></div>
       @if(Session::has('message'))
       <div class="success-block">
         <div class="text-block-info">
@@ -112,43 +112,43 @@
         <div>
           @foreach($data as $row)
           <div class="w-layout-grid grid-opinions-content">
-            <div class="list-event-text">{{$row->id}}</div>
-            <div class="list-event-text">{{$row->author}}<br></div>
-            <div class="list-event-text">{{$row->body}}<br></div>
-            <div class="list-event-text">{{$row->atmosphere_rating}} / 10</div>
-            <div class="list-event-text">{{$row->road_rating}} / 10<br></div>
-            <div class="list-user-text">{{$row->organization_rating}} / 10<br></div>
-            <div class="list-user-text">{{$row->overall_rating}} / 10<br></div>
+            <div class="list-event-text">{{ $row['id'] }}</div>
+            <div class="list-event-text">{{ $row['author'] }}<br></div>
+            <div class="list-event-text">{{ $row['body'] }}<br></div>
+            <div class="list-event-text">{{ $row['atmosphere_rating'] }} / 10</div>
+            <div class="list-event-text">{{ $row['road_rating'] }} / 10<br></div>
+            <div class="list-user-text">{{ $row['organization_rating'] }} / 10<br></div>
+            <div class="list-user-text">{{ $row['overall_rating'] }} / 10<br></div>
             <div>
-              @if($row->verification == "W trakcie")
-              {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id]]) }}
+              @if($row['verification'] == "W trakcie")
+              {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row['id_event_users'] ]]) }}
               <input type="hidden" name="verification" value="Zaakceptowane">
                 <div class="form-group">
                   {{ Form::submit('Akceptuj', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno akceptować opinię?")']) }}
                 </div>
                {{ Form::close() }}
             
-                {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id]]) }}
+                {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row['id_event_users'] ]]) }}
                   <input type="hidden" name="verification" value="Odrzucone">
                     <div class="form-group">
                       {{ Form::submit('Odrzuć', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno odrzucić opinię?")']) }}
                     </div>
                 {{ Form::close() }}
               
-                @elseif($row->verification == "Zaakceptowane")
-                {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id]]) }}
+                @elseif($row['verification'] == "Zaakceptowane")
+                {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row['id_event_users'] ]]) }}
               <input type="hidden" name="verification" value="Odrzucone">
               <div class="form-group">
-                {{ Form::submit('Odrzuć', ['class'=>'btn btn-danger', 'onclick'=>'return confirm("Czy na pewno odrzucić opinię?")']) }}
+                {{ Form::submit('Odrzuć', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno odrzucić opinię?")']) }}
               </div>
           {{ Form::close() }}
 
-        @elseif($row->verification == "Odrzucone")
+        @elseif($row['verification'] == "Odrzucone")
         
-          {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row->id]]) }}
+          {{ Form::open(['method'=>'PATCH', 'action'=> ['App\Http\Controllers\EventOpinionsController@updateVerification', $row['id_event_users'] ]]) }}
             <input type="hidden" name="verification" value="Zaakceptowane">
               <div class="form-group">
-                {{ Form::submit('Akceptuj', ['class'=>'btn btn-success', 'onclick'=>'return confirm("Czy na pewno akceptować opinię?")']) }}
+                {{ Form::submit('Akceptuj', ['class'=>'submit-button w-button', 'onclick'=>'return confirm("Czy na pewno akceptować opinię?")']) }}
               </div>
           {{ Form::close() }}
         @endif
